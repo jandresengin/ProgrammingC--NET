@@ -151,6 +151,7 @@ namespace Assignment01
             this.Controls.Add(this.txtDueDate);
             this.Controls.Add(this.label1);
             this.Name = "frmLibraryMovies";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library Movies";
             this.ResumeLayout(false);
             this.PerformLayout();

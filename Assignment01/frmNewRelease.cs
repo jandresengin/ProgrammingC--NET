@@ -15,6 +15,7 @@ namespace Assignment01
         public frmNewRelease()
         {
             InitializeComponent();
+            txtCurrentDate.Text = DateTime.Now.ToString(@"MM-dd-yyyy");
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace Assignment01
         public frmKidsMovies()
         {
             InitializeComponent();
+            txtCurrentDate.Text = DateTime.Now.ToString(@"MM-dd-yyyy");
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
