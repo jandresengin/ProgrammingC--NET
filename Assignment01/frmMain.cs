@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+/***********************************************************************************************************************
+ *          CSD2354 Programming C# NET          Fall 2021       Assignment 1
+ *          Jairo Andres Supelano               c0812859
+ ************************************************************************************************************************/
 
 namespace Assignment01
 {
