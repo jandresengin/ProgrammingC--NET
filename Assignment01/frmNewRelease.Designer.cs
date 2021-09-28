@@ -87,7 +87,7 @@ namespace Assignment01
             this.label2.TabIndex = 4;
             this.label2.Text = "Current Date";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+
             // 
             // txtCurrentDate
             // 
@@ -107,7 +107,7 @@ namespace Assignment01
             this.label3.TabIndex = 6;
             this.label3.Text = "Numbers of Days Late";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+
             // 
             // txtNumbersOfDaysLate
             // 
@@ -155,7 +155,6 @@ namespace Assignment01
             this.Name = "frmNewRelease";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Releases";
-            this.Load += new System.EventHandler(this.frmNewRelease_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
