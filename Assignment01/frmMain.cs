@@ -19,31 +19,35 @@ namespace Assignment01
 
         private void btnNewRelease_Click(object sender, EventArgs e)
         {
-            frmNewRelease newRelease = new frmNewRelease(); //this is to call the form New Release as a object
-            this.Hide();
-            newRelease.ShowDialog();
-            this.Close();
+            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
+            frmNewRelease newRelease = new frmNewRelease(); //The frmNewRelease form object is instantiated.
+            this.Hide();//the current form is hidden.
+            newRelease.ShowDialog(); //the newRelease form is called.
+            this.Close(); //At the end the current form is closed to not leave active forms or threads.
+            
         }
 
         private void btnLibraryMovie_Click(object sender, EventArgs e)
         {
-            frmLibraryMovies libraryMovies = new frmLibraryMovies(); //this is the change, code for redirect  
-            this.Hide();
-            libraryMovies.ShowDialog();
-            this.Close();
+            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
+            frmLibraryMovies libraryMovies = new frmLibraryMovies(); //The frmLibraryMovies form object is instantiated.
+            this.Hide(); //the current form is hidden.
+            libraryMovies.ShowDialog(); //the libraryMovies form is called.
+            this.Close(); //At the end the current form is closed to not leave active forms or threads.
         }
 
         private void btnKidsMovie_Click(object sender, EventArgs e)
         {
-            frmKidsMovies kidsMovies = new frmKidsMovies(); //this is the change, code for redirect  
-            this.Hide();
-            kidsMovies.ShowDialog();
-            this.Close();
+            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
+            frmKidsMovies kidsMovies = new frmKidsMovies(); //The frmKidsMovies form object is instantiated.  
+            this.Hide(); //the current form is hidden.
+            kidsMovies.ShowDialog(); //the libraryMovies form is called.
+            this.Close(); //At the end the current form is closed to not leave active forms or threads.
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); //The current form and the program are closed completely, in this case.
         }
     }
 }
