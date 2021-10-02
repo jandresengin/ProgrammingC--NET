@@ -16,7 +16,16 @@ namespace AreaAndPerimeter
         {
             InitializeComponent();
         }
-
+        /*      🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉                                                       ⁂⁂
+         *                                                                                             ⁂⁂
+         *      Knock, knock.                                                                          ⁂⁂
+                Who’s there?                                                                           ⁂⁂
+                Who.                                                                                   ⁂⁂
+                Who who?                                                                               ⁂⁂
+                I didn’t know you were an owl!                                                         ⁂⁂
+         *                                                                                             ⁂⁂
+         *      🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉🦉                                                       ⁂⁂
+         */
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             decimal diameterEntered = Convert.ToDecimal(txtDiameter.Text);

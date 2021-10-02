@@ -54,14 +54,14 @@ namespace ScoreCalculator
             // 
             // txtScore
             // 
-            this.txtScore.Location = new System.Drawing.Point(147, 35);
+            this.txtScore.Location = new System.Drawing.Point(133, 38);
             this.txtScore.Name = "txtScore";
-            this.txtScore.Size = new System.Drawing.Size(55, 22);
+            this.txtScore.Size = new System.Drawing.Size(69, 22);
             this.txtScore.TabIndex = 1;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(234, 35);
+            this.btnAdd.Location = new System.Drawing.Point(234, 38);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(103, 36);
             this.btnAdd.TabIndex = 2;
@@ -102,10 +102,10 @@ namespace ScoreCalculator
             // 
             // txtScoreTotal
             // 
-            this.txtScoreTotal.Location = new System.Drawing.Point(147, 80);
+            this.txtScoreTotal.Location = new System.Drawing.Point(133, 83);
             this.txtScoreTotal.Name = "txtScoreTotal";
             this.txtScoreTotal.ReadOnly = true;
-            this.txtScoreTotal.Size = new System.Drawing.Size(55, 22);
+            this.txtScoreTotal.Size = new System.Drawing.Size(69, 22);
             this.txtScoreTotal.TabIndex = 6;
             this.txtScoreTotal.TabStop = false;
             // 
@@ -121,10 +121,10 @@ namespace ScoreCalculator
             // 
             // txtScoreCount
             // 
-            this.txtScoreCount.Location = new System.Drawing.Point(147, 127);
+            this.txtScoreCount.Location = new System.Drawing.Point(133, 130);
             this.txtScoreCount.Name = "txtScoreCount";
             this.txtScoreCount.ReadOnly = true;
-            this.txtScoreCount.Size = new System.Drawing.Size(55, 22);
+            this.txtScoreCount.Size = new System.Drawing.Size(69, 22);
             this.txtScoreCount.TabIndex = 8;
             this.txtScoreCount.TabStop = false;
             // 
@@ -140,10 +140,10 @@ namespace ScoreCalculator
             // 
             // txtAverage
             // 
-            this.txtAverage.Location = new System.Drawing.Point(147, 179);
+            this.txtAverage.Location = new System.Drawing.Point(133, 182);
             this.txtAverage.Name = "txtAverage";
             this.txtAverage.ReadOnly = true;
-            this.txtAverage.Size = new System.Drawing.Size(55, 22);
+            this.txtAverage.Size = new System.Drawing.Size(69, 22);
             this.txtAverage.TabIndex = 10;
             this.txtAverage.TabStop = false;
             // 
