@@ -78,6 +78,7 @@ namespace Assignment01
             // 
             // btnExit
             // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(36, 302);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(279, 38);
@@ -88,8 +89,10 @@ namespace Assignment01
             // 
             // frmMain
             // 
+            this.AcceptButton = this.btnNewRelease;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(354, 380);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnKidsMovie);

@@ -62,9 +62,6 @@ namespace Assignment01
 
         
 
-        private void frmNewRelease_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

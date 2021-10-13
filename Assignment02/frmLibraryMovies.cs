@@ -31,11 +31,12 @@ namespace Assignment01
             DateTime dCurrent = DateTime.Now;
             // The date entered by the user is saved in the variable dDue,
             // in this case it is converted to a DateTime type format.
-            DateTime dDue = DateTime.Parse(txtDueDate.Text);
+            DateTime dDue = dateTimePickerDueDate.Value;
+            MessageBox.Show("Selected date is " + dDue);
 
             // TimeSpan is called, which makes the comparison between the current date and the date that the user entered.
             // I work in this order to avoid negative numbers.
-            TimeSpan totalNumberDays = (dDue.Date - dCurrent.Date);
+            TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date);
             // The total number of days of the date difference calculated
             // in the previous step is captured in a double variable called numberOfDays.
             double numberOfDays = totalNumberDays.TotalDays;

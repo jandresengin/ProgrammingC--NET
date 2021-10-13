@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 namespace Assignment01
 {
     partial class frmLibraryMovies
@@ -30,7 +30,6 @@ namespace Assignment01
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDueDate = new System.Windows.Forms.TextBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,6 +38,7 @@ namespace Assignment01
             this.txtNumbersOfDaysLate = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLateFee = new System.Windows.Forms.TextBox();
+            this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -50,13 +50,6 @@ namespace Assignment01
             this.label1.TabIndex = 0;
             this.label1.Text = "Due Date";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtDueDate
-            // 
-            this.txtDueDate.Location = new System.Drawing.Point(203, 27);
-            this.txtDueDate.Name = "txtDueDate";
-            this.txtDueDate.Size = new System.Drawing.Size(123, 22);
-            this.txtDueDate.TabIndex = 1;
             // 
             // btnCalculate
             // 
@@ -70,6 +63,7 @@ namespace Assignment01
             // 
             // btnReturn
             // 
+            this.btnReturn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnReturn.Location = new System.Drawing.Point(28, 292);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
@@ -135,11 +129,25 @@ namespace Assignment01
             this.txtLateFee.TabIndex = 10;
             this.txtLateFee.TabStop = false;
             // 
+            // dateTimePickerDueDate
+            // 
+            this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
+            this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(203, 32);
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 10, 12, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
+            this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
+            this.dateTimePickerDueDate.TabIndex = 1;
+            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 10, 12, 0, 0, 0, 0);
+            // 
             // frmLibraryMovies
             // 
+            this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnReturn;
             this.ClientSize = new System.Drawing.Size(354, 380);
+            this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.txtLateFee);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNumbersOfDaysLate);
@@ -148,7 +156,6 @@ namespace Assignment01
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnCalculate);
-            this.Controls.Add(this.txtDueDate);
             this.Controls.Add(this.label1);
             this.Name = "frmLibraryMovies";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -161,7 +168,6 @@ namespace Assignment01
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDueDate;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label label2;
@@ -170,5 +176,6 @@ namespace Assignment01
         private System.Windows.Forms.TextBox txtNumbersOfDaysLate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLateFee;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
     }
 }

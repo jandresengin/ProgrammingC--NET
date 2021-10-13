@@ -64,6 +64,7 @@ namespace Assignment01
             // 
             // btnReturn
             // 
+            this.btnReturn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnReturn.Location = new System.Drawing.Point(33, 306);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
@@ -131,26 +132,22 @@ namespace Assignment01
             // 
             // dateTimePickerDueDate
             // 
-            this.dateTimePickerDueDate.CustomFormat = @"MM-dd-yyyy";
+            this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(208, 32);
-
-            DateTime moment = DateTime.Now;
-            int year = moment.Year;
-            int month = moment.Month;
-            int day = moment.Day;
-
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 10, 12, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 10, 12, 0, 0, 0, 0);
             // 
             // frmNewRelease
             // 
+            this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(692, 380);
+            this.CancelButton = this.btnReturn;
+            this.ClientSize = new System.Drawing.Size(354, 380);
             this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.txtLateFee);
             this.Controls.Add(this.label4);
@@ -164,7 +161,6 @@ namespace Assignment01
             this.Name = "frmNewRelease";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Releases";
-            this.Load += new System.EventHandler(this.frmNewRelease_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
