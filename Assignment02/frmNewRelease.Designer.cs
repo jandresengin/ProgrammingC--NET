@@ -31,7 +31,6 @@ namespace Assignment01
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDueDate = new System.Windows.Forms.TextBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,13 +51,6 @@ namespace Assignment01
             this.label1.TabIndex = 0;
             this.label1.Text = "Due Date";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtDueDate
-            // 
-            this.txtDueDate.Location = new System.Drawing.Point(492, 236);
-            this.txtDueDate.Name = "txtDueDate";
-            this.txtDueDate.Size = new System.Drawing.Size(123, 22);
-            this.txtDueDate.TabIndex = 15;
             // 
             // btnCalculate
             // 
@@ -139,15 +131,20 @@ namespace Assignment01
             // 
             // dateTimePickerDueDate
             // 
-            this.dateTimePickerDueDate.CustomFormat = "";
+            this.dateTimePickerDueDate.CustomFormat = @"MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(208, 32);
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 10, 29, 0, 0, 0, 0);
+
+            DateTime moment = DateTime.Now;
+            int year = moment.Year;
+            int month = moment.Month;
+            int day = moment.Day;
+
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
-            this.dateTimePickerDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 10, 29, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
             // 
             // frmNewRelease
             // 
@@ -163,7 +160,6 @@ namespace Assignment01
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnCalculate);
-            this.Controls.Add(this.txtDueDate);
             this.Controls.Add(this.label1);
             this.Name = "frmNewRelease";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -177,7 +173,6 @@ namespace Assignment01
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDueDate;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label label2;
