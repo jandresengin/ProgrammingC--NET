@@ -21,6 +21,8 @@ namespace Assignment01
             InitializeComponent();
         }
 
+
+
         private void btnNewRelease_Click(object sender, EventArgs e)
         {
             //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.

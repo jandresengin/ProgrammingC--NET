@@ -17,7 +17,11 @@ namespace Assignment01
             txtCurrentDate.Text = DateTime.Now.ToString(@"MM-dd-yyyy");
         }
 
-         private void btnCalculate_Click(object sender, EventArgs e)
+        int numberNewReleaseMovies = 0;
+        //int numberLibraryMovies = 0;
+        //int numberKidsMovies = 0;
+
+        private void btnCalculate_Click(object sender, EventArgs e)
         {
             // The current date is stored in the variable dCurrent.
             DateTime dCurrent = DateTime.Now;
@@ -40,13 +44,23 @@ namespace Assignment01
             // The variable numberOfDays is converted to a string to be printed in the textbox called txtNumbersOfDaysLate.Text.
             txtNumbersOfDaysLate.Text = numberOfDays.ToString();
 
+            int numberMovies;
+            bool success = int.TryParse(txtNumberOfMovies.Text, out numberMovies);
+            if (success) { 
+
+                numberNewReleaseMovies = numberNewReleaseMovies + numberMovies;
+
             // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
             // which is 2 CAD per day.
-            double lateFeeBill = 2 * numberOfDays;
+            double lateFeeBill = 2 * numberOfDays * numberNewReleaseMovies;
 
             // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
             txtLateFee.Text = lateFeeBill.ToString("c");
-            
+            }
+            else
+            {
+                MessageBox.Show("The number of movies is not correct ' " + txtNumberOfMovies.Text +" '.");
+            }
 
         }
 

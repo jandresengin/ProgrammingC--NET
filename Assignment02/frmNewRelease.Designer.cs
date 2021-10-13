@@ -40,12 +40,14 @@ namespace Assignment01
             this.label4 = new System.Windows.Forms.Label();
             this.txtLateFee = new System.Windows.Forms.TextBox();
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 32);
+            this.label1.Location = new System.Drawing.Point(30, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 0;
@@ -54,10 +56,10 @@ namespace Assignment01
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(33, 236);
+            this.btnCalculate.Location = new System.Drawing.Point(33, 318);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(298, 38);
-            this.btnCalculate.TabIndex = 2;
+            this.btnCalculate.TabIndex = 3;
             this.btnCalculate.Text = "&Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
@@ -65,10 +67,10 @@ namespace Assignment01
             // btnReturn
             // 
             this.btnReturn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnReturn.Location = new System.Drawing.Point(33, 306);
+            this.btnReturn.Location = new System.Drawing.Point(33, 377);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
-            this.btnReturn.TabIndex = 3;
+            this.btnReturn.TabIndex = 4;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -76,16 +78,16 @@ namespace Assignment01
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 73);
+            this.label2.Location = new System.Drawing.Point(30, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 11;
             this.label2.Text = "Current Date";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtCurrentDate
             // 
-            this.txtCurrentDate.Location = new System.Drawing.Point(208, 68);
+            this.txtCurrentDate.Location = new System.Drawing.Point(208, 156);
             this.txtCurrentDate.Name = "txtCurrentDate";
             this.txtCurrentDate.ReadOnly = true;
             this.txtCurrentDate.Size = new System.Drawing.Size(123, 22);
@@ -95,7 +97,7 @@ namespace Assignment01
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 120);
+            this.label3.Location = new System.Drawing.Point(30, 211);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
@@ -104,7 +106,7 @@ namespace Assignment01
             // 
             // txtNumbersOfDaysLate
             // 
-            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(208, 115);
+            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(208, 206);
             this.txtNumbersOfDaysLate.Name = "txtNumbersOfDaysLate";
             this.txtNumbersOfDaysLate.ReadOnly = true;
             this.txtNumbersOfDaysLate.Size = new System.Drawing.Size(123, 22);
@@ -114,7 +116,7 @@ namespace Assignment01
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 165);
+            this.label4.Location = new System.Drawing.Point(30, 256);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 8;
@@ -123,7 +125,7 @@ namespace Assignment01
             // 
             // txtLateFee
             // 
-            this.txtLateFee.Location = new System.Drawing.Point(208, 160);
+            this.txtLateFee.Location = new System.Drawing.Point(208, 251);
             this.txtLateFee.Name = "txtLateFee";
             this.txtLateFee.ReadOnly = true;
             this.txtLateFee.Size = new System.Drawing.Size(123, 22);
@@ -134,12 +136,29 @@ namespace Assignment01
             // 
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDueDate.Location = new System.Drawing.Point(208, 32);
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(208, 57);
             this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 10, 12, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
             this.dateTimePickerDueDate.Value = new System.DateTime(2021, 10, 12, 0, 0, 0, 0);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Number Of Movies";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtNumberOfMovies
+            // 
+            this.txtNumberOfMovies.Location = new System.Drawing.Point(208, 103);
+            this.txtNumberOfMovies.Name = "txtNumberOfMovies";
+            this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
+            this.txtNumberOfMovies.TabIndex = 2;
             // 
             // frmNewRelease
             // 
@@ -147,7 +166,9 @@ namespace Assignment01
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
-            this.ClientSize = new System.Drawing.Size(354, 380);
+            this.ClientSize = new System.Drawing.Size(366, 449);
+            this.Controls.Add(this.txtNumberOfMovies);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.txtLateFee);
             this.Controls.Add(this.label4);
@@ -178,5 +199,7 @@ namespace Assignment01
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLateFee;
         private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
+        private Label label5;
+        private TextBox txtNumberOfMovies;
     }
 }
