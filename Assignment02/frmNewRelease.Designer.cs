@@ -42,6 +42,8 @@ namespace Assignment01
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -160,13 +162,40 @@ namespace Assignment01
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
             this.txtNumberOfMovies.TabIndex = 2;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Items.AddRange(new object[] {
+            "N",
+            "L",
+            "J"});
+            this.listBox1.Location = new System.Drawing.Point(461, 67);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 84);
+            this.listBox1.TabIndex = 12;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "N",
+            "L",
+            "J"});
+            this.comboBox1.Location = new System.Drawing.Point(460, 204);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 14;
+            // 
             // frmNewRelease
             // 
             this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
-            this.ClientSize = new System.Drawing.Size(366, 449);
+            this.ClientSize = new System.Drawing.Size(669, 464);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.txtNumberOfMovies);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePickerDueDate);
@@ -201,5 +230,7 @@ namespace Assignment01
         private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
         private Label label5;
         private TextBox txtNumberOfMovies;
+        private ListBox listBox1;
+        private ComboBox comboBox1;
     }
 }
