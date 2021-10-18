@@ -27,12 +27,24 @@ namespace Assignment01
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             // The current date is stored in the variable dCurrent.
+            string selectedTypeCustomer = txtTypeCustomer.Text;
+            double lateFeeBill = 0;
+
+
+
+
+
+
+
+            decimal discountPercent = .0m;
+
+            int numberOfDaysLate;
             DateTime dCurrent = DateTime.Now;
             // The date entered by the user is saved in the variable dDue,
             // in this case it is converted to a DateTime type format.
             //DateTime dDue = DateTime.Parse(txtDueDate.Text);
             DateTime dDue = dateTimePickerDueDate.Value;
-            MessageBox.Show("Selected date is " + dDue);
+            
 
 
             // TimeSpan is called, which makes the comparison between the current date and the date that the user entered.
@@ -45,29 +57,68 @@ namespace Assignment01
             double numberOfDays = totalNumberDays.TotalDays;
 
             // The variable numberOfDays is converted to a string to be printed in the textbox called txtNumbersOfDaysLate.Text.
+
+            
+
             txtNumbersOfDaysLate.Text = numberOfDays.ToString();
 
-            
+            bool success = Int32.TryParse(txtNumbersOfDaysLate.Text, out numberOfDaysLate);
+            if (success)
+            {
+                if (numberOfDaysLate >= 0) { 
+                    // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
+                    // which is 2 CAD per day.
+                
+                    if (numberOfDaysLate != 0)
+                    {
+                        numberMoviesEntered += 1;
+                        lateFeeBill = 2 * numberOfDaysLate;
+                        totalWithoutDiscount += lateFeeBill;
+                    }
+                    
 
-            if (numberOfDays > 0) { 
-            
+                    
 
-            // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
-            // which is 2 CAD per day.
-            numberMoviesEntered += 1;
+                    // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
+                    
+                
+                    switch(selectedTypeCustomer)
+                        {
+                            case "L":
+                                discountPercent = .1m;
+                                break;
+                            case "J":
+                                discountPercent = .05m;
+                                break;
+                            case "N":
+                                discountPercent = 0;
+                                break;
+                            default:
+                                MessageBox.Show("To apply any kind of discount please select your Loyal customers ");
+                                discountPercent = 0;
+                                break;
+                        }
+                
+                    
+                    decimal discountAmount = Convert.ToDecimal(totalWithoutDiscount) * discountPercent;
+                    decimal invoiceTotal = Convert.ToDecimal(totalWithoutDiscount) - discountAmount;
 
-            double lateFeeBill = 2 * numberOfDays;
 
-            // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
-            totalWithoutDiscount += lateFeeBill;
 
-            txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
-            txtLateFee.Text = lateFeeBill.ToString("c");
-            subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c");
+                    txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
+                    txtLateFee.Text = lateFeeBill.ToString("c");
+                    subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c");
+                    txtTotalWithDiscount.Text = invoiceTotal.ToString("c");
 
-            btnReturn.Focus();
-
+                    btnReturn.Focus();
+                    }
             }
+            else
+            {
+                MessageBox.Show("The number of days introducted is not correct ' " + numberOfDaysLate + " '.");
+            }
+
+
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -79,7 +130,6 @@ namespace Assignment01
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
 
         }
-
 
     }
 }
