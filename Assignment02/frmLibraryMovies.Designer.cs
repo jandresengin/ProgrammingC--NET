@@ -137,8 +137,8 @@ namespace Assignment01
 
             DateTime todaysDate = DateTime.Today;
             int year = todaysDate.Year;
-            int month = todaysDate.Year;
-            int day = todaysDate.Year;
+            int month = todaysDate.Month;
+            int day = todaysDate.Day;
 
             this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
