@@ -44,8 +44,6 @@ namespace Assignment01
             this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.subtotalMoviesPartial = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.subtotalWithoutDiscount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -62,7 +60,7 @@ namespace Assignment01
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(33, 318);
+            this.btnCalculate.Location = new System.Drawing.Point(33, 259);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(298, 38);
             this.btnCalculate.TabIndex = 3;
@@ -73,7 +71,7 @@ namespace Assignment01
             // btnReturn
             // 
             this.btnReturn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnReturn.Location = new System.Drawing.Point(33, 377);
+            this.btnReturn.Location = new System.Drawing.Point(33, 318);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
             this.btnReturn.TabIndex = 4;
@@ -143,18 +141,11 @@ namespace Assignment01
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(208, 57);
-
-
-            DateTime todaysDate = DateTime.Today;
-            int year = todaysDate.Year;
-            int month = todaysDate.Month;
-            int day = todaysDate.Day;
-
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 10, 18, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 10, 18, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -200,25 +191,6 @@ namespace Assignment01
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 14;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 255);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 17);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Subtotal";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // subtotalMoviesPartial
-            // 
-            this.subtotalMoviesPartial.Location = new System.Drawing.Point(208, 252);
-            this.subtotalMoviesPartial.Name = "subtotalMoviesPartial";
-            this.subtotalMoviesPartial.ReadOnly = true;
-            this.subtotalMoviesPartial.Size = new System.Drawing.Size(123, 22);
-            this.subtotalMoviesPartial.TabIndex = 16;
-            this.subtotalMoviesPartial.TabStop = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -247,8 +219,6 @@ namespace Assignment01
             this.ClientSize = new System.Drawing.Size(874, 464);
             this.Controls.Add(this.subtotalWithoutDiscount);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.subtotalMoviesPartial);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.txtNumberOfMovies);
@@ -287,8 +257,6 @@ namespace Assignment01
         private TextBox txtNumberOfMovies;
         private ListBox listBox1;
         private ComboBox comboBox1;
-        private Label label6;
-        private TextBox subtotalMoviesPartial;
         private Label label7;
         private TextBox subtotalWithoutDiscount;
     }

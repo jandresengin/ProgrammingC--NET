@@ -49,7 +49,7 @@ namespace Assignment01
 
             
 
-       
+            if (numberOfDays > 0) { 
             
 
             // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
@@ -66,6 +66,8 @@ namespace Assignment01
             subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c");
 
             btnReturn.Focus();
+
+            }
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
