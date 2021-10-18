@@ -44,6 +44,10 @@ namespace Assignment01
             this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.subtotalMoviesPartial = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.subtotalWithoutDiscount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -80,7 +84,7 @@ namespace Assignment01
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 161);
+            this.label2.Location = new System.Drawing.Point(30, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
             this.label2.TabIndex = 11;
@@ -89,7 +93,7 @@ namespace Assignment01
             // 
             // txtCurrentDate
             // 
-            this.txtCurrentDate.Location = new System.Drawing.Point(208, 156);
+            this.txtCurrentDate.Location = new System.Drawing.Point(208, 107);
             this.txtCurrentDate.Name = "txtCurrentDate";
             this.txtCurrentDate.ReadOnly = true;
             this.txtCurrentDate.Size = new System.Drawing.Size(123, 22);
@@ -99,7 +103,7 @@ namespace Assignment01
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 211);
+            this.label3.Location = new System.Drawing.Point(30, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
@@ -108,7 +112,7 @@ namespace Assignment01
             // 
             // txtNumbersOfDaysLate
             // 
-            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(208, 206);
+            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(208, 157);
             this.txtNumbersOfDaysLate.Name = "txtNumbersOfDaysLate";
             this.txtNumbersOfDaysLate.ReadOnly = true;
             this.txtNumbersOfDaysLate.Size = new System.Drawing.Size(123, 22);
@@ -118,7 +122,7 @@ namespace Assignment01
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 256);
+            this.label4.Location = new System.Drawing.Point(30, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 8;
@@ -127,7 +131,7 @@ namespace Assignment01
             // 
             // txtLateFee
             // 
-            this.txtLateFee.Location = new System.Drawing.Point(208, 251);
+            this.txtLateFee.Location = new System.Drawing.Point(208, 202);
             this.txtLateFee.Name = "txtLateFee";
             this.txtLateFee.ReadOnly = true;
             this.txtLateFee.Size = new System.Drawing.Size(123, 22);
@@ -148,19 +152,21 @@ namespace Assignment01
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 108);
+            this.label5.Location = new System.Drawing.Point(395, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 17);
+            this.label5.Size = new System.Drawing.Size(126, 34);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Number Of Movies";
+            this.label5.Text = "Number of Movies \r\nDelivered Late";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtNumberOfMovies
             // 
-            this.txtNumberOfMovies.Location = new System.Drawing.Point(208, 103);
+            this.txtNumberOfMovies.Location = new System.Drawing.Point(594, 57);
             this.txtNumberOfMovies.Name = "txtNumberOfMovies";
+            this.txtNumberOfMovies.ReadOnly = true;
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
             this.txtNumberOfMovies.TabIndex = 2;
+            this.txtNumberOfMovies.TabStop = false;
             // 
             // listBox1
             // 
@@ -170,7 +176,7 @@ namespace Assignment01
             "N",
             "L",
             "J"});
-            this.listBox1.Location = new System.Drawing.Point(461, 67);
+            this.listBox1.Location = new System.Drawing.Point(658, 295);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 84);
             this.listBox1.TabIndex = 12;
@@ -182,10 +188,48 @@ namespace Assignment01
             "N",
             "L",
             "J"});
-            this.comboBox1.Location = new System.Drawing.Point(460, 204);
+            this.comboBox1.Location = new System.Drawing.Point(397, 318);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(30, 255);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 17);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Subtotal";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // subtotalMoviesPartial
+            // 
+            this.subtotalMoviesPartial.Location = new System.Drawing.Point(208, 252);
+            this.subtotalMoviesPartial.Name = "subtotalMoviesPartial";
+            this.subtotalMoviesPartial.ReadOnly = true;
+            this.subtotalMoviesPartial.Size = new System.Drawing.Size(123, 22);
+            this.subtotalMoviesPartial.TabIndex = 16;
+            this.subtotalMoviesPartial.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(395, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 17);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Subtotal Without Discount";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // subtotalWithoutDiscount
+            // 
+            this.subtotalWithoutDiscount.Location = new System.Drawing.Point(594, 109);
+            this.subtotalWithoutDiscount.Name = "subtotalWithoutDiscount";
+            this.subtotalWithoutDiscount.ReadOnly = true;
+            this.subtotalWithoutDiscount.Size = new System.Drawing.Size(123, 22);
+            this.subtotalWithoutDiscount.TabIndex = 18;
+            this.subtotalWithoutDiscount.TabStop = false;
             // 
             // frmNewRelease
             // 
@@ -193,7 +237,11 @@ namespace Assignment01
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
-            this.ClientSize = new System.Drawing.Size(669, 464);
+            this.ClientSize = new System.Drawing.Size(874, 464);
+            this.Controls.Add(this.subtotalWithoutDiscount);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.subtotalMoviesPartial);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.txtNumberOfMovies);
@@ -232,5 +280,9 @@ namespace Assignment01
         private TextBox txtNumberOfMovies;
         private ListBox listBox1;
         private ComboBox comboBox1;
+        private Label label6;
+        private TextBox subtotalMoviesPartial;
+        private Label label7;
+        private TextBox subtotalWithoutDiscount;
     }
 }

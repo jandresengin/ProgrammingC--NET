@@ -9,17 +9,20 @@ namespace Assignment01
 {
     public partial class frmNewRelease : Form
     {
+        int numberMoviesEntered = 0;
+        Double totalWithoutDiscount = 0;
         public frmNewRelease()
         {
             InitializeComponent();
             // DateTime is called to obtain the current date and the format is converted so that it can be read as month day year.
             // This is printed in the textbox txtCurrentDate
             txtCurrentDate.Text = DateTime.Now.ToString(@"MM-dd-yyyy");
+            txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
         }
 
-        int numberNewReleaseMovies = 0;
-        //int numberLibraryMovies = 0;
-        //int numberKidsMovies = 0;
+      
+        
+
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -44,24 +47,25 @@ namespace Assignment01
             // The variable numberOfDays is converted to a string to be printed in the textbox called txtNumbersOfDaysLate.Text.
             txtNumbersOfDaysLate.Text = numberOfDays.ToString();
 
-            int numberMovies;
-            bool success = int.TryParse(txtNumberOfMovies.Text, out numberMovies);
-            if (success) { 
+            
 
-                numberNewReleaseMovies = numberNewReleaseMovies + numberMovies;
+       
+            
 
             // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
             // which is 2 CAD per day.
-            double lateFeeBill = 2 * numberOfDays * numberNewReleaseMovies;
+            numberMoviesEntered += 1;
+
+            double lateFeeBill = 2 * numberOfDays;
 
             // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
-            txtLateFee.Text = lateFeeBill.ToString("c");
-            }
-            else
-            {
-                MessageBox.Show("The number of movies is not correct ' " + txtNumberOfMovies.Text +" '.");
-            }
+            totalWithoutDiscount += lateFeeBill;
 
+            txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
+            txtLateFee.Text = lateFeeBill.ToString("c");
+            subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c");
+
+            btnReturn.Focus();
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -74,6 +78,6 @@ namespace Assignment01
 
         }
 
-      
+
     }
 }
