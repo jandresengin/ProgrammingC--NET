@@ -27,6 +27,11 @@ namespace Assignment01
             dateTimePickerDueDate.Focus();
         }
 
+        /// ***********************************************************************************
+        ///     What do you call a dog magician?
+        ///     A labracadabrador.
+        /// ***********************************************************************************
+
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             string selectedTypeCustomer = txtTypeCustomer.Text;//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
@@ -69,7 +74,7 @@ namespace Assignment01
                                 discountPercent = 0;
                                 break;
                             default:   //If a different type of character is entered, a discount of 0% is applied, and a message is displayed to the user that in order to apply to any type of discount, he must select the type of user he is.
-                                MessageBox.Show("To apply any kind of discount please select your Loyal customers ");
+                                MessageBox.Show("To apply any kind of discount please select your Loyal customers  \nL for Loyal Customer 10% Discount, J for Junior Customer 5% discount or N New user 0%. ");
                                 discountPercent = 0;
                                 break;
                         }
