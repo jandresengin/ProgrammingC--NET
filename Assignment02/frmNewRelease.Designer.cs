@@ -53,7 +53,7 @@ namespace Assignment01
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 57);
+            this.label1.Location = new System.Drawing.Point(25, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 0;
@@ -62,7 +62,7 @@ namespace Assignment01
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(33, 259);
+            this.btnCalculate.Location = new System.Drawing.Point(28, 233);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(298, 38);
             this.btnCalculate.TabIndex = 3;
@@ -73,7 +73,7 @@ namespace Assignment01
             // btnReturn
             // 
             this.btnReturn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnReturn.Location = new System.Drawing.Point(33, 318);
+            this.btnReturn.Location = new System.Drawing.Point(28, 292);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
             this.btnReturn.TabIndex = 4;
@@ -84,7 +84,7 @@ namespace Assignment01
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 112);
+            this.label2.Location = new System.Drawing.Point(25, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
             this.label2.TabIndex = 11;
@@ -93,7 +93,7 @@ namespace Assignment01
             // 
             // txtCurrentDate
             // 
-            this.txtCurrentDate.Location = new System.Drawing.Point(208, 107);
+            this.txtCurrentDate.Location = new System.Drawing.Point(203, 81);
             this.txtCurrentDate.Name = "txtCurrentDate";
             this.txtCurrentDate.ReadOnly = true;
             this.txtCurrentDate.Size = new System.Drawing.Size(123, 22);
@@ -103,7 +103,7 @@ namespace Assignment01
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 162);
+            this.label3.Location = new System.Drawing.Point(25, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 6;
@@ -112,7 +112,7 @@ namespace Assignment01
             // 
             // txtNumbersOfDaysLate
             // 
-            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(208, 157);
+            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(203, 131);
             this.txtNumbersOfDaysLate.Name = "txtNumbersOfDaysLate";
             this.txtNumbersOfDaysLate.ReadOnly = true;
             this.txtNumbersOfDaysLate.Size = new System.Drawing.Size(123, 22);
@@ -122,7 +122,7 @@ namespace Assignment01
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 207);
+            this.label4.Location = new System.Drawing.Point(25, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 8;
@@ -131,7 +131,7 @@ namespace Assignment01
             // 
             // txtLateFee
             // 
-            this.txtLateFee.Location = new System.Drawing.Point(208, 202);
+            this.txtLateFee.Location = new System.Drawing.Point(203, 176);
             this.txtLateFee.Name = "txtLateFee";
             this.txtLateFee.ReadOnly = true;
             this.txtLateFee.Size = new System.Drawing.Size(123, 22);
@@ -142,17 +142,21 @@ namespace Assignment01
             // 
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDueDate.Location = new System.Drawing.Point(208, 57);
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 10, 18, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(203, 31);
+            DateTime todaysDate = DateTime.Today;
+            int year = todaysDate.Year;
+            int month = todaysDate.Month;
+            int day = todaysDate.Day;
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 10, 18, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(395, 48);
+            this.label5.Location = new System.Drawing.Point(370, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 34);
             this.label5.TabIndex = 10;
@@ -161,7 +165,7 @@ namespace Assignment01
             // 
             // txtNumberOfMovies
             // 
-            this.txtNumberOfMovies.Location = new System.Drawing.Point(594, 57);
+            this.txtNumberOfMovies.Location = new System.Drawing.Point(569, 29);
             this.txtNumberOfMovies.Name = "txtNumberOfMovies";
             this.txtNumberOfMovies.ReadOnly = true;
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
@@ -171,7 +175,7 @@ namespace Assignment01
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(395, 107);
+            this.label7.Location = new System.Drawing.Point(370, 79);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(171, 17);
             this.label7.TabIndex = 17;
@@ -180,7 +184,7 @@ namespace Assignment01
             // 
             // subtotalWithoutDiscount
             // 
-            this.subtotalWithoutDiscount.Location = new System.Drawing.Point(594, 109);
+            this.subtotalWithoutDiscount.Location = new System.Drawing.Point(569, 81);
             this.subtotalWithoutDiscount.Name = "subtotalWithoutDiscount";
             this.subtotalWithoutDiscount.ReadOnly = true;
             this.subtotalWithoutDiscount.Size = new System.Drawing.Size(123, 22);
@@ -190,7 +194,7 @@ namespace Assignment01
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(395, 156);
+            this.label6.Location = new System.Drawing.Point(370, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(177, 68);
             this.label6.TabIndex = 19;
@@ -200,7 +204,7 @@ namespace Assignment01
             // 
             // txtTotalWithDiscount
             // 
-            this.txtTotalWithDiscount.Location = new System.Drawing.Point(548, 336);
+            this.txtTotalWithDiscount.Location = new System.Drawing.Point(523, 308);
             this.txtTotalWithDiscount.Name = "txtTotalWithDiscount";
             this.txtTotalWithDiscount.ReadOnly = true;
             this.txtTotalWithDiscount.Size = new System.Drawing.Size(167, 22);
@@ -210,7 +214,7 @@ namespace Assignment01
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(395, 339);
+            this.label8.Location = new System.Drawing.Point(370, 311);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(131, 17);
             this.label8.TabIndex = 21;
@@ -219,7 +223,7 @@ namespace Assignment01
             // 
             // txtTypeCustomer
             // 
-            this.txtTypeCustomer.Location = new System.Drawing.Point(594, 156);
+            this.txtTypeCustomer.Location = new System.Drawing.Point(569, 128);
             this.txtTypeCustomer.Name = "txtTypeCustomer";
             this.txtTypeCustomer.Size = new System.Drawing.Size(123, 22);
             this.txtTypeCustomer.TabIndex = 2;
@@ -230,7 +234,7 @@ namespace Assignment01
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
-            this.ClientSize = new System.Drawing.Size(799, 405);
+            this.ClientSize = new System.Drawing.Size(732, 364);
             this.Controls.Add(this.txtTypeCustomer);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtTotalWithDiscount);

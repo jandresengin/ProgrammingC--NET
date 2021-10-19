@@ -39,6 +39,14 @@ namespace Assignment01
             this.label4 = new System.Windows.Forms.Label();
             this.txtLateFee = new System.Windows.Forms.TextBox();
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.subtotalWithoutDiscount = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTypeCustomer = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTotalWithDiscount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +64,7 @@ namespace Assignment01
             this.btnCalculate.Location = new System.Drawing.Point(32, 249);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(298, 38);
-            this.btnCalculate.TabIndex = 2;
+            this.btnCalculate.TabIndex = 3;
             this.btnCalculate.Text = "&Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
@@ -67,7 +75,7 @@ namespace Assignment01
             this.btnReturn.Location = new System.Drawing.Point(32, 318);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
-            this.btnReturn.TabIndex = 3;
+            this.btnReturn.TabIndex = 4;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -134,18 +142,90 @@ namespace Assignment01
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(207, 27);
-
-
             DateTime todaysDate = DateTime.Today;
             int year = todaysDate.Year;
             int month = todaysDate.Month;
             int day = todaysDate.Day;
-
             this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
             this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(389, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 34);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Number of Movies \r\nDelivered Late";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtNumberOfMovies
+            // 
+            this.txtNumberOfMovies.Location = new System.Drawing.Point(577, 29);
+            this.txtNumberOfMovies.Name = "txtNumberOfMovies";
+            this.txtNumberOfMovies.ReadOnly = true;
+            this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
+            this.txtNumberOfMovies.TabIndex = 24;
+            this.txtNumberOfMovies.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(389, 77);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 17);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Subtotal Without Discount";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // subtotalWithoutDiscount
+            // 
+            this.subtotalWithoutDiscount.Location = new System.Drawing.Point(577, 72);
+            this.subtotalWithoutDiscount.Name = "subtotalWithoutDiscount";
+            this.subtotalWithoutDiscount.ReadOnly = true;
+            this.subtotalWithoutDiscount.Size = new System.Drawing.Size(123, 22);
+            this.subtotalWithoutDiscount.TabIndex = 26;
+            this.subtotalWithoutDiscount.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(389, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(177, 68);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Customer Type:\r\nType L for loyal customer\r\nType J for Junior customer\r\nType N for" +
+    " New Customer";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtTypeCustomer
+            // 
+            this.txtTypeCustomer.Location = new System.Drawing.Point(577, 132);
+            this.txtTypeCustomer.Name = "txtTypeCustomer";
+            this.txtTypeCustomer.Size = new System.Drawing.Size(123, 22);
+            this.txtTypeCustomer.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(389, 339);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(131, 17);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Total With Discount";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtTotalWithDiscount
+            // 
+            this.txtTotalWithDiscount.Location = new System.Drawing.Point(533, 336);
+            this.txtTotalWithDiscount.Name = "txtTotalWithDiscount";
+            this.txtTotalWithDiscount.ReadOnly = true;
+            this.txtTotalWithDiscount.Size = new System.Drawing.Size(167, 22);
+            this.txtTotalWithDiscount.TabIndex = 30;
+            this.txtTotalWithDiscount.TabStop = false;
             // 
             // frmKidsMovies
             // 
@@ -153,7 +233,15 @@ namespace Assignment01
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
-            this.ClientSize = new System.Drawing.Size(354, 380);
+            this.ClientSize = new System.Drawing.Size(734, 385);
+            this.Controls.Add(this.txtTotalWithDiscount);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtTypeCustomer);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.subtotalWithoutDiscount);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtNumberOfMovies);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.txtLateFee);
             this.Controls.Add(this.label4);
@@ -184,5 +272,13 @@ namespace Assignment01
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLateFee;
         private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtNumberOfMovies;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox subtotalWithoutDiscount;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtTypeCustomer;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtTotalWithDiscount;
     }
 }

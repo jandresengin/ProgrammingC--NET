@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 /***********************************************************************************************************************
- *          CSD2354 Programming C# NET          Fall 2021       Assignment 1
+ *          CSD2354 Programming C# NET          Fall 2021       Assignment 2
  *          Jairo Andres Supelano               c0812859
  ************************************************************************************************************************/
 
@@ -18,50 +18,23 @@ namespace Assignment01
             // This is printed in the textbox txtCurrentDate
             txtCurrentDate.Text = DateTime.Now.ToString(@"MM-dd-yyyy");
             txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
+            txtTypeCustomer.Text = "N";
+            dateTimePickerDueDate.Focus();
         }
-
-      
-        
-
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             // The current date is stored in the variable dCurrent.
+            
             string selectedTypeCustomer = txtTypeCustomer.Text;
             double lateFeeBill = 0;
-
-
-
-
-
-
-
             decimal discountPercent = .0m;
-
             int numberOfDaysLate;
             DateTime dCurrent = DateTime.Now;
-            // The date entered by the user is saved in the variable dDue,
-            // in this case it is converted to a DateTime type format.
-            //DateTime dDue = DateTime.Parse(txtDueDate.Text);
             DateTime dDue = dateTimePickerDueDate.Value;
-            
-
-
-            // TimeSpan is called, which makes the comparison between the current date and the date that the user entered.
-            // I work in this order to avoid negative numbers.
-            //TimeSpan totalNumberDays = (dDue.Date - dCurrent.Date);
             TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date);
-
-            // The total number of days of the date difference calculated
-            // in the previous step is captured in a double variable called numberOfDays.
             double numberOfDays = totalNumberDays.TotalDays;
-
-            // The variable numberOfDays is converted to a string to be printed in the textbox called txtNumbersOfDaysLate.Text.
-
-            
-
             txtNumbersOfDaysLate.Text = numberOfDays.ToString();
-
             bool success = Int32.TryParse(txtNumbersOfDaysLate.Text, out numberOfDaysLate);
             if (success)
             {
@@ -75,13 +48,8 @@ namespace Assignment01
                         lateFeeBill = 2 * numberOfDaysLate;
                         totalWithoutDiscount += lateFeeBill;
                     }
-                    
-
-                    
 
                     // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
-                    
-                
                     switch(selectedTypeCustomer)
                         {
                             case "L":
@@ -98,13 +66,8 @@ namespace Assignment01
                                 discountPercent = 0;
                                 break;
                         }
-                
-                    
                     decimal discountAmount = Convert.ToDecimal(totalWithoutDiscount) * discountPercent;
                     decimal invoiceTotal = Convert.ToDecimal(totalWithoutDiscount) - discountAmount;
-
-
-
                     txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
                     txtLateFee.Text = lateFeeBill.ToString("c");
                     subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c");
@@ -117,10 +80,7 @@ namespace Assignment01
             {
                 MessageBox.Show("The number of days introducted is not correct ' " + numberOfDaysLate + " '.");
             }
-
-
         }
-
         private void btnReturn_Click(object sender, EventArgs e)
         {
             //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
