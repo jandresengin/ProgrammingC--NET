@@ -23,11 +23,16 @@ namespace Assignment01
             DateTime dCurrent = DateTime.Now;
             // The date entered by the user is saved in the variable dDue,
             // in this case it is converted to a DateTime type format.
-            DateTime dDue = DateTime.Parse(txtDueDate.Text);
+            //DateTime dDue = DateTime.Parse(txtDueDate.Text);
+            DateTime dDue = dateTimePickerDueDate.Value;
+            MessageBox.Show("Selected date is " + dDue);
+
 
             // TimeSpan is called, which makes the comparison between the current date and the date that the user entered.
             // I work in this order to avoid negative numbers.
-            TimeSpan totalNumberDays = (dDue.Date - dCurrent.Date);
+            //TimeSpan totalNumberDays = (dDue.Date - dCurrent.Date);
+            TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date);
+
             // The total number of days of the date difference calculated
             // in the previous step is captured in a double variable called numberOfDays.
             double numberOfDays = totalNumberDays.TotalDays;
@@ -41,6 +46,8 @@ namespace Assignment01
 
             // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
             txtLateFee.Text = lateFeeBill.ToString("c");
+            
+
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
@@ -50,6 +57,13 @@ namespace Assignment01
             this.Hide(); //the current form is hidden.
             formMain.ShowDialog(); //the main form is called.
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
+
+        }
+
+        
+
+        private void frmNewRelease_Load(object sender, EventArgs e)
+        {
 
         }
     }

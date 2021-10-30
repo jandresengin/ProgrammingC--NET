@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using System.Windows.Forms;
 namespace Assignment01
 {
     partial class frmNewRelease
@@ -39,6 +40,7 @@ namespace Assignment01
             this.txtNumbersOfDaysLate = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLateFee = new System.Windows.Forms.TextBox();
+            this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -53,10 +55,10 @@ namespace Assignment01
             // 
             // txtDueDate
             // 
-            this.txtDueDate.Location = new System.Drawing.Point(208, 27);
+            this.txtDueDate.Location = new System.Drawing.Point(492, 236);
             this.txtDueDate.Name = "txtDueDate";
             this.txtDueDate.Size = new System.Drawing.Size(123, 22);
-            this.txtDueDate.TabIndex = 1;
+            this.txtDueDate.TabIndex = 15;
             // 
             // btnCalculate
             // 
@@ -87,7 +89,6 @@ namespace Assignment01
             this.label2.TabIndex = 4;
             this.label2.Text = "Current Date";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
             // 
             // txtCurrentDate
             // 
@@ -107,7 +108,6 @@ namespace Assignment01
             this.label3.TabIndex = 6;
             this.label3.Text = "Numbers of Days Late";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
             // 
             // txtNumbersOfDaysLate
             // 
@@ -137,11 +137,24 @@ namespace Assignment01
             this.txtLateFee.TabIndex = 9;
             this.txtLateFee.TabStop = false;
             // 
+            // dateTimePickerDueDate
+            // 
+            this.dateTimePickerDueDate.CustomFormat = "";
+            this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(208, 32);
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 10, 29, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
+            this.dateTimePickerDueDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
+            this.dateTimePickerDueDate.TabIndex = 1;
+            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 10, 29, 0, 0, 0, 0);
+            // 
             // frmNewRelease
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 380);
+            this.ClientSize = new System.Drawing.Size(692, 380);
+            this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.txtLateFee);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNumbersOfDaysLate);
@@ -155,6 +168,7 @@ namespace Assignment01
             this.Name = "frmNewRelease";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Releases";
+            this.Load += new System.EventHandler(this.frmNewRelease_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +186,6 @@ namespace Assignment01
         private System.Windows.Forms.TextBox txtNumbersOfDaysLate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLateFee;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
     }
 }
