@@ -152,7 +152,7 @@ namespace Assignment01
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
             this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
-            // 
+            //  
             // label5
             // 
             this.label5.AutoSize = true;
@@ -169,7 +169,7 @@ namespace Assignment01
             this.txtNumberOfMovies.Name = "txtNumberOfMovies";
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
             this.txtNumberOfMovies.TabIndex = 2;
-            this.txtNumberOfMovies.ModifiedChanged += new System.EventHandler(this.ClearNumberMovies);
+            this.txtNumberOfMovies.Leave += new System.EventHandler(this.ClearNumberMovies);
             // 
             // label7
             // 

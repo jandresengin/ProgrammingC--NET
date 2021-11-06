@@ -64,19 +64,22 @@ namespace Assignment01
 
                     if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the film is being delivered on the indicated date.
                     {
-                        numberMoviesEntered += 1; //The number of movies is increased by 1.
+                        
                         if (isCleared == false)
                         {
+                            numberMoviesEntered += 1; //The number of movies is increased by 1.
                             lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate);
 
-                            totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of films to be returned, with this the user can calculate different films of this type and of different days.
+                            
                         }
                         else
                         {
+                            //MessageBox.Show("Cleared = true" + "number days late = " + numberOfDaysLate + "number movies entered = "+ numberMoviesEntered);
                             lateFeeBill = CalculateLateFee(numberOfDaysLate, numberMoviesEntered);
-                            isCleared = false;
+                            
                         }
-                        
+                        totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of films to be returned, with this the user can calculate different films of this type and of different days.
+                        //MessageBox.Show(lateFeeBill.ToString("c"));
                     }
 
                     // // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
@@ -114,6 +117,7 @@ namespace Assignment01
             {   //In the event that the number of days late cannot be converted to an integer, a messagebox will be displayed indicating that the date was not entered correctly.
                 MessageBox.Show("The number of days introducted is not correct ' " + numberOfDaysLate + " '.");
             }
+            isCleared = false;
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {
@@ -124,14 +128,7 @@ namespace Assignment01
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
         }
 
-        private void showSelectedButton_Click(object sender, System.EventArgs e)
-        {
-            int selectedIndex = comboBox1.SelectedIndex;
-            Object selectedItem = comboBox1.SelectedItem;
-
-            MessageBox.Show("Selected Item Text: " + selectedItem.ToString() + "\n" +
-                            "Index: " + selectedIndex.ToString());
-        }
+        
 
 
         private static double CalculateLateFeeUnity(int numberOfDaysLate)
@@ -168,11 +165,12 @@ namespace Assignment01
             txtNumbersOfDaysLate.Text = "";
             txtLateFee.Text = "";
             //txtNumberOfMovies.Text = "";
-            subtotalWithoutDiscount.Text = "";
-            txtTotalWithDiscount.Text = "";
+            //subtotalWithoutDiscount.Text = "";
+            //txtTotalWithDiscount.Text = "";
             //numberMoviesEntered = 0;
-            numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text) - 1;
+            numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text);
             isCleared = true;
+            MessageBox.Show("number movies entered = " + numberMoviesEntered);
         }
 
 
