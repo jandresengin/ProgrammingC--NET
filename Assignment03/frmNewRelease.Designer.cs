@@ -143,11 +143,15 @@ namespace Assignment01
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(203, 31);
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 11, 5, 0, 0, 0, 0);
+            DateTime todaysDate = DateTime.Today;
+            int year = todaysDate.Year;
+            int month = todaysDate.Month;
+            int day = todaysDate.Day;
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 11, 5, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -165,7 +169,7 @@ namespace Assignment01
             this.txtNumberOfMovies.Name = "txtNumberOfMovies";
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
             this.txtNumberOfMovies.TabIndex = 2;
-            this.txtNumberOfMovies.TextChanged += new System.EventHandler(this.ClearNumberMovies);
+            this.txtNumberOfMovies.ModifiedChanged += new System.EventHandler(this.ClearNumberMovies);
             // 
             // label7
             // 

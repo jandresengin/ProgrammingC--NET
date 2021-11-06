@@ -13,6 +13,9 @@ namespace Assignment01
         int numberMoviesEntered = 0;
         // The total value to be paid by the customer without applying a discount is saved in the following variable. Initially it is left at 0.
         Double totalWithoutDiscount = 0;
+        double numberOfDays;
+
+        Boolean isCleared = false;
         public frmNewRelease()
         {
             InitializeComponent();
@@ -46,7 +49,7 @@ namespace Assignment01
             DateTime dCurrent = DateTime.Now; // The current date is stored in the variable dCurrent.
             DateTime dDue = dateTimePickerDueDate.Value; //According to the value entered in the dateTimePicker, the day is obtained and saved in dDue
             TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date); //The number of days late in returning the film is calculated according to the value entered by the user.
-            double numberOfDays = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
+            numberOfDays = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
             txtNumbersOfDaysLate.Text = numberOfDays.ToString(); //The resulting number of days is shown in the textbox.
 
             //The resulting number of days is taken, it is converted to an integer and it is verified that it is an adequate value to calculate
@@ -62,10 +65,18 @@ namespace Assignment01
                     if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the film is being delivered on the indicated date.
                     {
                         numberMoviesEntered += 1; //The number of movies is increased by 1.
+                        if (isCleared == false)
+                        {
+                            lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate);
 
-                        lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate);
+                            totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of films to be returned, with this the user can calculate different films of this type and of different days.
+                        }
+                        else
+                        {
+                            lateFeeBill = CalculateLateFee(numberOfDaysLate, numberMoviesEntered);
+                            isCleared = false;
+                        }
                         
-                        totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of films to be returned, with this the user can calculate different films of this type and of different days.
                     }
 
                     // // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
@@ -86,7 +97,7 @@ namespace Assignment01
                             break;
                     }
                     // CalculateLateFee methods that returns a tuple 
-                    (decimal invoiceTotal, decimal discountAmount) = CalculateLateFee(Convert.ToDecimal(totalWithoutDiscount), discountPercent);
+                    (decimal invoiceTotal, decimal discountAmount) = CalculateLateFeePerMovie(Convert.ToDecimal(totalWithoutDiscount), discountPercent);
 
 
 
@@ -131,7 +142,7 @@ namespace Assignment01
 
         }
         private  (decimal invoiceTotal, decimal discountAmount)
-            CalculateLateFee (decimal totalWithoutDiscount, decimal discountPercent)
+            CalculateLateFeePerMovie (decimal totalWithoutDiscount, decimal discountPercent)
         {
             decimal invoiceTotal = 0;
             //The discount that the user has is calculated for the type of user that entered.
@@ -143,14 +154,25 @@ namespace Assignment01
             return (invoiceTotal, discountAmount);
 
         }
+        private static double CalculateLateFee(int numberOfDaysLate, int numberMoviesEntered)
+        {
+            double lateFeeBill = 0;
+            lateFeeBill = 2 * numberOfDaysLate * numberMoviesEntered;
+            return lateFeeBill;
+
+        }
+        
 
         private void ClearNumberMovies(object sender, EventArgs e)
         {
             txtNumbersOfDaysLate.Text = "";
             txtLateFee.Text = "";
-            txtNumberOfMovies.Text = "";
+            //txtNumberOfMovies.Text = "";
             subtotalWithoutDiscount.Text = "";
             txtTotalWithDiscount.Text = "";
+            //numberMoviesEntered = 0;
+            numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text) - 1;
+            isCleared = true;
         }
 
 
