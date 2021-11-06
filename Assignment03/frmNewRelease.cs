@@ -41,7 +41,7 @@ namespace Assignment01
         {
 
             // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
-            var itemComboBox = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
+            var itemComboBox = this.comboBoxCustomerType.GetItemText(this.comboBoxCustomerType.SelectedItem);
             string selectedTypeCustomer = itemComboBox;//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
             double lateFeeBill = 0; //Variable is declared and initialized to 0.
             decimal discountPercent = .0m; // This variable indicates the discount percentage to be applied to special customers.

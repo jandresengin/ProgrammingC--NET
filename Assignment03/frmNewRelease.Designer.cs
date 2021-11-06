@@ -47,7 +47,7 @@ namespace Assignment01
             this.label6 = new System.Windows.Forms.Label();
             this.txtTotalWithDiscount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCustomerType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -152,7 +152,7 @@ namespace Assignment01
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
             this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
-            //  
+            //
             // label5
             // 
             this.label5.AutoSize = true;
@@ -220,19 +220,19 @@ namespace Assignment01
             this.label8.Text = "Total With Discount";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // comboBox1
+            // comboBoxCustomerType
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxCustomerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCustomerType.FormattingEnabled = true;
+            this.comboBoxCustomerType.Items.AddRange(new object[] {
             "L",
             "J",
             "N"});
-            this.comboBox1.Location = new System.Drawing.Point(569, 133);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.SelectedIndex = 2;
+            this.comboBoxCustomerType.Location = new System.Drawing.Point(569, 133);
+            this.comboBoxCustomerType.Name = "comboBoxCustomerType";
+            this.comboBoxCustomerType.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxCustomerType.TabIndex = 3;
+            this.comboBoxCustomerType.SelectedIndex = 2;
             // 
             // frmNewRelease
             // 
@@ -241,7 +241,7 @@ namespace Assignment01
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
             this.ClientSize = new System.Drawing.Size(732, 364);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxCustomerType);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtTotalWithDiscount);
             this.Controls.Add(this.label6);
@@ -286,6 +286,6 @@ namespace Assignment01
         private Label label6;
         private TextBox txtTotalWithDiscount;
         private Label label8;
-        internal ComboBox comboBox1;
+        internal ComboBox comboBoxCustomerType;
     }
 }
