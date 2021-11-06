@@ -21,8 +21,8 @@ namespace Assignment01
             txtCurrentDate.Text = DateTime.Now.ToString(@"MM-dd-yyyy");
             // The number of movies to return is 0 and it is printed in the textbox
             txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
-            // The default value of the type of customer is New Customer "N". The user could change and apply for a better discount.
-            txtTypeCustomer.Text = "N";
+            
+
             //The focus after load the form is over the dataTimepicker.
             dateTimePickerDueDate.Focus();
         }
@@ -35,7 +35,7 @@ namespace Assignment01
         private void btnCalculate_Click(object sender, EventArgs e)
         {
 
-            //MessageBox.Show(itemComboBox);
+            // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
             var itemComboBox = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
             string selectedTypeCustomer = itemComboBox;//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
             double lateFeeBill = 0; //Variable is declared and initialized to 0.

@@ -228,7 +228,7 @@ namespace Assignment01
             this.comboBox1.Location = new System.Drawing.Point(569, 133);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 23;
+            this.comboBox1.TabIndex = 2;
             this.comboBox1.SelectedIndex = 2;
             // 
             // frmNewRelease
