@@ -12,6 +12,7 @@ namespace Assignment01
         //variable of the number of movies to return by the user. The initial value is 0.
         int numberMoviesEntered = 0;
         int numberMoviesEnteredSummary = 0;
+        Int32 minDays = 0;
         // The total value to be paid by the customer without applying a discount is saved in the following variable. Initially it is left at 0.
         Double totalWithoutDiscount = 0;
         double numberOfDays;
@@ -53,26 +54,26 @@ namespace Assignment01
             numberOfDays = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
             txtNumbersOfDaysLate.Text = numberOfDays.ToString(); //The resulting number of days is shown in the textbox.
 
-            //The resulting number of days is taken, it is converted to an integer and it is verified that it is an adequate value to calculate
-            bool success = Int32.TryParse(txtNumbersOfDaysLate.Text, out numberOfDaysLate);
-            if (success)
+            try
             {
+                //The resulting number of days is taken, it is converted to an integer and it is verified that it is an adequate value to calculate
                 //If the number of days of delay is greater than or equal to 0, the associated costs will be calculated.
-                if (numberOfDaysLate >= 0)
+
+                if (IsValidDayData())
                 {
                     // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
                     // which is 2 CAD per day.
-
+                    numberOfDaysLate = (int)numberOfDays;
                     if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the film is being delivered on the indicated date.
                     {
-                        
+
                         if (isCleared == false)
                         {
                             numberMoviesEntered += 1; //The number of movies is increased by 1.
                             numberMoviesEnteredSummary += 1;
                             lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate);
 
-                            
+
                         }
                         else
                         {
@@ -80,7 +81,7 @@ namespace Assignment01
                             numberMoviesEnteredSummary += numberMoviesEntered;
                         }
                         totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of films to be returned, with this the user can calculate different films of this type and of different days.
-                        
+
                     }
 
                     // // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
@@ -115,7 +116,7 @@ namespace Assignment01
                         txtNumberOfMovies.Text = numberMoviesEnteredSummary.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
 
                     }
-                    
+
                     txtLateFee.Text = lateFeeBill.ToString("c"); //The amount owed for the film that is delivered late is graphed, the format is changed to string currency.
                     subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c"); //The value owed for the films that were delivered late without discount is graphed (Acummulator), the format is changed to string currency.
                     txtTotalWithDiscount.Text = invoiceTotal.ToString("c"); //The amount owed so far for all the films calculated with the applicable discount is graphed, the format is changed to string currency.
@@ -123,9 +124,11 @@ namespace Assignment01
                     btnReturn.Focus(); //The focus is moved to the return button
                 }
             }
-            else
-            {   //In the event that the number of days late cannot be converted to an integer, a messagebox will be displayed indicating that the date was not entered correctly.
-                MessageBox.Show("The number of days introducted is not correct ' " + numberOfDaysLate + " '.");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n\n" +
+                ex.GetType().ToString() + "\n" +
+                ex.StackTrace, "Exception");
             }
             isCleared = false;
         }
@@ -234,11 +237,43 @@ namespace Assignment01
         private string IsWithinRange(string value, string name, decimal min, decimal max)
         {
             string msg = "";
-            if (Decimal.TryParse(value, out decimal number))
+            if (Int32.TryParse(value, out Int32 number))
             {
                 if (number < min || number > max)
                 {
                     msg += name + " must be between " + min + " and " + max + ".\n";
+                }
+            }
+            return msg;
+        }
+
+
+        private bool IsValidDayData()
+        {
+            bool success = true;
+            string errorMessage = "";
+            errorMessage += IsPast(txtNumbersOfDaysLate.Text, "Numbers of Days Late", minDays);
+            errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
+
+            if (errorMessage != "")
+            {
+                success = false;
+                MessageBox.Show(errorMessage, "Entry Error");
+            }
+            return success;
+        }
+
+
+        private string IsPast(string value, string name, Int32 min)
+        {
+            string msg = "";
+            if (Decimal.TryParse(value, out decimal number))
+            {
+                if (number < min)
+                {
+                    msg += "The number of days introducted is not correct " + name + " must be greater or equal to " + min + ".\n";
                 }
             }
             return msg;
