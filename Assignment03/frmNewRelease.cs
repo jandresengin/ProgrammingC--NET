@@ -39,6 +39,7 @@ namespace Assignment01
             decimal discountPercent = .0m; // This variable indicates the discount percentage to be applied to special customers.
             int numberOfDaysLate; //This variable stores the number of days late in returning the movie.
             
+
             DateTime dCurrent = DateTime.Now; // The current date is stored in the variable dCurrent.
             DateTime dDue = dateTimePickerDueDate.Value; //According to the value entered in the dateTimePicker, the day is obtained and saved in dDue
             TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date); //The number of days late in returning the film is calculated according to the value entered by the user.
@@ -46,42 +47,47 @@ namespace Assignment01
             txtNumbersOfDaysLate.Text = numberOfDays.ToString(); //The resulting number of days is shown in the textbox.
 
             //The resulting number of days is taken, it is converted to an integer and it is verified that it is an adequate value to calculate
-            bool success = Int32.TryParse(txtNumbersOfDaysLate.Text, out numberOfDaysLate); 
+            bool success = Int32.TryParse(txtNumbersOfDaysLate.Text, out numberOfDaysLate);
             if (success)
             {
                 //If the number of days of delay is greater than or equal to 0, the associated costs will be calculated.
-                if (numberOfDaysLate >= 0) { 
+                if (numberOfDaysLate >= 0)
+                {
                     // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
                     // which is 2 CAD per day.
-                
+
                     if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the film is being delivered on the indicated date.
                     {
                         numberMoviesEntered += 1; //The number of movies is increased by 1.
-                        lateFeeBill = 2 * numberOfDaysLate; //The surcharge is calculated for this type of film, which is 2 dollars for each day of delay.
+
+                        lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate);
+                        
                         totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of films to be returned, with this the user can calculate different films of this type and of different days.
                     }
 
                     // // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
                     switch (selectedTypeCustomer)
-                        {
-                            case "L":   //If you are an L Loyal user, a 10% discount is applied.
-                                discountPercent = .1m;
-                                break;
-                            case "J":   //If you are a J junior user, a 5% discount is applied.
-                                discountPercent = .05m;
-                                break;
-                            case "N":   //If you are an N New user, a 0% discount is applied.
-                                discountPercent = 0;
-                                break;
-                            default:   //If a different type of character is entered, a discount of 0% is applied, and a message is displayed to the user that in order to apply to any type of discount, he must select the type of user he is.
-                                MessageBox.Show("To apply any kind of discount please select your Loyal customers  \nL for Loyal Customer 10% Discount, J for Junior Customer 5% discount or N New user 0%. ");
-                                discountPercent = 0;
-                                break;
-                        }
-                    //The discount that the user has is calculated for the type of user that entered.
-                    decimal discountAmount = Convert.ToDecimal(totalWithoutDiscount) * discountPercent;
-                    //The final value to be paid is calculated, after applying discounts.
-                    decimal invoiceTotal = Convert.ToDecimal(totalWithoutDiscount) - discountAmount;
+                    {
+                        case "L":   //If you are an L Loyal user, a 10% discount is applied.
+                            discountPercent = .1m;
+                            break;
+                        case "J":   //If you are a J junior user, a 5% discount is applied.
+                            discountPercent = .05m;
+                            break;
+                        case "N":   //If you are an N New user, a 0% discount is applied.
+                            discountPercent = 0;
+                            break;
+                        default:   //If a different type of character is entered, a discount of 0% is applied, and a message is displayed to the user that in order to apply to any type of discount, he must select the type of user he is.
+                            MessageBox.Show("To apply any kind of discount please select your Loyal customers  \nL for Loyal Customer 10% Discount, J for Junior Customer 5% discount or N New user 0%. ");
+                            discountPercent = 0;
+                            break;
+                    }
+                    // CalculateLateFee methods that returns a tuple 
+                    (decimal invoiceTotal, decimal discountAmount) = CalculateLateFee(Convert.ToDecimal(totalWithoutDiscount), discountPercent);
+
+
+
+
                     txtNumberOfMovies.Text = numberMoviesEntered.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
                     txtLateFee.Text = lateFeeBill.ToString("c"); //The amount owed for the film that is delivered late is graphed, the format is changed to string currency.
                     subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c"); //The value owed for the films that were delivered late without discount is graphed (Acummulator), the format is changed to string currency.
@@ -92,7 +98,7 @@ namespace Assignment01
             }
             else
             {   //In the event that the number of days late cannot be converted to an integer, a messagebox will be displayed indicating that the date was not entered correctly.
-                MessageBox.Show("The number of days introducted is not correct ' " + numberOfDaysLate + " '."); 
+                MessageBox.Show("The number of days introducted is not correct ' " + numberOfDaysLate + " '.");
             }
         }
         private void btnReturn_Click(object sender, EventArgs e)
@@ -103,5 +109,27 @@ namespace Assignment01
             formMain.ShowDialog(); //the main form is called.
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
         }
+
+        private static double CalculateLateFeeUnity(int numberOfDaysLate)
+        {
+            double lateFeeBill = 0;
+            lateFeeBill = 2 * numberOfDaysLate;
+            return lateFeeBill;
+
+        }
+        private  (decimal invoiceTotal, decimal discountAmount)
+            CalculateLateFee (decimal totalWithoutDiscount, decimal discountPercent)
+        {
+            decimal invoiceTotal = 0;
+            //The discount that the user has is calculated for the type of user that entered.
+            decimal discountAmount = totalWithoutDiscount * discountPercent;
+            //The final value to be paid is calculated, after applying discounts.
+            invoiceTotal = totalWithoutDiscount - discountAmount;
+            
+
+            return (invoiceTotal, discountAmount);
+
+        }
+
     }
 }
