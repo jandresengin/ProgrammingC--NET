@@ -47,7 +47,7 @@ namespace Assignment01
             this.label6 = new System.Windows.Forms.Label();
             this.txtTotalWithDiscount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtTypeCustomer = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -143,15 +143,11 @@ namespace Assignment01
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(203, 31);
-            DateTime todaysDate = DateTime.Today;
-            int year = todaysDate.Year;
-            int month = todaysDate.Month;
-            int day = todaysDate.Day;
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 11, 5, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 11, 5, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -221,12 +217,19 @@ namespace Assignment01
             this.label8.Text = "Total With Discount";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtTypeCustomer
+            // comboBox1
             // 
-            this.txtTypeCustomer.Location = new System.Drawing.Point(569, 128);
-            this.txtTypeCustomer.Name = "txtTypeCustomer";
-            this.txtTypeCustomer.Size = new System.Drawing.Size(123, 22);
-            this.txtTypeCustomer.TabIndex = 2;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "L",
+            "J",
+            "N"});
+            this.comboBox1.Location = new System.Drawing.Point(569, 133);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 23;
+            this.comboBox1.SelectedIndex = 2;
             // 
             // frmNewRelease
             // 
@@ -235,7 +238,7 @@ namespace Assignment01
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
             this.ClientSize = new System.Drawing.Size(732, 364);
-            this.Controls.Add(this.txtTypeCustomer);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtTotalWithDiscount);
             this.Controls.Add(this.label6);
@@ -280,6 +283,6 @@ namespace Assignment01
         private Label label6;
         private TextBox txtTotalWithDiscount;
         private Label label8;
-        private TextBox txtTypeCustomer;
+        internal ComboBox comboBox1;
     }
 }

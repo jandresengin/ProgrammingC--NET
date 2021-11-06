@@ -34,7 +34,10 @@ namespace Assignment01
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            string selectedTypeCustomer = txtTypeCustomer.Text;//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
+
+            //MessageBox.Show(itemComboBox);
+            var itemComboBox = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
+            string selectedTypeCustomer = itemComboBox;//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
             double lateFeeBill = 0; //Variable is declared and initialized to 0.
             decimal discountPercent = .0m; // This variable indicates the discount percentage to be applied to special customers.
             int numberOfDaysLate; //This variable stores the number of days late in returning the movie.
@@ -110,6 +113,16 @@ namespace Assignment01
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
         }
 
+        private void showSelectedButton_Click(object sender, System.EventArgs e)
+        {
+            int selectedIndex = comboBox1.SelectedIndex;
+            Object selectedItem = comboBox1.SelectedItem;
+
+            MessageBox.Show("Selected Item Text: " + selectedItem.ToString() + "\n" +
+                            "Index: " + selectedIndex.ToString());
+        }
+
+
         private static double CalculateLateFeeUnity(int numberOfDaysLate)
         {
             double lateFeeBill = 0;
@@ -130,6 +143,7 @@ namespace Assignment01
             return (invoiceTotal, discountAmount);
 
         }
+
 
     }
 }
