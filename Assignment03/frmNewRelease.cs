@@ -11,6 +11,7 @@ namespace Assignment01
     {
         //variable of the number of movies to return by the user. The initial value is 0.
         int numberMoviesEntered = 0;
+        int numberMoviesEnteredSummary = 0;
         // The total value to be paid by the customer without applying a discount is saved in the following variable. Initially it is left at 0.
         Double totalWithoutDiscount = 0;
         double numberOfDays;
@@ -68,18 +69,18 @@ namespace Assignment01
                         if (isCleared == false)
                         {
                             numberMoviesEntered += 1; //The number of movies is increased by 1.
+                            numberMoviesEnteredSummary += 1;
                             lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate);
 
                             
                         }
                         else
                         {
-                            //MessageBox.Show("Cleared = true" + "number days late = " + numberOfDaysLate + "number movies entered = "+ numberMoviesEntered);
                             lateFeeBill = CalculateLateFee(numberOfDaysLate, numberMoviesEntered);
-                            
+                            numberMoviesEnteredSummary += numberMoviesEntered;
                         }
                         totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of films to be returned, with this the user can calculate different films of this type and of different days.
-                        //MessageBox.Show(lateFeeBill.ToString("c"));
+                        
                     }
 
                     // // The rate to be charged for the delay of the lateFeeBill variable is converted to String and formatted as currency
@@ -100,12 +101,21 @@ namespace Assignment01
                             break;
                     }
                     // CalculateLateFee methods that returns a tuple 
-                    (decimal invoiceTotal, decimal discountAmount) = CalculateLateFeePerMovie(Convert.ToDecimal(totalWithoutDiscount), discountPercent);
+                    (decimal invoiceTotal, decimal discountAmount) = CalculateLateFeeIncludesDiscount(Convert.ToDecimal(totalWithoutDiscount), discountPercent);
 
 
 
+                    if (numberMoviesEntered == numberMoviesEnteredSummary)
+                    {
+                        txtNumberOfMovies.Text = numberMoviesEntered.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
+                    }
+                    else
+                    {
+                        numberMoviesEntered = numberMoviesEnteredSummary;
+                        txtNumberOfMovies.Text = numberMoviesEnteredSummary.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
 
-                    txtNumberOfMovies.Text = numberMoviesEntered.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
+                    }
+                    
                     txtLateFee.Text = lateFeeBill.ToString("c"); //The amount owed for the film that is delivered late is graphed, the format is changed to string currency.
                     subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c"); //The value owed for the films that were delivered late without discount is graphed (Acummulator), the format is changed to string currency.
                     txtTotalWithDiscount.Text = invoiceTotal.ToString("c"); //The amount owed so far for all the films calculated with the applicable discount is graphed, the format is changed to string currency.
@@ -138,8 +148,10 @@ namespace Assignment01
             return lateFeeBill;
 
         }
+
+
         private  (decimal invoiceTotal, decimal discountAmount)
-            CalculateLateFeePerMovie (decimal totalWithoutDiscount, decimal discountPercent)
+            CalculateLateFeeIncludesDiscount(decimal totalWithoutDiscount, decimal discountPercent)
         {
             decimal invoiceTotal = 0;
             //The discount that the user has is calculated for the type of user that entered.
@@ -162,15 +174,74 @@ namespace Assignment01
 
         private void ClearNumberMovies(object sender, EventArgs e)
         {
-            txtNumbersOfDaysLate.Text = "";
-            txtLateFee.Text = "";
-            //txtNumberOfMovies.Text = "";
-            //subtotalWithoutDiscount.Text = "";
-            //txtTotalWithDiscount.Text = "";
-            //numberMoviesEntered = 0;
-            numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text);
-            isCleared = true;
-            MessageBox.Show("number movies entered = " + numberMoviesEntered);
+            try
+            {
+                if (IsValidData())
+                {
+                    txtNumbersOfDaysLate.Text = "";
+                    txtLateFee.Text = "";
+                    numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text);
+                    isCleared = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\n\n" +
+                ex.GetType().ToString() + "\n" +
+                ex.StackTrace, "Exception");
+            }
+        }
+
+        private bool IsValidData()
+        {
+            bool success = true;
+            string errorMessage = "";
+            errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
+
+            if (errorMessage != "")
+            {
+                success = false;
+                MessageBox.Show(errorMessage, "Entry Error");
+            }
+            return success;
+        }
+
+
+
+        private string IsPresent(string value, string name)
+        {
+            string msg = "";
+            if (value == "")
+            {
+                msg += name + " is a required field.\n";
+            }
+            return msg;
+        }
+
+        
+        private string IsInt32(string value, string name)
+        {
+            string msg = "";
+            if (!Int32.TryParse(value, out _))
+            {
+                msg += name + " must be a valid integer value.\n";
+            }
+            return msg;
+        }
+
+        private string IsWithinRange(string value, string name, decimal min, decimal max)
+        {
+            string msg = "";
+            if (Decimal.TryParse(value, out decimal number))
+            {
+                if (number < min || number > max)
+                {
+                    msg += name + " must be between " + min + " and " + max + ".\n";
+                }
+            }
+            return msg;
         }
 
 
