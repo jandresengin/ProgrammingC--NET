@@ -144,6 +144,15 @@ namespace Assignment01
 
         }
 
+        private void ClearFutureValue(object sender, EventArgs e)
+        {
+            txtNumbersOfDaysLate.Text = "";
+            txtLateFee.Text = "";
+            txtNumberOfMovies.Text = "";
+            subtotalWithoutDiscount.Text = "";
+            txtTotalWithDiscount.Text = "";
+        }
+
 
     }
 }

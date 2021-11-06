@@ -65,7 +65,7 @@ namespace Assignment01
             this.btnCalculate.Location = new System.Drawing.Point(28, 233);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(298, 38);
-            this.btnCalculate.TabIndex = 3;
+            this.btnCalculate.TabIndex = 4;
             this.btnCalculate.Text = "&Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
@@ -76,7 +76,7 @@ namespace Assignment01
             this.btnReturn.Location = new System.Drawing.Point(28, 292);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
-            this.btnReturn.TabIndex = 4;
+            this.btnReturn.TabIndex = 5;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -97,7 +97,7 @@ namespace Assignment01
             this.txtCurrentDate.Name = "txtCurrentDate";
             this.txtCurrentDate.ReadOnly = true;
             this.txtCurrentDate.Size = new System.Drawing.Size(123, 22);
-            this.txtCurrentDate.TabIndex = 5;
+            this.txtCurrentDate.TabIndex = 25;
             this.txtCurrentDate.TabStop = false;
             // 
             // label3
@@ -163,10 +163,8 @@ namespace Assignment01
             // 
             this.txtNumberOfMovies.Location = new System.Drawing.Point(569, 29);
             this.txtNumberOfMovies.Name = "txtNumberOfMovies";
-            this.txtNumberOfMovies.ReadOnly = true;
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
-            this.txtNumberOfMovies.TabIndex = 22;
-            this.txtNumberOfMovies.TabStop = false;
+            this.txtNumberOfMovies.TabIndex = 2;
             // 
             // label7
             // 
@@ -228,7 +226,7 @@ namespace Assignment01
             this.comboBox1.Location = new System.Drawing.Point(569, 133);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 2;
+            this.comboBox1.TabIndex = 3;
             this.comboBox1.SelectedIndex = 2;
             // 
             // frmNewRelease
