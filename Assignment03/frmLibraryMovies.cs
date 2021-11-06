@@ -70,7 +70,7 @@ namespace Assignment01
                 if (IsValidDayData())
                 {
                     // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
-                    // which is 2 CAD per day.
+                    // which is 0.57 CAD per day.
                     numberOfDaysLate = (int)numberOfDays;
                     if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the film is being delivered on the indicated date.
                     {

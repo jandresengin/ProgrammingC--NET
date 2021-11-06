@@ -40,13 +40,13 @@ namespace Assignment01
             this.txtLateFee = new System.Windows.Forms.TextBox();
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.subtotalWithoutDiscount = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtTypeCustomer = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtTotalWithDiscount = new System.Windows.Forms.TextBox();
+            this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
+            this.comboBoxCustomerType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -64,7 +64,7 @@ namespace Assignment01
             this.btnCalculate.Location = new System.Drawing.Point(32, 249);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(298, 38);
-            this.btnCalculate.TabIndex = 3;
+            this.btnCalculate.TabIndex = 4;
             this.btnCalculate.Text = "&Calculate";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
@@ -75,7 +75,7 @@ namespace Assignment01
             this.btnReturn.Location = new System.Drawing.Point(32, 318);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
-            this.btnReturn.TabIndex = 4;
+            this.btnReturn.TabIndex = 5;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -86,7 +86,7 @@ namespace Assignment01
             this.label2.Location = new System.Drawing.Point(29, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 55;
             this.label2.Text = "Current Date";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -162,15 +162,6 @@ namespace Assignment01
             this.label5.Text = "Number of Movies \r\nDelivered Late";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtNumberOfMovies
-            // 
-            this.txtNumberOfMovies.Location = new System.Drawing.Point(577, 29);
-            this.txtNumberOfMovies.Name = "txtNumberOfMovies";
-            this.txtNumberOfMovies.ReadOnly = true;
-            this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
-            this.txtNumberOfMovies.TabIndex = 24;
-            this.txtNumberOfMovies.TabStop = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -201,13 +192,6 @@ namespace Assignment01
     " New Customer";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtTypeCustomer
-            // 
-            this.txtTypeCustomer.Location = new System.Drawing.Point(577, 132);
-            this.txtTypeCustomer.Name = "txtTypeCustomer";
-            this.txtTypeCustomer.Size = new System.Drawing.Size(123, 22);
-            this.txtTypeCustomer.TabIndex = 2;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -227,6 +211,28 @@ namespace Assignment01
             this.txtTotalWithDiscount.TabIndex = 30;
             this.txtTotalWithDiscount.TabStop = false;
             // 
+            // txtNumberOfMovies
+            // 
+            this.txtNumberOfMovies.Location = new System.Drawing.Point(577, 24);
+            this.txtNumberOfMovies.Name = "txtNumberOfMovies";
+            this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
+            this.txtNumberOfMovies.TabIndex = 2;
+            this.txtNumberOfMovies.Leave += new System.EventHandler(this.ClearNumberMovies);
+            // 
+            // comboBoxCustomerType
+            // 
+            this.comboBoxCustomerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCustomerType.FormattingEnabled = true;
+            this.comboBoxCustomerType.Items.AddRange(new object[] {
+            "L",
+            "J",
+            "N"});
+            this.comboBoxCustomerType.Location = new System.Drawing.Point(579, 130);
+            this.comboBoxCustomerType.Name = "comboBoxCustomerType";
+            this.comboBoxCustomerType.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxCustomerType.TabIndex = 3;
+            this.comboBoxCustomerType.SelectedIndex = 2;
+            // 
             // frmKidsMovies
             // 
             this.AcceptButton = this.btnCalculate;
@@ -234,13 +240,13 @@ namespace Assignment01
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
             this.ClientSize = new System.Drawing.Size(734, 385);
+            this.Controls.Add(this.comboBoxCustomerType);
+            this.Controls.Add(this.txtNumberOfMovies);
             this.Controls.Add(this.txtTotalWithDiscount);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtTypeCustomer);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.subtotalWithoutDiscount);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtNumberOfMovies);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.txtLateFee);
@@ -273,12 +279,12 @@ namespace Assignment01
         private System.Windows.Forms.TextBox txtLateFee;
         private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNumberOfMovies;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox subtotalWithoutDiscount;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtTypeCustomer;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtTotalWithDiscount;
+        private System.Windows.Forms.TextBox txtNumberOfMovies;
+        internal System.Windows.Forms.ComboBox comboBoxCustomerType;
     }
 }
