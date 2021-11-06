@@ -144,7 +144,7 @@ namespace Assignment01
 
         }
 
-        private void ClearFutureValue(object sender, EventArgs e)
+        private void ClearNumberMovies(object sender, EventArgs e)
         {
             txtNumbersOfDaysLate.Text = "";
             txtLateFee.Text = "";

@@ -165,6 +165,7 @@ namespace Assignment01
             this.txtNumberOfMovies.Name = "txtNumberOfMovies";
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
             this.txtNumberOfMovies.TabIndex = 2;
+            this.txtNumberOfMovies.TextChanged += new System.EventHandler(this.ClearNumberMovies);
             // 
             // label7
             // 
