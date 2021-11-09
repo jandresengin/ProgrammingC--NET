@@ -29,8 +29,6 @@ namespace Assignment01
             txtCurrentDate.Text = DateTime.Now.ToString(@"MM-dd-yyyy");
             // The number of movies to return is 0 and it is printed in the textbox
             txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
-            
-
             //The focus after load the form is over the dataTimepicker.
             dateTimePickerDueDate.Focus();
         }
