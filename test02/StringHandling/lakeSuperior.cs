@@ -75,7 +75,7 @@ namespace StringHandling
                     provinceEntry = provinceEntry.ToUpper(); //The province value is converted to uppercase
                     if (postalCodeEntry.Length == 0) //If the postal code is of length 0, an error message will be displayed indicating that the user must enter a postal code.
                     {
-                        MessageBox.Show("Please enter a valid postal code. The postal code field must be of two characters.", "ERROR. Formatted String");
+                        MessageBox.Show("Please enter a valid postal code. The postal code field must not be empty.", "ERROR. Formatted String");
                     }
                     else
                     {
