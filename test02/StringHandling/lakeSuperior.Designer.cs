@@ -1,6 +1,6 @@
 namespace StringHandling
 {
-    partial class Form1
+    partial class lakeSuperior
     {
         /// <summary>
         /// Required designer variable.
@@ -54,23 +54,23 @@ namespace StringHandling
             // 
             // btnFormat
             // 
-            this.btnFormat.Location = new System.Drawing.Point(405, 194);
+            this.btnFormat.Location = new System.Drawing.Point(405, 187);
             this.btnFormat.Margin = new System.Windows.Forms.Padding(4);
             this.btnFormat.Name = "btnFormat";
-            this.btnFormat.Size = new System.Drawing.Size(94, 23);
+            this.btnFormat.Size = new System.Drawing.Size(94, 30);
             this.btnFormat.TabIndex = 6;
             this.btnFormat.Text = "F&ormat";
-            this.btnFormat.Click += new System.EventHandler(this.btnEditPhoneNumber_Click);
+            this.btnFormat.Click += new System.EventHandler(this.btnFormat_Click);
             // 
             // btnParse
             // 
             this.btnParse.Location = new System.Drawing.Point(405, 30);
             this.btnParse.Margin = new System.Windows.Forms.Padding(4);
             this.btnParse.Name = "btnParse";
-            this.btnParse.Size = new System.Drawing.Size(94, 25);
+            this.btnParse.Size = new System.Drawing.Size(94, 34);
             this.btnParse.TabIndex = 2;
             this.btnParse.Text = "P&arse";
-            this.btnParse.Click += new System.EventHandler(this.btnParseName_Click);
+            this.btnParse.Click += new System.EventHandler(this.btnParse_Click);
             // 
             // txtCity
             // 
@@ -146,7 +146,7 @@ namespace StringHandling
             this.label4.Text = "Postal Code:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Form1
+            // lakeSuperior
             // 
             this.AcceptButton = this.btnParse;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -164,8 +164,9 @@ namespace StringHandling
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "lakeSuperior";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lake Superior";
             this.ResumeLayout(false);
