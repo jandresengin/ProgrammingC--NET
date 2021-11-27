@@ -12,7 +12,7 @@ using System.Windows.Forms;
  *          Jairo Andres Supelano               c0812859
  ************************************************************************************************************************/
 
-namespace Assignment01
+namespace Assignment04
 {
     public partial class frmMain : Form
     {
@@ -54,6 +54,26 @@ namespace Assignment01
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close(); //The current form and the program are closed completely, in this case.
+        }
+        
+
+        private void btnLateFilms_Click(object sender, EventArgs e)
+        {
+            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
+            frmLateFilms lateFilms = new frmLateFilms(); //The frmKidsMovies form object is instantiated.  
+            
+            DialogResult numberMoviesLateCounter =  lateFilms.ShowDialog(); //Grab the button
+
+            int numberOfLateMovies = lateFilms.GetNumberMovies();
+
+            //lateFilms.Tag.ToString();
+            MessageBox.Show(numberOfLateMovies.ToString(), "Value returned of the new form");
+            labelNumberLateFilms.Text = numberOfLateMovies.ToString();
+            
+
+            
+
+
         }
     }
 }

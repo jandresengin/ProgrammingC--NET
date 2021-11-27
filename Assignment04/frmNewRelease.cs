@@ -5,7 +5,7 @@ using System.Windows.Forms;
  *          Jairo Andres Supelano               c0812859
  ************************************************************************************************************************/
 
-namespace Assignment01
+namespace Assignment04
 {
     public partial class frmNewRelease : Form
     {

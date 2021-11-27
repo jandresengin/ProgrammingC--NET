@@ -1,5 +1,5 @@
 ﻿
-namespace Assignment01
+namespace Assignment04
 {
     partial class frmMain
     {
@@ -34,6 +34,8 @@ namespace Assignment01
             this.btnLibraryMovie = new System.Windows.Forms.Button();
             this.btnKidsMovie = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnLateFilms = new System.Windows.Forms.Button();
+            this.labelNumberLateFilms = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +81,7 @@ namespace Assignment01
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(36, 302);
+            this.btnExit.Location = new System.Drawing.Point(36, 367);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(279, 38);
             this.btnExit.TabIndex = 4;
@@ -87,13 +89,34 @@ namespace Assignment01
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnLateFilms
+            // 
+            this.btnLateFilms.Location = new System.Drawing.Point(36, 297);
+            this.btnLateFilms.Name = "btnLateFilms";
+            this.btnLateFilms.Size = new System.Drawing.Size(279, 38);
+            this.btnLateFilms.TabIndex = 5;
+            this.btnLateFilms.Text = "L&ate Films";
+            this.btnLateFilms.UseVisualStyleBackColor = true;
+            this.btnLateFilms.Click += new System.EventHandler(this.btnLateFilms_Click);
+            // 
+            // labelNumberLateFilms
+            // 
+            this.labelNumberLateFilms.AutoSize = true;
+            this.labelNumberLateFilms.Location = new System.Drawing.Point(153, 436);
+            this.labelNumberLateFilms.Name = "labelNumberLateFilms";
+            this.labelNumberLateFilms.Size = new System.Drawing.Size(12, 17);
+            this.labelNumberLateFilms.TabIndex = 6;
+            this.labelNumberLateFilms.Text = " ";
+            // 
             // frmMain
             // 
             this.AcceptButton = this.btnNewRelease;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(354, 380);
+            this.ClientSize = new System.Drawing.Size(354, 485);
+            this.Controls.Add(this.labelNumberLateFilms);
+            this.Controls.Add(this.btnLateFilms);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnKidsMovie);
             this.Controls.Add(this.btnLibraryMovie);
@@ -114,6 +137,8 @@ namespace Assignment01
         private System.Windows.Forms.Button btnLibraryMovie;
         private System.Windows.Forms.Button btnKidsMovie;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnLateFilms;
+        private System.Windows.Forms.Label labelNumberLateFilms;
     }
 }
 

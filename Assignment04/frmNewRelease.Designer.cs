@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-namespace Assignment01
+namespace Assignment04
 {
     partial class frmNewRelease
     {
