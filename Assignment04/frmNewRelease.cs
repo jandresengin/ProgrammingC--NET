@@ -38,12 +38,20 @@ namespace Assignment04
         ///     A labracadabrador.
         /// ***********************************************************************************
 
+        private string GetValueComBox()
+        {
+            // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
+            var itemComboBox = this.comboBoxCustomerType.GetItemText(this.comboBoxCustomerType.SelectedItem);
+
+            return itemComboBox;
+
+        }
+
         private void btnCalculate_Click(object sender, EventArgs e)
         {
 
-            // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
-            var itemComboBox = this.comboBoxCustomerType.GetItemText(this.comboBoxCustomerType.SelectedItem);
-            string selectedTypeCustomer = itemComboBox;//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
+            
+            string selectedTypeCustomer = GetValueComBox();//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
             double lateFeeBill = 0; //Variable is declared and initialized to 0.
             decimal discountPercent = .0m; // This variable indicates the discount percentage to be applied to special customers.
             int numberOfDaysLate; //This variable stores the number of days late in returning the movie.
@@ -182,6 +190,7 @@ namespace Assignment04
 
         private void ClearNumberMovies(object sender, EventArgs e)
         {
+            string selectedTypeCustomer = GetValueComBox();
             try
             {   //This function is created tied to an event, which will clean the textbox and evaluate if the data entered is a valid number.
                 if (IsValidData()) //The IsValidData function is called to know if the entered value (number of movies) meets the program conditions.
@@ -202,9 +211,12 @@ namespace Assignment04
 
         private bool IsValidData() //It evaluates if the number of days entered by the user is not empty, it is a whole number and is between 0 and 50.
         {
+            string selectedTypeCustomer = GetValueComBox();
             bool success = true;
             string errorMessage = "";
             errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsDateTime(txtNumbersOfDaysLate.Text, "Number of Days Delivered Late");
+            errorMessage += IsCustType(selectedTypeCustomer, "Number of Days Delivered Late", "L", "J", "N");
             errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
             errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
 
@@ -227,8 +239,16 @@ namespace Assignment04
             }
             return msg;
         }
+        private string IsDateTime(string value, string name)//This generic function evaluates if the value is empty or not.
+        {
+            string msg = "";
+            if (value == "")
+            {
+                msg += name + " is a required field.\n";
+            }
+            return msg;
+        }
 
-        
         private string IsInt32(string value, string name)//This generic function evaluates if the value is an integer.
         {
             string msg = "";
@@ -239,6 +259,19 @@ namespace Assignment04
             return msg;
         }
         //This generic function evaluates if the value is between a minimum and greater range of values.
+
+        private string IsCustType(string value, string name, string opcion1, string opcion2, string opcion3)
+        {
+            string msg = "";
+            
+                if (value != opcion1 && value != opcion2 && value != opcion3)
+                {
+                    msg += name + " must be a value like " + opcion1 + ", " + opcion2 + " or " + opcion3 + ".\n";
+                }
+            
+            return msg;
+        }
+
         private string IsWithinRange(string value, string name, decimal min, decimal max)
         {
             string msg = "";
@@ -255,9 +288,12 @@ namespace Assignment04
 
         private bool IsValidDayData() //The IsValidDayData function is called to know if the entered value (number of days and number of movies) meets the program conditions.
         {//The number of films is validated again only if the program operates in unitary mode.
+            string selectedTypeCustomer = GetValueComBox();
             bool success = true;
             string errorMessage = "";
             errorMessage += IsPast(txtNumbersOfDaysLate.Text, "Numbers of Days Late", minDays);
+            errorMessage += IsDateTime(txtNumbersOfDaysLate.Text, "Number of Days Delivered Late");
+            errorMessage += IsCustType(selectedTypeCustomer, "Number of Days Delivered Late", "L", "J", "N");
             errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
             errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
             errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
