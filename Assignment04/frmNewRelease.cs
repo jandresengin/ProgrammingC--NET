@@ -21,6 +21,10 @@ namespace Assignment04
         double numberOfDays;
         //A boolean variable is created, to change the program's operating mode, if the user enters number of days manually, the way to change the fee is changed, if he does not make changes in that textbox, it operates with only 1 movie by default .
         Boolean isCleared = false;
+
+        public static decimal totalWithDiscount = 0;
+
+
         public frmNewRelease()
         {
             InitializeComponent();
@@ -31,128 +35,62 @@ namespace Assignment04
             txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
             //The focus after load the form is over the dataTimepicker.
             dateTimePickerDueDate.Focus();
+ 
         }
 
-        /// ***********************************************************************************
-        ///     What do you call a dog magician?
-        ///     A labracadabrador.
-        /// ***********************************************************************************
-
-        private string GetValueComBox()
+        public int GetNumberMoviesSummary()
         {
-            // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
-            var itemComboBox = this.comboBoxCustomerType.GetItemText(this.comboBoxCustomerType.SelectedItem);
-
-            return itemComboBox;
-
+            return numberMoviesEnteredSummary;
         }
 
+        private void LoadFormWithHistoricalData(object sender, EventArgs e)
+        {//function that checks if the user entered movies in another form, if it is greater than or equal to 1, it will proceed to operate as if the user entered them manually.
+            int numberOfLateMoviesForm = frmMain.numberOfLateMovies;
+
+            MessageBox.Show(numberOfLateMoviesForm.ToString(), "Value from Main");
+            if (numberOfLateMoviesForm > 0)
+            {
+                numberMoviesEntered = numberOfLateMoviesForm;
+                isCleared = true;
+                txtNumberOfMovies.Text = numberMoviesEntered.ToString();
+            }
+        }
+
+            /// ***********************************************************************************
+            ///     What do you call a dog magician?
+            ///     A labracadabrador.
+            /// ***********************************************************************************
+
+        
+
+        
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-
-            
             string selectedTypeCustomer = GetValueComBox();//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
             double lateFeeBill = 0; //Variable is declared and initialized to 0.
             decimal discountPercent = .0m; // This variable indicates the discount percentage to be applied to special customers.
-            int numberOfDaysLate; //This variable stores the number of days late in returning the movie.
-            
-
-            DateTime dCurrent = DateTime.Now; // The current date is stored in the variable dCurrent.
-            DateTime dDue = dateTimePickerDueDate.Value; //According to the value entered in the dateTimePicker, the day is obtained and saved in dDue
-            TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date); //The number of days late in returning the movie is calculated according to the value entered by the user.
-            numberOfDays = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
-            txtNumbersOfDaysLate.Text = numberOfDays.ToString(); //The resulting number of days is shown in the textbox.
-
-            //Because the only data that the user enters is the number of days, it will be evaluated that the data is valid, the failure will be caught and the user will be indicated the requirements for this data.
-            try
-            {
-                //The resulting number of days is taken, it is converted to an integer and it is verified that it is an adequate value to calculate
-                //If the number of days of delay is greater than or equal to 0, the associated costs will be calculated.
-
-                if (IsValidDayData()) //This function will evaluate if the number of days (isPast) and number of movies are valid for the normal execution of the program.
-                {
-                    // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
-                    // which is 2 CAD per day.
-                    //Only the whole part of the number of days late is feared, with this it is avoided to charge partials of 1 day.
-                    numberOfDaysLate = (int)numberOfDays;
-                    if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the movie is being delivered on the indicated date.
-                    {
-                        //If the user does not enter the number of movies manually, the isCleared flag will be equal to false, executing the sum of movies program in a unitary way.
-                        if (isCleared == false)
-                        {
-                            numberMoviesEntered += 1; //The number of movies is increased by 1.
-                            numberMoviesEnteredSummary += 1; //Movie number accumulator increases by 1.
-                            lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate); //The fee is calculated for a single movie entry, with the function CalculateLateFeeUnity
-
-
-                        }
-                        //If the user generates an action to modify the box for the number of movies, the flag isCleared == true will be activated, and the fee will be calculated for several movies delivered late.
-                        else
-                        {
-                            //// The rate is calculated for the number of movies entered by the user, with the CalculateLateFee function
-                            lateFeeBill = CalculateLateFee(numberOfDaysLate, numberMoviesEntered);
-                            numberMoviesEnteredSummary += numberMoviesEntered;//Movie number accumulator increases by the number of movies entered by the user.
-                        }
-                        totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of movies to be returned, with this the user can calculate different movies of this type and of different days.
-
-                    }
-
-                    //A combobox was created to only have 3 possible values "L", "J" or "N", and according to this, the membership discount will be defined, if at any time it is possible to enter a different value, a message will be displayed to the user and a discount type "N" is left
-                    switch (selectedTypeCustomer)
-                    {
-                        case "L":   //If you are an L Loyal user, a 10% discount is applied.
-                            discountPercent = .1m;
-                            break;
-                        case "J":   //If you are a J junior user, a 5% discount is applied.
-                            discountPercent = .05m;
-                            break;
-                        case "N":   //If you are an N New user, a 0% discount is applied.
-                            discountPercent = 0;
-                            break;
-                        default:   //If a different type of character is entered, a discount of 0% is applied, and a message is displayed to the user that in order to apply to any type of discount, he must select the type of user he is.
-                            MessageBox.Show("To apply any kind of discount please select your Loyal customers  \nL for Loyal Customer 10% Discount, J for Junior Customer 5% discount or N New user 0%. ");
-                            discountPercent = 0;
-                            break;
-                    }
-                    // The fee for the total number of movies entered by the user, and the discount applied by the type of membership will be evaluated. the function CalculateLateFeeIncludesDiscount is called with 2 parameters and 2 values are returned in a tuple.
-                    (decimal invoiceTotal, decimal discountAmount) = CalculateLateFeeIncludesDiscount(Convert.ToDecimal(totalWithoutDiscount), discountPercent);
-
-                    //It will be evaluated if the number of movies entered is equal to the accumulator of the number of movies, this case is if unit movies or group of movies are entered interleaved.
-                    if (numberMoviesEntered == numberMoviesEnteredSummary)
-                    {
-                        txtNumberOfMovies.Text = numberMoviesEntered.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
-                    }
-                    else
-                    {
-                        numberMoviesEntered = numberMoviesEnteredSummary; //If the user enters movies manually, all associated fees are calculated and at the end the total number of movies entered so far is displayed.
-                        txtNumberOfMovies.Text = numberMoviesEnteredSummary.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
-
-                    }
-
-                    txtLateFee.Text = lateFeeBill.ToString("c"); //The amount owed for the movie that is delivered late is graphed, the format is changed to string currency.
-                    subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c"); //The value owed for the movies that were delivered late without discount is graphed (Acummulator), the format is changed to string currency.
-                    txtTotalWithDiscount.Text = invoiceTotal.ToString("c"); //The amount owed so far for all the movies calculated with the applicable discount is graphed, the format is changed to string currency.
-
-                    btnReturn.Focus(); //The focus is moved to the return button
-                }
-            }
-            //After evaluating if the number of movies data is valid, the error message will be brought with what was found with the validation function.
-            catch (Exception ex)
-            {//A message is displayed in a separate messagebox with what is found.
-                MessageBox.Show(ex.Message + "\n\n" +
-                ex.GetType().ToString() + "\n" +
-                ex.StackTrace, "Exception");
-            }
-            //At the end, the manual movie input flag is returned to work in a unitary way.
-            isCleared = false;
+            numberOfDays = GetNumberDays();
+            CalculateLateFee(selectedTypeCustomer, lateFeeBill, discountPercent, numberOfDays);
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {
             //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
-            frmMain formMain = new frmMain(); //The main form object is instantiated.
             this.Hide(); //the current form is hidden.
-            formMain.ShowDialog(); //the main form is called.
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtNumbersOfDaysLate.Text = "";
+            txtLateFee.Text = "";
+            isCleared = false;
+            numberMoviesEntered = 0;
+            numberMoviesEnteredSummary = 0;
+            minDays = 0;
+            totalWithoutDiscount = 0;
+            subtotalWithoutDiscount.Text = "";
+            txtTotalWithDiscount.Text = "";
+            txtNumberOfMovies.Text = "0";
         }
 
         //This function calculates the associated fees for unit movie entry.
@@ -318,6 +256,119 @@ namespace Assignment04
                 }
             }
             return msg;
+        }
+
+        
+
+        public decimal GetTotalWithoutDiscount()
+        {
+
+            return (decimal)totalWithoutDiscount;
+        }
+
+        private string GetValueComBox()
+        {
+            // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
+            var itemComboBox = this.comboBoxCustomerType.GetItemText(this.comboBoxCustomerType.SelectedItem);
+
+            return itemComboBox;
+
+        }
+
+        private Double GetNumberDays()
+        {
+            DateTime dCurrent = DateTime.Now; // The current date is stored in the variable dCurrent.
+            DateTime dDue = dateTimePickerDueDate.Value; //According to the value entered in the dateTimePicker, the day is obtained and saved in dDue
+            TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date); //The number of days late in returning the movie is calculated according to the value entered by the user.
+            numberOfDays = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
+            txtNumbersOfDaysLate.Text = numberOfDays.ToString(); //The resulting number of days is shown in the textbox.
+            return numberOfDays;
+
+        }
+        private void CalculateLateFee(String selectedTypeCustomer, double lateFeeBill, decimal discountPercent, double numberOfDays)
+        {
+            //Because the only data that the user enters is the number of days, it will be evaluated that the data is valid, the failure will be caught and the user will be indicated the requirements for this data.
+            try
+            {
+                //The resulting number of days is taken, it is converted to an integer and it is verified that it is an adequate value to calculate
+                //If the number of days of delay is greater than or equal to 0, the associated costs will be calculated.
+
+                if (IsValidDayData()) //This function will evaluate if the number of days (isPast) and number of movies are valid for the normal execution of the program.
+                {
+                    // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
+                    // which is 2 CAD per day.
+                    //Only the whole part of the number of days late is feared, with this it is avoided to charge partials of 1 day.
+                    int numberOfDaysLate = (int)numberOfDays;
+                    if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the movie is being delivered on the indicated date.
+                    {
+                        //If the user does not enter the number of movies manually, the isCleared flag will be equal to false, executing the sum of movies program in a unitary way.
+                        if (isCleared == false)
+                        {
+                            numberMoviesEntered += 1; //The number of movies is increased by 1.
+                            numberMoviesEnteredSummary += 1; //Movie number accumulator increases by 1.
+                            lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate); //The fee is calculated for a single movie entry, with the function CalculateLateFeeUnity
+
+
+                        }
+                        //If the user generates an action to modify the box for the number of movies, the flag isCleared == true will be activated, and the fee will be calculated for several movies delivered late.
+                        else
+                        {
+                            //// The rate is calculated for the number of movies entered by the user, with the CalculateLateFee function
+                            lateFeeBill = CalculateLateFee(numberOfDaysLate, numberMoviesEntered);
+                            numberMoviesEnteredSummary += numberMoviesEntered;//Movie number accumulator increases by the number of movies entered by the user.
+                        }
+                        totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of movies to be returned, with this the user can calculate different movies of this type and of different days.
+
+                    }
+
+                    //A combobox was created to only have 3 possible values "L", "J" or "N", and according to this, the membership discount will be defined, if at any time it is possible to enter a different value, a message will be displayed to the user and a discount type "N" is left
+                    switch (selectedTypeCustomer)
+                    {
+                        case "L":   //If you are an L Loyal user, a 10% discount is applied.
+                            discountPercent = .1m;
+                            break;
+                        case "J":   //If you are a J junior user, a 5% discount is applied.
+                            discountPercent = .05m;
+                            break;
+                        case "N":   //If you are an N New user, a 0% discount is applied.
+                            discountPercent = 0;
+                            break;
+                        default:   //If a different type of character is entered, a discount of 0% is applied, and a message is displayed to the user that in order to apply to any type of discount, he must select the type of user he is.
+                            MessageBox.Show("To apply any kind of discount please select your Loyal customers  \nL for Loyal Customer 10% Discount, J for Junior Customer 5% discount or N New user 0%. ");
+                            discountPercent = 0;
+                            break;
+                    }
+                    // The fee for the total number of movies entered by the user, and the discount applied by the type of membership will be evaluated. the function CalculateLateFeeIncludesDiscount is called with 2 parameters and 2 values are returned in a tuple.
+                    (decimal invoiceTotal, decimal discountAmount) = CalculateLateFeeIncludesDiscount(Convert.ToDecimal(totalWithoutDiscount), discountPercent);
+
+                    //It will be evaluated if the number of movies entered is equal to the accumulator of the number of movies, this case is if unit movies or group of movies are entered interleaved.
+                    if (numberMoviesEntered == numberMoviesEnteredSummary)
+                    {
+                        txtNumberOfMovies.Text = numberMoviesEntered.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
+                    }
+                    else
+                    {
+                        numberMoviesEntered = numberMoviesEnteredSummary; //If the user enters movies manually, all associated fees are calculated and at the end the total number of movies entered so far is displayed.
+                        txtNumberOfMovies.Text = numberMoviesEnteredSummary.ToString("d"); //The number of movies entered so far is graphed, it is changed to string format.
+
+                    }
+
+                    txtLateFee.Text = lateFeeBill.ToString("c"); //The amount owed for the movie that is delivered late is graphed, the format is changed to string currency.
+                    subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c"); //The value owed for the movies that were delivered late without discount is graphed (Acummulator), the format is changed to string currency.
+                    txtTotalWithDiscount.Text = invoiceTotal.ToString("c"); //The amount owed so far for all the movies calculated with the applicable discount is graphed, the format is changed to string currency.
+                    totalWithDiscount = invoiceTotal;
+                    btnReturn.Focus(); //The focus is moved to the return button
+                }
+            }
+            //After evaluating if the number of movies data is valid, the error message will be brought with what was found with the validation function.
+            catch (Exception ex)
+            {//A message is displayed in a separate messagebox with what is found.
+                MessageBox.Show(ex.Message + "\n\n" +
+                ex.GetType().ToString() + "\n" +
+                ex.StackTrace, "Exception");
+            }
+            //At the end, the manual movie input flag is returned to work in a unitary way.
+            isCleared = false;
         }
 
 

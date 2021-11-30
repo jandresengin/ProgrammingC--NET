@@ -39,5 +39,15 @@ namespace Assignment04
             this.Close();
 
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
+            frmMain formMain = new frmMain(); //The main form object is instantiated.
+            this.Hide(); //the current form is hidden.
+            formMain.ShowDialog(); //the main form is called.
+            this.Close(); //At the end the current form is closed to not leave active forms or threads.
+        }
+
     }
 }
