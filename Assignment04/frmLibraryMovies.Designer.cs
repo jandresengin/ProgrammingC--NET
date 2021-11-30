@@ -47,6 +47,7 @@ namespace Assignment04
             this.txtTotalWithDiscount = new System.Windows.Forms.TextBox();
             this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
             this.comboBoxCustomerType = new System.Windows.Forms.ComboBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -75,7 +76,7 @@ namespace Assignment04
             this.btnReturn.Location = new System.Drawing.Point(28, 292);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(298, 38);
-            this.btnReturn.TabIndex = 4;
+            this.btnReturn.TabIndex = 5;
             this.btnReturn.Text = "&Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
@@ -142,15 +143,11 @@ namespace Assignment04
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(203, 31);
-            DateTime todaysDate = DateTime.Today;
-            int year = todaysDate.Year;
-            int month = todaysDate.Month;
-            int day = todaysDate.Day;
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 11, 30, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 11, 30, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -231,7 +228,16 @@ namespace Assignment04
             this.comboBoxCustomerType.Name = "comboBoxCustomerType";
             this.comboBoxCustomerType.Size = new System.Drawing.Size(121, 24);
             this.comboBoxCustomerType.TabIndex = 3;
-            this.comboBoxCustomerType.SelectedIndex = 2;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(373, 222);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(298, 38);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "C&lear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // frmLibraryMovies
             // 
@@ -240,6 +246,7 @@ namespace Assignment04
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnReturn;
             this.ClientSize = new System.Drawing.Size(733, 356);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.comboBoxCustomerType);
             this.Controls.Add(this.txtNumberOfMovies);
             this.Controls.Add(this.txtTotalWithDiscount);
@@ -261,6 +268,7 @@ namespace Assignment04
             this.Name = "frmLibraryMovies";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library Movies";
+            this.Load += new System.EventHandler(this.LoadFormWithHistoricalData);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,5 +294,6 @@ namespace Assignment04
         private System.Windows.Forms.TextBox txtTotalWithDiscount;
         private System.Windows.Forms.TextBox txtNumberOfMovies;
         internal System.Windows.Forms.ComboBox comboBoxCustomerType;
+        private System.Windows.Forms.Button btnClear;
     }
 }

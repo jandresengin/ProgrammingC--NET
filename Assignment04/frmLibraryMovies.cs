@@ -20,7 +20,7 @@ namespace Assignment04
         //variable of the number of movies to return by the user. The initial value is 0.
         int numberMoviesEntered = 0;
         //In order to be able to add the movies entered by the user or the unitary movie entry system, an internal variable is handled.
-        int numberMoviesEnteredSummary = 0;
+        public static int numberMoviesEnteredSummary = 0;
         //The minimum number of days of delay is 0, it would be presented if the user enters a invalid numbers of days
         Int32 minDays = 0;
         // The total value to be paid by the customer without applying a discount is saved in the following variable. Initially it is left at 0.
@@ -29,6 +29,8 @@ namespace Assignment04
         double numberOfDays;
         //A boolean variable is created, to change the program's operating mode, if the user enters number of days manually, the way to change the fee is changed, if he does not make changes in that textbox, it operates with only 1 movie by default .
         Boolean isCleared = false;
+
+        public static decimal totalWithDiscount = 0;
         public frmLibraryMovies()
         {
             InitializeComponent();
@@ -41,6 +43,24 @@ namespace Assignment04
             dateTimePickerDueDate.Focus();
         }
 
+        public int GetNumberMoviesSummary()
+        {
+            return numberMoviesEnteredSummary;
+        }
+
+        private void LoadFormWithHistoricalData(object sender, EventArgs e)
+        {//function that checks if the user entered movies in another form, if it is greater than or equal to 1, it will proceed to operate as if the user entered them manually.
+            int numberOfLateMoviesForm = frmMain.numberOfLateMovies;
+
+            MessageBox.Show(numberOfLateMoviesForm.ToString(), "Value from Main");
+            if (numberOfLateMoviesForm > 0)
+            {
+                numberMoviesEntered = numberOfLateMoviesForm;
+                isCleared = true;
+                txtNumberOfMovies.Text = numberMoviesEntered.ToString();
+            }
+        }
+
         ///*********************************************************************************************************************************************
         ///         What time is it when the clock strikes 13?
         ///            Time to get a new clock.
@@ -49,21 +69,215 @@ namespace Assignment04
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-
-            // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
-            var itemComboBox = this.comboBoxCustomerType.GetItemText(this.comboBoxCustomerType.SelectedItem);
-            string selectedTypeCustomer = itemComboBox;//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
+            string selectedTypeCustomer = GetValueComBox();//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
             double lateFeeBill = 0; //Variable is declared and initialized to 0.
             decimal discountPercent = .0m; // This variable indicates the discount percentage to be applied to special customers.
-            int numberOfDaysLate; //This variable stores the number of days late in returning the movie.
+            numberOfDays = GetNumberDays();
+            CalculateLateFee(selectedTypeCustomer, lateFeeBill, discountPercent, numberOfDays);
+        }
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
+            this.Hide(); //the current form is hidden.
+            this.Close(); //At the end the current form is closed to not leave active forms or threads.
+        }
+
+        
+
+        //This function calculates the associated fees for unit movie entry.
+        private static double CalculateLateFeeUnity(int numberOfDaysLate)
+        {
+            double lateFeeBill = 0;
+            lateFeeBill = 0.57 * numberOfDaysLate; //for the type of movie a fee of 0.57 cad is charged.
+            return lateFeeBill;
+
+        }
+
+        //This function is in charge of calculating the value to be paid by the user according to the membership discount, returning the final value and the value of the discount.
+        private (decimal invoiceTotal, decimal discountAmount)
+            CalculateLateFeeIncludesDiscount(decimal totalWithoutDiscount, decimal discountPercent)
+        {
+            decimal invoiceTotal = 0;
+            //The discount that the user has is calculated for the type of user that entered.
+            decimal discountAmount = totalWithoutDiscount * discountPercent;
+            //The final value to be paid is calculated, after applying discounts.
+            invoiceTotal = totalWithoutDiscount - discountAmount;
 
 
+            return (invoiceTotal, discountAmount);
+
+        }
+        //This function calculates the associated fees for the entry of several movies by the user.
+        private static double CalculateLateFee(int numberOfDaysLate, int numberMoviesEntered)
+        {
+            double lateFeeBill = 0;
+            lateFeeBill = 0.57 * numberOfDaysLate * numberMoviesEntered; //for the type of movie a fee of 0.57 cad is charged.
+            return lateFeeBill;
+
+        }
+
+
+        private void ClearNumberMovies(object sender, EventArgs e)
+        {
+            string selectedTypeCustomer = GetValueComBox();
+            try
+            {   //This function is created tied to an event, which will clean the textbox and evaluate if the data entered is a valid number.
+                if (IsValidData()) //The IsValidData function is called to know if the entered value (number of movies) meets the program conditions.
+                {
+                    txtNumbersOfDaysLate.Text = "";
+                    txtLateFee.Text = "";
+                    numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text);
+                    isCleared = true;
+                }
+            }
+            catch (Exception ex) //If it does not meet the conditions, the message will indicates that it must comply.
+            {
+                MessageBox.Show(ex.Message + "\n\n" +
+                ex.GetType().ToString() + "\n" +
+                ex.StackTrace, "Exception");
+            }
+        }
+
+        private bool IsValidData() //It evaluates if the number of days entered by the user is not empty, it is a whole number and is between 0 and 50.
+        {
+            string selectedTypeCustomer = GetValueComBox();
+            bool success = true;
+            string errorMessage = "";
+            errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsDateTime(txtNumbersOfDaysLate.Text, "Number of Days Delivered Late");
+            errorMessage += IsCustType(selectedTypeCustomer, "Number of Days Delivered Late", "L", "J", "N");
+            errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
+
+            if (errorMessage != "")
+            {
+                success = false;
+                MessageBox.Show(errorMessage, "Entry Error");
+            }
+            return success;
+        }
+
+
+
+        private string IsPresent(string value, string name)//This generic function evaluates if the value is empty or not.
+        {
+            string msg = "";
+            if (value == "")
+            {
+                msg += name + " is a required field.\n";
+            }
+            return msg;
+        }
+        private string IsDateTime(string value, string name)//This generic function evaluates if the value is empty or not.
+        {
+            string msg = "";
+            if (value == "")
+            {
+                msg += name + " is a required field.\n";
+            }
+            return msg;
+        }
+
+        private string IsInt32(string value, string name)//This generic function evaluates if the value is an integer.
+        {
+            string msg = "";
+            if (!Int32.TryParse(value, out _))
+            {
+                msg += name + " must be a valid integer value.\n";
+            }
+            return msg;
+        }
+        //This generic function evaluates if the value is between a minimum and greater range of values.
+
+        private string IsCustType(string value, string name, string opcion1, string opcion2, string opcion3)
+        {
+            string msg = "";
+
+            if (value != opcion1 && value != opcion2 && value != opcion3)
+            {
+                msg += name + " must be a value like " + opcion1 + ", " + opcion2 + " or " + opcion3 + ".\n";
+            }
+
+            return msg;
+        }
+
+        private string IsWithinRange(string value, string name, decimal min, decimal max)
+        {
+            string msg = "";
+            if (Int32.TryParse(value, out Int32 number))
+            {
+                if (number < min || number > max)
+                {
+                    msg += name + " must be between " + min + " and " + max + ".\n";
+                }
+            }
+            return msg;
+        }
+
+
+        private bool IsValidDayData() //The IsValidDayData function is called to know if the entered value (number of days and number of movies) meets the program conditions.
+        {//The number of films is validated again only if the program operates in unitary mode.
+            string selectedTypeCustomer = GetValueComBox();
+            bool success = true;
+            string errorMessage = "";
+            errorMessage += IsPast(txtNumbersOfDaysLate.Text, "Numbers of Days Late", minDays);
+            errorMessage += IsDateTime(txtNumbersOfDaysLate.Text, "Number of Days Delivered Late");
+            errorMessage += IsCustType(selectedTypeCustomer, "Number of Days Delivered Late", "L", "J", "N");
+            errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
+            errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
+
+            if (errorMessage != "")
+            {
+                success = false;
+                MessageBox.Show(errorMessage, "Entry Error");
+            }
+            return success;
+        }
+
+
+        private string IsPast(string value, string name, Int32 min) //// This generic function evaluates if the value is greater than a minimum of 0 days.
+        {
+            string msg = "";
+            if (Decimal.TryParse(value, out decimal number))
+            {
+                if (number < min)
+                {
+                    msg += "The number of days introducted is not correct " + name + " must be greater or equal to " + min + ".\n";
+                }
+            }
+            return msg;
+        }
+
+
+
+        public decimal GetTotalWithoutDiscount()
+        {
+
+            return (decimal)totalWithoutDiscount;
+        }
+
+        private string GetValueComBox()
+        {
+            // The default value of the type of customer is New Customer "N". It was configured in the Designer.cs The user could change and apply for a better discount.
+            var itemComboBox = this.comboBoxCustomerType.GetItemText(this.comboBoxCustomerType.SelectedItem);
+
+            return itemComboBox;
+
+        }
+
+        private Double GetNumberDays()
+        {
             DateTime dCurrent = DateTime.Now; // The current date is stored in the variable dCurrent.
             DateTime dDue = dateTimePickerDueDate.Value; //According to the value entered in the dateTimePicker, the day is obtained and saved in dDue
             TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date); //The number of days late in returning the movie is calculated according to the value entered by the user.
             numberOfDays = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
             txtNumbersOfDaysLate.Text = numberOfDays.ToString(); //The resulting number of days is shown in the textbox.
+            return numberOfDays;
 
+        }
+        private void CalculateLateFee(String selectedTypeCustomer, double lateFeeBill, decimal discountPercent, double numberOfDays)
+        {
             //Because the only data that the user enters is the number of days, it will be evaluated that the data is valid, the failure will be caught and the user will be indicated the requirements for this data.
             try
             {
@@ -75,7 +289,7 @@ namespace Assignment04
                     // The rate to be charged is calculated where the number of days late is multiplied with the rate for movies with category New Releases,
                     // which is 2 CAD per day.
                     //Only the whole part of the number of days late is feared, with this it is avoided to charge partials of 1 day.
-                    numberOfDaysLate = (int)numberOfDays;
+                    int numberOfDaysLate = (int)numberOfDays;
                     if (numberOfDaysLate != 0) //If the number of days of delay is 0 (Due day = Current day), no surcharge is calculated, because the movie is being delivered on the indicated date.
                     {
                         //If the user does not enter the number of movies manually, the isCleared flag will be equal to false, executing the sum of movies program in a unitary way.
@@ -133,7 +347,7 @@ namespace Assignment04
                     txtLateFee.Text = lateFeeBill.ToString("c"); //The amount owed for the movie that is delivered late is graphed, the format is changed to string currency.
                     subtotalWithoutDiscount.Text = totalWithoutDiscount.ToString("c"); //The value owed for the movies that were delivered late without discount is graphed (Acummulator), the format is changed to string currency.
                     txtTotalWithDiscount.Text = invoiceTotal.ToString("c"); //The amount owed so far for all the movies calculated with the applicable discount is graphed, the format is changed to string currency.
-
+                    totalWithDiscount = invoiceTotal;
                     btnReturn.Focus(); //The focus is moved to the return button
                 }
             }
@@ -147,152 +361,21 @@ namespace Assignment04
             //At the end, the manual movie input flag is returned to work in a unitary way.
             isCleared = false;
         }
-        private void btnReturn_Click(object sender, EventArgs e)
+
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
-            frmMain formMain = new frmMain(); //The main form object is instantiated.
-            this.Hide(); //the current form is hidden.
-            formMain.ShowDialog(); //the main form is called.
-            this.Close(); //At the end the current form is closed to not leave active forms or threads.
+            
+            txtNumbersOfDaysLate.Text = "";
+            txtLateFee.Text = "";
+            isCleared = false;
+            numberMoviesEntered = 0;
+            numberMoviesEnteredSummary = 0;
+            minDays = 0;
+            totalWithoutDiscount = 0;
+            subtotalWithoutDiscount.Text = "";
+            txtTotalWithDiscount.Text = "";
+            txtNumberOfMovies.Text = "0";
+            totalWithDiscount = 0;
         }
-
-        //This function calculates the associated fees for unit movie entry.
-        private static double CalculateLateFeeUnity(int numberOfDaysLate)
-        {
-            double lateFeeBill = 0;
-            lateFeeBill = 0.57 * numberOfDaysLate; //for the type of movie a fee of 0.57 cad is charged.
-            return lateFeeBill;
-
-        }
-
-        //This function is in charge of calculating the value to be paid by the user according to the membership discount, returning the final value and the value of the discount.
-        private (decimal invoiceTotal, decimal discountAmount)
-            CalculateLateFeeIncludesDiscount(decimal totalWithoutDiscount, decimal discountPercent)
-        {
-            decimal invoiceTotal = 0;
-            //The discount that the user has is calculated for the type of user that entered.
-            decimal discountAmount = totalWithoutDiscount * discountPercent;
-            //The final value to be paid is calculated, after applying discounts.
-            invoiceTotal = totalWithoutDiscount - discountAmount;
-
-
-            return (invoiceTotal, discountAmount);
-
-        }
-        //This function calculates the associated fees for the entry of several movies by the user.
-        private static double CalculateLateFee(int numberOfDaysLate, int numberMoviesEntered)
-        {
-            double lateFeeBill = 0;
-            lateFeeBill = 0.57 * numberOfDaysLate * numberMoviesEntered; //for the type of movie a fee of 0.57 cad is charged.
-            return lateFeeBill;
-
-        }
-
-
-        private void ClearNumberMovies(object sender, EventArgs e)
-        {
-            try
-            {   //This function is created tied to an event, which will clean the textbox and evaluate if the data entered is a valid number.
-                if (IsValidData()) //The IsValidData function is called to know if the entered value (number of movies) meets the program conditions.
-                {
-                    txtNumbersOfDaysLate.Text = "";
-                    txtLateFee.Text = "";
-                    numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text);
-                    isCleared = true;
-                }
-            }
-            catch (Exception ex) //If it does not meet the conditions, the message will indicates that it must comply.
-            {
-                MessageBox.Show(ex.Message + "\n\n" +
-                ex.GetType().ToString() + "\n" +
-                ex.StackTrace, "Exception");
-            }
-        }
-
-        private bool IsValidData() //It evaluates if the number of days entered by the user is not empty, it is a whole number and is between 0 and 50.
-        {
-            bool success = true;
-            string errorMessage = "";
-            errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
-            errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
-            errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
-
-            if (errorMessage != "")
-            {
-                success = false;
-                MessageBox.Show(errorMessage, "Entry Error");
-            }
-            return success;
-        }
-
-
-
-        private string IsPresent(string value, string name)//This generic function evaluates if the value is empty or not.
-        {
-            string msg = "";
-            if (value == "")
-            {
-                msg += name + " is a required field.\n";
-            }
-            return msg;
-        }
-
-
-        private string IsInt32(string value, string name)//This generic function evaluates if the value is an integer.
-        {
-            string msg = "";
-            if (!Int32.TryParse(value, out _))
-            {
-                msg += name + " must be a valid integer value.\n";
-            }
-            return msg;
-        }
-        //This generic function evaluates if the value is between a minimum and greater range of values.
-        private string IsWithinRange(string value, string name, decimal min, decimal max)
-        {
-            string msg = "";
-            if (Int32.TryParse(value, out Int32 number))
-            {
-                if (number < min || number > max)
-                {
-                    msg += name + " must be between " + min + " and " + max + ".\n";
-                }
-            }
-            return msg;
-        }
-
-
-        private bool IsValidDayData() //The IsValidDayData function is called to know if the entered value (number of days and number of movies) meets the program conditions.
-        {//The number of films is validated again only if the program operates in unitary mode.
-            bool success = true;
-            string errorMessage = "";
-            errorMessage += IsPast(txtNumbersOfDaysLate.Text, "Numbers of Days Late", minDays);
-            errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
-            errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
-            errorMessage += IsWithinRange(txtNumberOfMovies.Text, "Number of Movies Delivered Late", 0, 50);
-
-            if (errorMessage != "")
-            {
-                success = false;
-                MessageBox.Show(errorMessage, "Entry Error");
-            }
-            return success;
-        }
-
-
-        private string IsPast(string value, string name, Int32 min) //// This generic function evaluates if the value is greater than a minimum of 0 days.
-        {
-            string msg = "";
-            if (Decimal.TryParse(value, out decimal number))
-            {
-                if (number < min)
-                {
-                    msg += "The number of days introducted is not correct " + name + " must be greater or equal to " + min + ".\n";
-                }
-            }
-            return msg;
-        }
-
-
     }
 }

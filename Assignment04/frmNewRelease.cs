@@ -91,6 +91,7 @@ namespace Assignment04
             subtotalWithoutDiscount.Text = "";
             txtTotalWithDiscount.Text = "";
             txtNumberOfMovies.Text = "0";
+            totalWithDiscount = 0;
         }
 
         //This function calculates the associated fees for unit movie entry.
