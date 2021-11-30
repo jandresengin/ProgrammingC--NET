@@ -143,11 +143,15 @@ namespace Assignment04
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(207, 27);
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 11, 30, 0, 0, 0, 0);
+            DateTime todaysDate = DateTime.Today;
+            int year = todaysDate.Year;
+            int month = todaysDate.Month;
+            int day = todaysDate.Day;
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 11, 30, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -228,6 +232,7 @@ namespace Assignment04
             this.comboBoxCustomerType.Name = "comboBoxCustomerType";
             this.comboBoxCustomerType.Size = new System.Drawing.Size(121, 24);
             this.comboBoxCustomerType.TabIndex = 3;
+            this.comboBoxCustomerType.SelectedIndex = 2;
             // 
             // btnClear
             // 
@@ -268,6 +273,7 @@ namespace Assignment04
             this.Name = "frmKidsMovies";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kids Movies";
+            this.Load += new System.EventHandler(this.LoadFormWithHistoricalData);
             this.ResumeLayout(false);
             this.PerformLayout();
 
