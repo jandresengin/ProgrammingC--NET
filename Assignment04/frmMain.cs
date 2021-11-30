@@ -19,13 +19,15 @@ namespace Assignment04
     {
         public static int numberOfLateMovies = 0;
         decimal totalOwed = 0;
+        int totalNumberMoviesForms = 0;
 
 
         public frmMain()
         {
             InitializeComponent();
-            labelNumberLateFilms.Text = numberOfLateMovies.ToString();
+            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
             labelTotalLateFee.Text = totalOwed.ToString();
+            totalNumberMovies.Text = totalNumberMoviesForms.ToString();
         }
 
         
@@ -45,8 +47,10 @@ namespace Assignment04
 
             
             numberOfLateMovies = newRelease.GetNumberMoviesSummary();
-            labelNumberLateFilms.Text = numberOfLateMovies.ToString();
+            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
             totalOwed = frmNewRelease.totalWithDiscount;
+            totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary;
+            totalNumberMovies.Text = totalNumberMoviesForms.ToString();
             labelTotalLateFee.Text = totalOwed.ToString();
         }
 
@@ -86,7 +90,7 @@ namespace Assignment04
 
             //lateFilms.Tag.ToString();
             MessageBox.Show(numberOfLateMovies.ToString(), "Value returned of the new form");
-            labelNumberLateFilms.Text = numberOfLateMovies.ToString();
+            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
 
         }
 

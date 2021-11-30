@@ -35,10 +35,12 @@ namespace Assignment04
             this.btnKidsMovie = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnLateFilms = new System.Windows.Forms.Button();
-            this.labelNumberLateFilms = new System.Windows.Forms.Label();
+            this.labelNumberLateFilmsManual = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelTotalLateFee = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.totalNumberMovies = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -102,29 +104,29 @@ namespace Assignment04
             this.btnLateFilms.UseVisualStyleBackColor = true;
             this.btnLateFilms.Click += new System.EventHandler(this.btnLateFilms_Click);
             // 
-            // labelNumberLateFilms
+            // labelNumberLateFilmsManual
             // 
-            this.labelNumberLateFilms.AutoSize = true;
-            this.labelNumberLateFilms.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumberLateFilms.Location = new System.Drawing.Point(579, 34);
-            this.labelNumberLateFilms.Name = "labelNumberLateFilms";
-            this.labelNumberLateFilms.Size = new System.Drawing.Size(14, 20);
-            this.labelNumberLateFilms.TabIndex = 6;
-            this.labelNumberLateFilms.Text = " ";
+            this.labelNumberLateFilmsManual.AutoSize = true;
+            this.labelNumberLateFilmsManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNumberLateFilmsManual.Location = new System.Drawing.Point(576, 85);
+            this.labelNumberLateFilmsManual.Name = "labelNumberLateFilmsManual";
+            this.labelNumberLateFilmsManual.Size = new System.Drawing.Size(14, 20);
+            this.labelNumberLateFilmsManual.TabIndex = 6;
+            this.labelNumberLateFilmsManual.Text = " ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(360, 34);
+            this.label2.Location = new System.Drawing.Point(357, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 34);
+            this.label2.Size = new System.Drawing.Size(154, 51);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Number of films with \r\ndelayed delivery";
+            this.label2.Text = "Number of Movies with \r\ndelayed delivery \r\nlast entered";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(360, 96);
+            this.label3.Location = new System.Drawing.Point(357, 227);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 17);
             this.label3.TabIndex = 8;
@@ -134,11 +136,30 @@ namespace Assignment04
             // 
             this.labelTotalLateFee.AutoSize = true;
             this.labelTotalLateFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalLateFee.Location = new System.Drawing.Point(579, 93);
+            this.labelTotalLateFee.Location = new System.Drawing.Point(576, 224);
             this.labelTotalLateFee.Name = "labelTotalLateFee";
             this.labelTotalLateFee.Size = new System.Drawing.Size(14, 20);
             this.labelTotalLateFee.TabIndex = 9;
             this.labelTotalLateFee.Text = " ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(357, 154);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(162, 34);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Total Number of Movies \r\nwith delayed delivery";
+            // 
+            // totalNumberMovies
+            // 
+            this.totalNumberMovies.AutoSize = true;
+            this.totalNumberMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalNumberMovies.Location = new System.Drawing.Point(576, 154);
+            this.totalNumberMovies.Name = "totalNumberMovies";
+            this.totalNumberMovies.Size = new System.Drawing.Size(14, 20);
+            this.totalNumberMovies.TabIndex = 10;
+            this.totalNumberMovies.Text = " ";
             // 
             // frmMain
             // 
@@ -147,10 +168,12 @@ namespace Assignment04
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(649, 485);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.totalNumberMovies);
             this.Controls.Add(this.labelTotalLateFee);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelNumberLateFilms);
+            this.Controls.Add(this.labelNumberLateFilmsManual);
             this.Controls.Add(this.btnLateFilms);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnKidsMovie);
@@ -173,10 +196,12 @@ namespace Assignment04
         private System.Windows.Forms.Button btnKidsMovie;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnLateFilms;
-        private System.Windows.Forms.Label labelNumberLateFilms;
+        private System.Windows.Forms.Label labelNumberLateFilmsManual;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelTotalLateFee;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label totalNumberMovies;
     }
 }
 

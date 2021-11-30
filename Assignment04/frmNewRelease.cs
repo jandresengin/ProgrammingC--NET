@@ -12,7 +12,7 @@ namespace Assignment04
         //variable of the number of movies to return by the user. The initial value is 0.
         int numberMoviesEntered = 0;
         //In order to be able to add the movies entered by the user or the unitary movie entry system, an internal variable is handled.
-        int numberMoviesEnteredSummary = 0;
+        public static int numberMoviesEnteredSummary = 0;
         //The minimum number of days of delay is 0, it would be presented if the user enters a invalid numbers of days
         Int32 minDays = 0;
         // The total value to be paid by the customer without applying a discount is saved in the following variable. Initially it is left at 0.
