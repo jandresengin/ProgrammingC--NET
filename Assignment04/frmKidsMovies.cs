@@ -28,7 +28,7 @@ namespace Assignment04
         double numberOfDays;
         //A boolean variable is created, to change the program's operating mode, if the user enters number of days manually, the way to change the fee is changed, if he does not make changes in that textbox, it operates with only 1 movie by default .
         Boolean isCleared = false;
-
+        //variable that keeps track of the total bill for NewRelease movies
         public static decimal totalWithDiscount = 0;
         public frmKidsMovies()
         {
@@ -40,8 +40,9 @@ namespace Assignment04
             txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
             //The focus after load the form is over the dataTimepicker.
             dateTimePickerDueDate.Focus();
-        }
 
+        }
+        //function that returns the value numberMoviesEnteredSummary 
         public int GetNumberMoviesSummary()
         {
             return numberMoviesEnteredSummary;
@@ -51,7 +52,7 @@ namespace Assignment04
         {//function that checks if the user entered movies in another form, if it is greater than or equal to 1, it will proceed to operate as if the user entered them manually.
             int numberOfLateMoviesForm = frmMain.numberOfLateMovies;
 
-            MessageBox.Show(numberOfLateMoviesForm.ToString(), "Value from Main");
+            //If the user entered movies manually from another form, the program is configured to work in this way.
             if (numberOfLateMoviesForm > 0)
             {
                 numberMoviesEntered = numberOfLateMoviesForm;
@@ -78,13 +79,26 @@ namespace Assignment04
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
         }
 
-
+        private void btnClear_Click(object sender, EventArgs e)
+        {//Clear button is added, to reset the current form and current values to 0.
+            txtNumbersOfDaysLate.Text = "";
+            txtLateFee.Text = "";
+            isCleared = false;
+            numberMoviesEntered = 0;
+            numberMoviesEnteredSummary = 0;
+            minDays = 0;
+            totalWithoutDiscount = 0;
+            subtotalWithoutDiscount.Text = "";
+            txtTotalWithDiscount.Text = "";
+            txtNumberOfMovies.Text = "0";
+            totalWithDiscount = 0;
+        }
 
         //This function calculates the associated fees for unit movie entry.
         private static double CalculateLateFeeUnity(int numberOfDaysLate)
         {
             double lateFeeBill = 0;
-            lateFeeBill = 0.15 * numberOfDaysLate; //for the type of movie a fee of 0.15 cad is charged.
+            lateFeeBill = 0.15 * numberOfDaysLate; //for the type of movie a fee of 0.57 cad is charged.
             return lateFeeBill;
 
         }
@@ -107,7 +121,7 @@ namespace Assignment04
         private static double CalculateLateFee(int numberOfDaysLate, int numberMoviesEntered)
         {
             double lateFeeBill = 0;
-            lateFeeBill = 0.15 * numberOfDaysLate * numberMoviesEntered; //for the type of movie a fee of 0.15 cad is charged.
+            lateFeeBill = 0.15 * numberOfDaysLate * numberMoviesEntered; //for the type of movie a fee of 0.57 cad is charged.
             return lateFeeBill;
 
         }
@@ -164,7 +178,7 @@ namespace Assignment04
             }
             return msg;
         }
-        private string IsDateTime(string value, string name)//This generic function evaluates if the value is empty or not.
+        private string IsDateTime(string value, string name)//This generic function evaluates if the Date is empty or not.
         {
             string msg = "";
             if (value == "")
@@ -186,7 +200,7 @@ namespace Assignment04
         //This generic function evaluates if the value is between a minimum and greater range of values.
 
         private string IsCustType(string value, string name, string opcion1, string opcion2, string opcion3)
-        {
+        {//function that evaluates if the user type is between 3 options supplied in the function
             string msg = "";
 
             if (value != opcion1 && value != opcion2 && value != opcion3)
@@ -198,7 +212,7 @@ namespace Assignment04
         }
 
         private string IsWithinRange(string value, string name, decimal min, decimal max)
-        {
+        {//function that evaluates if the value is between a certain range given by a minimum number and a greater number.
             string msg = "";
             if (Int32.TryParse(value, out Int32 number))
             {
@@ -243,14 +257,6 @@ namespace Assignment04
                 }
             }
             return msg;
-        }
-
-
-
-        public decimal GetTotalWithoutDiscount()
-        {
-
-            return (decimal)totalWithoutDiscount;
         }
 
         private string GetValueComBox()
@@ -356,22 +362,6 @@ namespace Assignment04
             }
             //At the end, the manual movie input flag is returned to work in a unitary way.
             isCleared = false;
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-
-            txtNumbersOfDaysLate.Text = "";
-            txtLateFee.Text = "";
-            isCleared = false;
-            numberMoviesEntered = 0;
-            numberMoviesEnteredSummary = 0;
-            minDays = 0;
-            totalWithoutDiscount = 0;
-            subtotalWithoutDiscount.Text = "";
-            txtTotalWithDiscount.Text = "";
-            txtNumberOfMovies.Text = "0";
-            totalWithDiscount = 0;
         }
     }
 }

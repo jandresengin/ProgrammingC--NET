@@ -97,6 +97,7 @@ namespace Assignment04
             this.Controls.Add(this.txtLateFilms);
             this.Controls.Add(this.label1);
             this.Name = "frmLateFilms";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Late Films";
             this.ResumeLayout(false);
             this.PerformLayout();

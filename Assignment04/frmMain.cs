@@ -17,14 +17,14 @@ namespace Assignment04
     public partial class frmMain : Form
 
     {
-        public static int numberOfLateMovies = 0;
-        decimal totalOwed = 0;
-        int totalNumberMoviesForms = 0;
+        public static int numberOfLateMovies = 0;//Variable with the number of movies entered in the last form
+        decimal totalOwed = 0; //it is the total owed, adding the total after discounts of the 3 forms kids, library and new release movies
+        int totalNumberMoviesForms = 0; //It is the total of films that are delivered late, adding each calculation made in the 3 forms kids, library and new release movies
 
 
         public frmMain()
         {
-            InitializeComponent();
+            InitializeComponent();//When the forms are loaded, the value of the 3 labels is updated
             labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
             labelTotalLateFee.Text = totalOwed.ToString();
             totalNumberMovies.Text = totalNumberMoviesForms.ToString();
@@ -34,52 +34,42 @@ namespace Assignment04
 
         private void btnNewRelease_Click(object sender, EventArgs e)
         {
-
-            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
             frmNewRelease newRelease = new frmNewRelease(); //The frmNewRelease form object is instantiated.
             
-            //this.Hide();//the current form is hidden.
-
-            DialogResult numberMoviesEnteredSummary = newRelease.ShowDialog(); //the newRelease form is called.
- 
-            numberOfLateMovies = newRelease.GetNumberMoviesSummary();
-            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
-            totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount;
-            totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;
-            totalNumberMovies.Text = totalNumberMoviesForms.ToString();
-            labelTotalLateFee.Text = totalOwed.ToString();
+            DialogResult numberMoviesEnteredSummary = newRelease.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+            numberOfLateMovies = newRelease.GetNumberMoviesSummary(); //The object of the instantiated form is called and a function is called that returns the value of the number of movies
+            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
+            totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount; //The variables of each form are added to the total with a discount, and this will be the total owed by the client.
+            totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;//The variables of each form are added to the total with a discount, and this will be the total number of films that the client delivers late.
+            totalNumberMovies.Text = totalNumberMoviesForms.ToString();//The label is updated.
+            labelTotalLateFee.Text = totalOwed.ToString();//The label is updated.
         }
-
-
 
         private void btnLibraryMovie_Click(object sender, EventArgs e)
         {
-            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
             frmLibraryMovies libraryMovies = new frmLibraryMovies(); //The frmLibraryMovies form object is instantiated.
-            DialogResult numberMoviesEnteredSummary = libraryMovies.ShowDialog(); //the newRelease form is called.
-
-            numberOfLateMovies = libraryMovies.GetNumberMoviesSummary();
-            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
-            totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount;
-            totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;
-            totalNumberMovies.Text = totalNumberMoviesForms.ToString();
-            labelTotalLateFee.Text = totalOwed.ToString();
+            
+            DialogResult numberMoviesEnteredSummary = libraryMovies.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+            numberOfLateMovies = libraryMovies.GetNumberMoviesSummary();//The object of the instantiated form is called and a function is called that returns the value of the number of movies
+            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
+            totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount;//The variables of each form are added to the total with a discount, and this will be the total owed by the client.
+            totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;//The variables of each form are added to the total with a discount, and this will be the total number of films that the client delivers late.
+            totalNumberMovies.Text = totalNumberMoviesForms.ToString();//The label is updated.
+            labelTotalLateFee.Text = totalOwed.ToString();//The label is updated.
 
         }
 
         private void btnKidsMovie_Click(object sender, EventArgs e)
         {
-            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
             frmKidsMovies kidsMovies = new frmKidsMovies(); //The frmKidsMovies form object is instantiated.  
 
-            DialogResult numberMoviesEnteredSummary = kidsMovies.ShowDialog(); //the newRelease form is called.
-
-            numberOfLateMovies = kidsMovies.GetNumberMoviesSummary();
-            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
-            totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount;
-            totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;
-            totalNumberMovies.Text = totalNumberMoviesForms.ToString();
-            labelTotalLateFee.Text = totalOwed.ToString();
+            DialogResult numberMoviesEnteredSummary = kidsMovies.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+            numberOfLateMovies = kidsMovies.GetNumberMoviesSummary();//The object of the instantiated form is called and a function is called that returns the value of the number of movies
+            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
+            totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount;//The variables of each form are added to the total with a discount, and this will be the total owed by the client.
+            totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary; //The variables of each form are added to the total with a discount, and this will be the total number of films that the client delivers late.
+            totalNumberMovies.Text = totalNumberMoviesForms.ToString();//The label is updated.
+            labelTotalLateFee.Text = totalOwed.ToString();//The label is updated.
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -90,16 +80,12 @@ namespace Assignment04
 
         private void btnLateFilms_Click(object sender, EventArgs e)
         {
-            //When performing the action of pressing the Return button, the form is instantiated as an object, this allows to call it.
             frmLateFilms lateFilms = new frmLateFilms(); //The frmKidsMovies form object is instantiated.  
-            DialogResult numberMoviesLateCounter =  lateFilms.ShowDialog(); //Grab the button
 
-            numberOfLateMovies = lateFilms.GetNumberMovies();
+            DialogResult numberMoviesLateCounter =  lateFilms.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
 
-            //lateFilms.Tag.ToString();
-            MessageBox.Show(numberOfLateMovies.ToString(), "Value returned of the new form");
-            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();
-
+            numberOfLateMovies = lateFilms.GetNumberMovies();//It is called through the instantiated object in the form of a function that brings up the number of movies entered in the list.
+            labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
         }
 
     }
