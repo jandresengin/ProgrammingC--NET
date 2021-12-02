@@ -18,10 +18,7 @@ namespace Assignment04
             string message = "";
             try
             {
-                //The resulting number of days is taken, it is converted to an integer and it is verified that it is an adequate value to calculate
-                //If the number of days of delay is greater than or equal to 0, the associated costs will be calculated.
-
-                if (IsValidDayData()) //This function will evaluate if the number of days (isPast) and number of movies are valid for the normal execution of the program.
+                if (IsValidData()) //This function will evaluate if the name of movies are valid for the normal execution of the program.
                 {
                     lateMoviesList.Add(txtLateFilms.Text);//The action of pressing the Add button will add the title entered by the user to the ordered list.
                     lateMoviesList.Sort();//It will be ordered alphabetically
@@ -58,7 +55,7 @@ namespace Assignment04
             this.Close(); //At the end the current form is closed to not leave active forms or threads.
         }
 
-        private bool IsValidDayData() //The IsValidDayData function is called to know if the entered value (number of days and number of movies) meets the program conditions.
+        private bool IsValidData() //The IsValidData function is called to know if the entered value (name of movie) meets the program conditions.
         {//The number of films is validated again only if the program operates in unitary mode.
 
             bool success = true;
