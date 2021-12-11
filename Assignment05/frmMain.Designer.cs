@@ -41,6 +41,7 @@ namespace Assignment05
             this.labelTotalLateFee = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.totalNumberMovies = new System.Windows.Forms.Label();
+            this.btnNewFilms = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -86,7 +87,7 @@ namespace Assignment05
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(36, 367);
+            this.btnExit.Location = new System.Drawing.Point(36, 420);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(279, 38);
             this.btnExit.TabIndex = 4;
@@ -161,6 +162,16 @@ namespace Assignment05
             this.totalNumberMovies.TabIndex = 10;
             this.totalNumberMovies.Text = " ";
             // 
+            // btnNewFilms
+            // 
+            this.btnNewFilms.Location = new System.Drawing.Point(36, 365);
+            this.btnNewFilms.Name = "btnNewFilms";
+            this.btnNewFilms.Size = new System.Drawing.Size(279, 38);
+            this.btnNewFilms.TabIndex = 12;
+            this.btnNewFilms.Text = "N&ew Films";
+            this.btnNewFilms.UseVisualStyleBackColor = true;
+            this.btnNewFilms.Click += new System.EventHandler(this.btnNewFilms_Click);
+            // 
             // frmMain
             // 
             this.AcceptButton = this.btnNewRelease;
@@ -168,6 +179,7 @@ namespace Assignment05
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(649, 485);
+            this.Controls.Add(this.btnNewFilms);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.totalNumberMovies);
             this.Controls.Add(this.labelTotalLateFee);
@@ -202,6 +214,7 @@ namespace Assignment05
         private System.Windows.Forms.Label labelTotalLateFee;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label totalNumberMovies;
+        private System.Windows.Forms.Button btnNewFilms;
     }
 }
 

@@ -88,5 +88,10 @@ namespace Assignment05
             labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
         }
 
+        private void btnNewFilms_Click(object sender, EventArgs e)
+        {
+            frmRentalMaintenance rentalMaintenance = new frmRentalMaintenance(); //
+            DialogResult numberNewMovies = rentalMaintenance.ShowDialog();
+        }
     }
 }

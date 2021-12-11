@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmRentalMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRentalMaintenance.Designer.cs">
+      <DependentUpon>frmRentalMaintenance.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNewMovie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalItem.cs" />
+    <Compile Include="RentalItemDB.cs" />
+    <Compile Include="Validator.cs" />
     <EmbeddedResource Include="frmLateFilms.resx">
       <DependentUpon>frmLateFilms.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewRelease.resx">
       <DependentUpon>frmNewRelease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRentalMaintenance.resx">
+      <DependentUpon>frmRentalMaintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

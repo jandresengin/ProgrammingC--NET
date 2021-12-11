@@ -11,6 +11,7 @@ namespace Assignment05
         private int movieNo;
         private string description;
         private string rating;
+        private string typeMovie;
 
         public RentalItem()
         {
@@ -18,11 +19,49 @@ namespace Assignment05
         }
         public RentalItem(int movieNo, string description, string rating)
         {
-            this.movieNo = movieNo;
-            this.description = description;
-            this.rating = rating;
+            this.MovieNo = movieNo;
+            this.Description = description;
+            this.Rating = rating;
+            this.Rating = rating;
 
         }
+
+        public int MovieNo
+        {
+            get
+            {
+                return movieNo;
+            }
+            set
+            {
+                movieNo = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
+
+        public string Rating
+        {
+            get
+            {
+                return rating;
+            }
+            set
+            {
+                rating = value;
+            }
+        }
+
         public String GetDisplayText(string sep = "\t")
         {
                 return movieNo.ToString() + sep + description + sep + rating;
