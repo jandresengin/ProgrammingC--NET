@@ -56,6 +56,7 @@ namespace Assignment05
             this.txtMovieNumber.Name = "txtMovieNumber";
             this.txtMovieNumber.Size = new System.Drawing.Size(228, 22);
             this.txtMovieNumber.TabIndex = 1;
+            this.txtMovieNumber.Tag = "Movie\'s number";
             // 
             // txtMovieDescription
             // 
@@ -63,6 +64,7 @@ namespace Assignment05
             this.txtMovieDescription.Name = "txtMovieDescription";
             this.txtMovieDescription.Size = new System.Drawing.Size(228, 22);
             this.txtMovieDescription.TabIndex = 2;
+            this.txtMovieDescription.Tag = "Movie\'s description";
             // 
             // txtFilmRating
             // 
@@ -70,6 +72,7 @@ namespace Assignment05
             this.txtFilmRating.Name = "txtFilmRating";
             this.txtFilmRating.Size = new System.Drawing.Size(228, 22);
             this.txtFilmRating.TabIndex = 3;
+            this.txtFilmRating.Tag = "Film\'s rating";
             // 
             // btnSave
             // 
@@ -131,6 +134,8 @@ namespace Assignment05
             this.comboBoxTypeMovie.Name = "comboBoxTypeMovie";
             this.comboBoxTypeMovie.Size = new System.Drawing.Size(228, 24);
             this.comboBoxTypeMovie.TabIndex = 10;
+            this.comboBoxTypeMovie.Tag = "Type Movie";
+            this.comboBoxTypeMovie.SelectedIndex = 0;
             // 
             // frmNewMovie
             // 

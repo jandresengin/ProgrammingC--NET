@@ -34,6 +34,17 @@ namespace Assignment05
             return true;
         }
 
+        public static bool IsPresentComboBox(String comboBox)
+        {
+            if (comboBox == " ")
+            {
+                MessageBox.Show("Select a type of movie is a required field.", Title);
+                //textBox.Focus();
+                return false;
+            }
+            return true;
+        }
+
         public static bool IsDecimal(TextBox textBox)
         {
             decimal number = 0m;

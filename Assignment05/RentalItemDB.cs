@@ -25,7 +25,8 @@ namespace Assignment05
 			{
 				textOut.Write(rentalItem.MovieNo + "|");
 				textOut.Write(rentalItem.Description + "|");
-				textOut.WriteLine(rentalItem.Rating);
+				textOut.Write(rentalItem.Rating + "|");
+				textOut.WriteLine(rentalItem.TypeMovie);
 			}
 
 			// write the end of the document
@@ -57,6 +58,7 @@ namespace Assignment05
 				rentalItem.MovieNo = Int32.Parse(columns[0]);
 				rentalItem.Description = columns[1];
 				rentalItem.Rating = columns[2];
+				rentalItem.TypeMovie = columns[3];
 				rentalItems.Add(rentalItem);
 			}
 
