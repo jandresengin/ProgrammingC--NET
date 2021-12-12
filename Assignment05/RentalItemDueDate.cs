@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace Assignment05
 {
-    public class RentalItem
+    class RentalItemDueDate
     {
         private int movieNo;
         private string description;
         private string rating;
         private string typeMovie;
+        private int numberDays;
 
-
-        public RentalItem()
+        public RentalItemDueDate()
         {
 
         }
-        public RentalItem(int movieNo, string description, string rating, string typeMovie)
+        public RentalItemDueDate(int movieNo, string description, string rating, string typeMovie, int numberDays)
         {
             this.MovieNo = movieNo;
             this.Description = description;
             this.Rating = rating;
             this.TypeMovie = typeMovie;
-
+            this.NumberDays = numberDays;
         }
-     
+
         public int MovieNo
         {
             get
@@ -74,10 +74,20 @@ namespace Assignment05
                 typeMovie = value;
             }
         }
-
+        public int NumberDays
+        {
+            get
+            {
+                return numberDays;
+            }
+            set
+            {
+                numberDays = value;
+            }
+        }
         public String GetDisplayText(string sep = "\t")
         {
-                return movieNo.ToString() + sep + description + sep + rating + sep + typeMovie;
+            return movieNo.ToString() + sep + description + sep + rating + sep + typeMovie + sep + numberDays;
         }
     }
- }
+}

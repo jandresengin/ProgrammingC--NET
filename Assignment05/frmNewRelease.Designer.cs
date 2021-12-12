@@ -144,15 +144,11 @@ namespace Assignment05
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(203, 31);
-            DateTime todaysDate = DateTime.Today;
-            int year = todaysDate.Year;
-            int month = todaysDate.Month;
-            int day = todaysDate.Day;
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 12, 11, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 12, 11, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -168,6 +164,7 @@ namespace Assignment05
             // 
             this.txtNumberOfMovies.Location = new System.Drawing.Point(569, 29);
             this.txtNumberOfMovies.Name = "txtNumberOfMovies";
+            this.txtNumberOfMovies.ReadOnly = true;
             this.txtNumberOfMovies.Size = new System.Drawing.Size(123, 22);
             this.txtNumberOfMovies.TabIndex = 2;
             this.txtNumberOfMovies.Leave += new System.EventHandler(this.ClearNumberMovies);
@@ -233,7 +230,6 @@ namespace Assignment05
             this.comboBoxCustomerType.Name = "comboBoxCustomerType";
             this.comboBoxCustomerType.Size = new System.Drawing.Size(121, 24);
             this.comboBoxCustomerType.TabIndex = 3;
-            this.comboBoxCustomerType.SelectedIndex = 2;
             // 
             // btnClear
             // 

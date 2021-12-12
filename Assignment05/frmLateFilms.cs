@@ -6,10 +6,14 @@ namespace Assignment05
 {
     public partial class frmLateFilms : Form
     {
+        int numberOfDays;
         public frmLateFilms()
         {
             InitializeComponent();
         }
+
+        private List<RentalItem> rentalItems = null;
+        
 
         List<string> lateMoviesList = new List<string>(); //Creation of SortedList to save data type String
         private int numberMoviesLateCounter = 0; //variable creation to keep track of the number of items in the SortedList .
@@ -38,17 +42,47 @@ namespace Assignment05
                 ex.StackTrace, "Exception");
             }
         }
-        
+
+
+        private void frmRentalItems_Load(object sender, EventArgs e)
+        {
+            rentalItems = RentalItemDB.GetRentalItem();
+            FillRentalItemsListBox();
+        }
+
+
+        private void FillRentalItemsListBox()
+        {
+            lstRentalItems.Items.Clear();
+            foreach (RentalItem r in rentalItems)
+            {
+                lstRentalItems.Items.Add(r.GetDisplayText());
+            }
+        }
+        private void FillRentalItemsListBoxDueDate()
+        {
+            
+            lstRentalItems.Items.Clear();
+            foreach (RentalItemDueDate r in rentalItemsList)
+            {
+                lstRentalItems.Items.Add(r.GetDisplayText());
+            }
+        }
+
         public int GetNumberMovies()//function that returns the number of movies entered in the list.
         {
             return numberMoviesLateCounter;
         }
-        private void btnOk_Click(object sender, EventArgs e)
-        {//The action of pressing the OK button is to update the number of movies entered in the list and close the current form.
-            numberMoviesLateCounter = lateMoviesList.Count;
-            MessageBox.Show(lateMoviesList.Count.ToString(), " Total number of movies entered");//the number of movies in the list is displayed.
-            this.Close();
-        }
+
+
+
+
+
+        private RentalItemDueDate rentalItemDate = null;
+
+        List<RentalItemDueDate> rentalItemsList = new List<RentalItemDueDate>();
+
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -77,6 +111,49 @@ namespace Assignment05
                 msg += name + " is a required field.\n";
             }
             return msg;
+        }
+        private Double GetNumberDays()
+        {
+            DateTime dCurrent = DateTime.Now; // The current date is stored in the variable dCurrent.
+            DateTime dDue = dateTimePickerDueDate.Value; //According to the value entered in the dateTimePicker, the day is obtained and saved in dDue
+            TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date); //The number of days late in returning the movie is calculated according to the value entered by the user.
+            Double numberOfDaystotal = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
+            return numberOfDaystotal;
+
+        }
+
+        private void btnDueDate_Click(object sender, EventArgs e)
+        {
+            
+            numberOfDays = Convert.ToInt32(GetNumberDays());
+            int i = lstRentalItems.SelectedIndex;
+            if (i != -1)
+            {
+                RentalItem rentalItem = rentalItems[i];
+                string message = "Are you sure you want to add the number of day late of " +
+                    numberOfDays + "for the movie number" + rentalItem.MovieNo + " " + rentalItem.Description + "?";
+                DialogResult button = MessageBox.Show(message, "Confirm ADD",
+                    MessageBoxButtons.YesNo);
+                if (button == DialogResult.Yes)
+                {
+                    int movieNumber = rentalItem.MovieNo;
+                    string descriptionObject = rentalItem.Description;
+                    string ratingObject = rentalItem.Rating;
+                    string typeMovieObject = rentalItem.TypeMovie;
+
+                    
+                    rentalItemDate = new RentalItemDueDate(movieNumber, descriptionObject, ratingObject, typeMovieObject, numberOfDays);
+                    MessageBox.Show(rentalItemDate.GetDisplayText());
+                    rentalItemsList.Add(rentalItemDate);
+                    //this.Close();
+
+
+
+                    //rentalItemDate.Add(numberOfDays);
+                    FillRentalItemsListBoxDueDate();
+                }
+            }
+            
         }
     }
 }

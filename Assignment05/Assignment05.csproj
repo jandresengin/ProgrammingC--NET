@@ -107,6 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalItem.cs" />
     <Compile Include="RentalItemDB.cs" />
+    <Compile Include="RentalItemDueDate.cs" />
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="frmLateFilms.resx">
       <DependentUpon>frmLateFilms.cs</DependentUpon>
