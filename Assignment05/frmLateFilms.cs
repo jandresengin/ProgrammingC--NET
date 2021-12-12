@@ -7,9 +7,19 @@ namespace Assignment05
     public partial class frmLateFilms : Form
     {
         int numberOfDays;
+        public decimal numberOfReleaseMovies = 0;
+        public SortedList<string, decimal> numberMoviesByType = new SortedList<string, decimal>(3);
+        public SortedList<string, decimal> numberDaysMoviesByType = new SortedList<string, decimal>(3);
+        public static decimal numberOfDaysReleaseMovies = 0;
+
+        public static decimal numberOfLibraryMovies = 0;
+        public static decimal numberOfDaysLibraryMovies = 0;
+        public static decimal numberOfKidsMovies = 0;
+        public static decimal numberOfDaysKidsMovies = 0;
         public frmLateFilms()
         {
             InitializeComponent();
+            
         }
 
         private List<RentalItem> rentalItems = null;
@@ -24,7 +34,7 @@ namespace Assignment05
             {
                 if (IsValidData()) //This function will evaluate if the name of movies are valid for the normal execution of the program.
                 {
-                    lateMoviesList.Add(txtLateFilms.Text);//The action of pressing the Add button will add the title entered by the user to the ordered list.
+                    //lateMoviesList.Add(txtLateFilms.Text);//The action of pressing the Add button will add the title entered by the user to the ordered list.
                     lateMoviesList.Sort();//It will be ordered alphabetically
                     foreach (string movie in lateMoviesList) //It will go through each element of the SortedList
                     {
@@ -43,7 +53,6 @@ namespace Assignment05
             }
         }
 
-
         private void frmRentalItems_Load(object sender, EventArgs e)
         {
             rentalItems = RentalItemDB.GetRentalItem();
@@ -61,28 +70,21 @@ namespace Assignment05
         }
         private void FillRentalItemsListBoxDueDate()
         {
-            
-            lstRentalItems.Items.Clear();
+
+            lstRentalItemsSelected.Items.Clear();
             foreach (RentalItemDueDate r in rentalItemsList)
             {
-                lstRentalItems.Items.Add(r.GetDisplayText());
+                lstRentalItemsSelected.Items.Add(r.GetDisplayText());
             }
         }
-
         public int GetNumberMovies()//function that returns the number of movies entered in the list.
         {
             return numberMoviesLateCounter;
         }
 
-
-
-
-
         private RentalItemDueDate rentalItemDate = null;
 
         List<RentalItemDueDate> rentalItemsList = new List<RentalItemDueDate>();
-
-
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -94,7 +96,7 @@ namespace Assignment05
 
             bool success = true;
             string errorMessage = "";
-            errorMessage += IsEmpty(txtLateFilms.Text, "Name of the movie");
+            //errorMessage += IsEmpty(txtLateFilms.Text, "Name of the movie");
 
             if (errorMessage != "")
             {
@@ -124,7 +126,7 @@ namespace Assignment05
 
         private void btnDueDate_Click(object sender, EventArgs e)
         {
-            
+
             numberOfDays = Convert.ToInt32(GetNumberDays());
             int i = lstRentalItems.SelectedIndex;
             if (i != -1)
@@ -141,19 +143,91 @@ namespace Assignment05
                     string ratingObject = rentalItem.Rating;
                     string typeMovieObject = rentalItem.TypeMovie;
 
-                    
+
                     rentalItemDate = new RentalItemDueDate(movieNumber, descriptionObject, ratingObject, typeMovieObject, numberOfDays);
+                    
                     MessageBox.Show(rentalItemDate.GetDisplayText());
                     rentalItemsList.Add(rentalItemDate);
-                    //this.Close();
-
-
-
-                    //rentalItemDate.Add(numberOfDays);
                     FillRentalItemsListBoxDueDate();
+                    if (typeMovieObject == "Release")
+                    {
+                        numberOfReleaseMovies++;
+                        numberOfDaysReleaseMovies = numberOfDaysReleaseMovies + numberOfDays;
+                    }
+                    else if (typeMovieObject == "Library")
+                    {
+                        numberOfLibraryMovies++;
+                        numberOfDaysLibraryMovies = numberOfDaysLibraryMovies + numberOfDays;
+                    }
+                    else if (typeMovieObject == "Kids")
+                    {
+                        numberOfKidsMovies++;
+                        numberOfDaysKidsMovies = numberOfDaysKidsMovies + numberOfDays;
+                    }
+                    
+
+
+
+
                 }
             }
             
+        }
+
+          private void btnNewRelease_Click(object sender, EventArgs e)
+        {
+            
+            //numberOfLateMovies = newRelease.GetNumberMoviesSummary(); //The object of the instantiated form is called and a function is called that returns the value of the number of movies
+            //labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
+            //totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount; //The variables of each form are added to the total with a discount, and this will be the total owed by the client.
+            //totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;//The variables of each form are added to the total with a discount, and this will be the total number of films that the client delivers late.
+            //totalNumberMovies.Text = totalNumberMoviesForms.ToString();//The label is updated.
+            //labelTotalLateFee.Text = totalOwed.ToString();//The label is updated.
+
+            numberMoviesByType.Add("ReleaseMovie", numberOfReleaseMovies);
+            numberMoviesByType.Add("LibraryMovie", numberOfLibraryMovies);
+            numberMoviesByType.Add("KidsMovie", numberOfKidsMovies);
+            numberDaysMoviesByType.Add("ReleaseMovie", numberOfDaysReleaseMovies);
+            numberDaysMoviesByType.Add("LibraryMovie", numberOfDaysLibraryMovies);
+            numberDaysMoviesByType.Add("KidsMovie", numberOfDaysKidsMovies);
+
+
+            MessageBox.Show(numberMoviesByType["ReleaseMovie"].ToString());
+            MessageBox.Show(numberDaysMoviesByType["ReleaseMovie"].ToString());
+
+            frmNewRelease newRelease = new frmNewRelease(); //The frmNewRelease form object is instantiated.
+
+            DialogResult numberMoviesEnteredSummary = newRelease.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+
+
+        }
+
+
+        private void btnLibraryMovie_Click(object sender, EventArgs e)
+        {
+            frmLibraryMovies libraryMovies = new frmLibraryMovies(); //The frmLibraryMovies form object is instantiated.
+
+            DialogResult numberMoviesEnteredSummary = libraryMovies.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+            //numberOfLateMovies = libraryMovies.GetNumberMoviesSummary();//The object of the instantiated form is called and a function is called that returns the value of the number of movies
+            //labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
+            //totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount;//The variables of each form are added to the total with a discount, and this will be the total owed by the client.
+            //totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;//The variables of each form are added to the total with a discount, and this will be the total number of films that the client delivers late.
+            //totalNumberMovies.Text = totalNumberMoviesForms.ToString();//The label is updated.
+            //labelTotalLateFee.Text = totalOwed.ToString();//The label is updated.
+
+        }
+
+        private void btnKidsMovie_Click(object sender, EventArgs e)
+        {
+            frmKidsMovies kidsMovies = new frmKidsMovies(); //The frmKidsMovies form object is instantiated.  
+
+            DialogResult numberMoviesEnteredSummary = kidsMovies.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+            //numberOfLateMovies = kidsMovies.GetNumberMoviesSummary();//The object of the instantiated form is called and a function is called that returns the value of the number of movies
+            //labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
+            //totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount;//The variables of each form are added to the total with a discount, and this will be the total owed by the client.
+            //totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary; //The variables of each form are added to the total with a discount, and this will be the total number of films that the client delivers late.
+            //totalNumberMovies.Text = totalNumberMoviesForms.ToString();//The label is updated.
+            //labelTotalLateFee.Text = totalOwed.ToString();//The label is updated.
         }
     }
 }

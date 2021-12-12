@@ -29,43 +29,19 @@ namespace Assignment05
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtLateFilms = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.btnDueDate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lstRentalItems = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lstRentalItemsSelected = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnNewRelease = new System.Windows.Forms.Button();
+            this.btnLibraryMovie = new System.Windows.Forms.Button();
+            this.btnKidsMovie = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 302);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 50);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Enter the title of \r\nthe movie:";
-            // 
-            // txtLateFilms
-            // 
-            this.txtLateFilms.Location = new System.Drawing.Point(508, 302);
-            this.txtLateFilms.Name = "txtLateFilms";
-            this.txtLateFilms.Size = new System.Drawing.Size(224, 22);
-            this.txtLateFilms.TabIndex = 1;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(632, 45);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 36);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "&Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDueDate
             // 
@@ -110,7 +86,7 @@ namespace Assignment05
             // 
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDueDate.Location = new System.Drawing.Point(508, 396);
+            this.dateTimePickerDueDate.Location = new System.Drawing.Point(747, 304);
             this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 12, 11, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
@@ -120,12 +96,70 @@ namespace Assignment05
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 401);
+            this.label3.Location = new System.Drawing.Point(629, 304);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Due Date";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(632, 45);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(100, 36);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "&Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lstRentalItemsSelected
+            // 
+            this.lstRentalItemsSelected.FormattingEnabled = true;
+            this.lstRentalItemsSelected.ItemHeight = 16;
+            this.lstRentalItemsSelected.Location = new System.Drawing.Point(40, 353);
+            this.lstRentalItemsSelected.Name = "lstRentalItemsSelected";
+            this.lstRentalItemsSelected.Size = new System.Drawing.Size(546, 228);
+            this.lstRentalItemsSelected.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(37, 304);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Selected Items";
+            // 
+            // btnNewRelease
+            // 
+            this.btnNewRelease.Location = new System.Drawing.Point(632, 382);
+            this.btnNewRelease.Name = "btnNewRelease";
+            this.btnNewRelease.Size = new System.Drawing.Size(279, 38);
+            this.btnNewRelease.TabIndex = 11;
+            this.btnNewRelease.Text = "&New Release";
+            this.btnNewRelease.UseVisualStyleBackColor = true;
+            this.btnNewRelease.Click += new System.EventHandler(this.btnNewRelease_Click);
+            // 
+            // btnLibraryMovie
+            // 
+            this.btnLibraryMovie.Location = new System.Drawing.Point(632, 453);
+            this.btnLibraryMovie.Name = "btnLibraryMovie";
+            this.btnLibraryMovie.Size = new System.Drawing.Size(279, 38);
+            this.btnLibraryMovie.TabIndex = 12;
+            this.btnLibraryMovie.Text = "&Library Movie";
+            this.btnLibraryMovie.UseVisualStyleBackColor = true;
+            this.btnLibraryMovie.Click += new System.EventHandler(this.btnLibraryMovie_Click);
+            // 
+            // btnKidsMovie
+            // 
+            this.btnKidsMovie.Location = new System.Drawing.Point(632, 522);
+            this.btnKidsMovie.Name = "btnKidsMovie";
+            this.btnKidsMovie.Size = new System.Drawing.Size(279, 38);
+            this.btnKidsMovie.TabIndex = 13;
+            this.btnKidsMovie.Text = "&Kids Movie";
+            this.btnKidsMovie.UseVisualStyleBackColor = true;
+            this.btnKidsMovie.Click += new System.EventHandler(this.btnKidsMovie_Click);
             // 
             // frmLateFilms
             // 
@@ -133,7 +167,12 @@ namespace Assignment05
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(967, 498);
+            this.ClientSize = new System.Drawing.Size(988, 617);
+            this.Controls.Add(this.btnKidsMovie);
+            this.Controls.Add(this.btnLibraryMovie);
+            this.Controls.Add(this.btnNewRelease);
+            this.Controls.Add(this.lstRentalItemsSelected);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lstRentalItems);
@@ -141,8 +180,6 @@ namespace Assignment05
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDueDate);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtLateFilms);
-            this.Controls.Add(this.label1);
             this.Name = "frmLateFilms";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Late Films";
@@ -153,15 +190,17 @@ namespace Assignment05
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtLateFilms;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDueDate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ListBox lstRentalItems;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ListBox lstRentalItemsSelected;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnNewRelease;
+        private System.Windows.Forms.Button btnLibraryMovie;
+        private System.Windows.Forms.Button btnKidsMovie;
     }
 }
