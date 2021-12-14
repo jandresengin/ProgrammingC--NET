@@ -20,7 +20,7 @@ namespace Assignment05
         //the calculation of the number of days of late movie delivery is saved in this variable. It takes the value of the current day of the system where the program is executed and the number selected in the data picker (options were configured so that the maximum day is the current day of the system.)
         double numberOfDays;
         //A boolean variable is created, to change the program's operating mode, if the user enters number of days manually, the way to change the fee is changed, if he does not make changes in that textbox, it operates with only 1 movie by default .
-        Boolean isCleared = false;
+        Boolean isCleared = true;
         //variable that keeps track of the total bill for NewRelease movies
         public static decimal totalWithDiscount = 0;
 
@@ -45,7 +45,8 @@ namespace Assignment05
 
         private void LoadFormWithHistoricalData(object sender, EventArgs e)
         {//function that checks if the user entered movies in another form, if it is greater than or equal to 1, it will proceed to operate as if the user entered them manually.
-            int numberOfLateMoviesForm = frmMain.numberOfLateMovies;
+            int numberOfLateMoviesForm = Decimal.ToInt32(frmLateFilms.numberMoviesByType["ReleaseMovie"]);
+            numberOfDays = (double)frmLateFilms.numberDaysMoviesByType["ReleaseMovie"];
 
             //If the user entered movies manually from another form, the program is configured to work in this way.
             if (numberOfLateMoviesForm > 0)
@@ -66,7 +67,7 @@ namespace Assignment05
             string selectedTypeCustomer = GetValueComBox();//   The value entered by the client is taken, where you have the type of client that is and with it apply to discounts.  
             double lateFeeBill = 0; //Variable is declared and initialized to 0.
             decimal discountPercent = .0m; // This variable indicates the discount percentage to be applied to special customers.
-            numberOfDays = GetNumberDays();
+            
             CalculateLateFee(selectedTypeCustomer, lateFeeBill, discountPercent, numberOfDays);
         }
         private void btnReturn_Click(object sender, EventArgs e)
@@ -80,7 +81,7 @@ namespace Assignment05
         {//Clear button is added, to reset the current form and current values to 0.
             txtNumbersOfDaysLate.Text = "";
             txtLateFee.Text = "";
-            isCleared = false;
+            isCleared = true;
             numberMoviesEntered = 0;
             numberMoviesEnteredSummary = 0;
             minDays = 0;
@@ -227,8 +228,8 @@ namespace Assignment05
             string selectedTypeCustomer = GetValueComBox();
             bool success = true;
             string errorMessage = "";
-            errorMessage += IsPast(txtNumbersOfDaysLate.Text, "Numbers of Days Late", minDays);
-            errorMessage += IsDateTime(txtNumbersOfDaysLate.Text, "Number of Days Delivered Late");
+            //errorMessage += IsPast(txtNumbersOfDaysLate.Text, "Numbers of Days Late", minDays);
+            //errorMessage += IsDateTime(txtNumbersOfDaysLate.Text, "Number of Days Delivered Late");
             errorMessage += IsCustType(selectedTypeCustomer, "Number of Days Delivered Late", "L", "J", "N");
             errorMessage += IsPresent(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
             errorMessage += IsInt32(txtNumberOfMovies.Text, "Number of Movies Delivered Late");
@@ -358,7 +359,7 @@ namespace Assignment05
                 ex.StackTrace, "Exception");
             }
             //At the end, the manual movie input flag is returned to work in a unitary way.
-            isCleared = false;
+            isCleared = true;
         }
     }
 }

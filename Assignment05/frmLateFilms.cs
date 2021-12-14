@@ -8,8 +8,8 @@ namespace Assignment05
     {
         int numberOfDays;
         public decimal numberOfReleaseMovies = 0;
-        public SortedList<string, decimal> numberMoviesByType = new SortedList<string, decimal>(3);
-        public SortedList<string, decimal> numberDaysMoviesByType = new SortedList<string, decimal>(3);
+        public static SortedList<string, decimal> numberMoviesByType = new SortedList<string, decimal>(3);
+        public static SortedList<string, decimal> numberDaysMoviesByType = new SortedList<string, decimal>(3);
         public static decimal numberOfDaysReleaseMovies = 0;
 
         public static decimal numberOfLibraryMovies = 0;
@@ -176,13 +176,15 @@ namespace Assignment05
 
           private void btnNewRelease_Click(object sender, EventArgs e)
         {
-            
+
             //numberOfLateMovies = newRelease.GetNumberMoviesSummary(); //The object of the instantiated form is called and a function is called that returns the value of the number of movies
             //labelNumberLateFilmsManual.Text = numberOfLateMovies.ToString();//The label is updated.
             //totalOwed = frmNewRelease.totalWithDiscount + frmLibraryMovies.totalWithDiscount + frmKidsMovies.totalWithDiscount; //The variables of each form are added to the total with a discount, and this will be the total owed by the client.
             //totalNumberMoviesForms = frmNewRelease.numberMoviesEnteredSummary + frmLibraryMovies.numberMoviesEnteredSummary + frmKidsMovies.numberMoviesEnteredSummary;//The variables of each form are added to the total with a discount, and this will be the total number of films that the client delivers late.
             //totalNumberMovies.Text = totalNumberMoviesForms.ToString();//The label is updated.
             //labelTotalLateFee.Text = totalOwed.ToString();//The label is updated.
+            numberMoviesByType.Clear();
+            numberDaysMoviesByType.Clear();
 
             numberMoviesByType.Add("ReleaseMovie", numberOfReleaseMovies);
             numberMoviesByType.Add("LibraryMovie", numberOfLibraryMovies);
