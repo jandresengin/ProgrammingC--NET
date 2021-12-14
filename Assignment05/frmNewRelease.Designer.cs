@@ -30,7 +30,6 @@ namespace Assignment05
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,7 +38,6 @@ namespace Assignment05
             this.txtNumbersOfDaysLate = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLateFee = new System.Windows.Forms.TextBox();
-            this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNumberOfMovies = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,16 +48,6 @@ namespace Assignment05
             this.comboBoxCustomerType = new System.Windows.Forms.ComboBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Due Date";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnCalculate
             // 
@@ -85,7 +73,7 @@ namespace Assignment05
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 86);
+            this.label2.Location = new System.Drawing.Point(25, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 17);
             this.label2.TabIndex = 11;
@@ -94,7 +82,7 @@ namespace Assignment05
             // 
             // txtCurrentDate
             // 
-            this.txtCurrentDate.Location = new System.Drawing.Point(203, 81);
+            this.txtCurrentDate.Location = new System.Drawing.Point(203, 29);
             this.txtCurrentDate.Name = "txtCurrentDate";
             this.txtCurrentDate.ReadOnly = true;
             this.txtCurrentDate.Size = new System.Drawing.Size(123, 22);
@@ -104,7 +92,7 @@ namespace Assignment05
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 136);
+            this.label3.Location = new System.Drawing.Point(25, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(149, 17);
             this.label3.TabIndex = 36;
@@ -113,7 +101,7 @@ namespace Assignment05
             // 
             // txtNumbersOfDaysLate
             // 
-            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(203, 131);
+            this.txtNumbersOfDaysLate.Location = new System.Drawing.Point(203, 81);
             this.txtNumbersOfDaysLate.Name = "txtNumbersOfDaysLate";
             this.txtNumbersOfDaysLate.ReadOnly = true;
             this.txtNumbersOfDaysLate.Size = new System.Drawing.Size(123, 22);
@@ -123,7 +111,7 @@ namespace Assignment05
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 181);
+            this.label4.Location = new System.Drawing.Point(25, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 8;
@@ -132,23 +120,12 @@ namespace Assignment05
             // 
             // txtLateFee
             // 
-            this.txtLateFee.Location = new System.Drawing.Point(203, 176);
+            this.txtLateFee.Location = new System.Drawing.Point(203, 135);
             this.txtLateFee.Name = "txtLateFee";
             this.txtLateFee.ReadOnly = true;
             this.txtLateFee.Size = new System.Drawing.Size(123, 22);
             this.txtLateFee.TabIndex = 9;
             this.txtLateFee.TabStop = false;
-            // 
-            // dateTimePickerDueDate
-            // 
-            this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
-            this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDueDate.Location = new System.Drawing.Point(203, 31);
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 12, 11, 0, 0, 0, 0);
-            this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
-            this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
-            this.dateTimePickerDueDate.TabIndex = 1;
-            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 12, 11, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -230,6 +207,7 @@ namespace Assignment05
             this.comboBoxCustomerType.Name = "comboBoxCustomerType";
             this.comboBoxCustomerType.Size = new System.Drawing.Size(121, 24);
             this.comboBoxCustomerType.TabIndex = 3;
+            this.comboBoxCustomerType.SelectedIndex = 2;
             // 
             // btnClear
             // 
@@ -257,7 +235,6 @@ namespace Assignment05
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtNumberOfMovies);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePickerDueDate);
             this.Controls.Add(this.txtLateFee);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtNumbersOfDaysLate);
@@ -266,7 +243,6 @@ namespace Assignment05
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnCalculate);
-            this.Controls.Add(this.label1);
             this.Name = "frmNewRelease";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Releases";
@@ -277,8 +253,6 @@ namespace Assignment05
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Label label2;
@@ -287,7 +261,6 @@ namespace Assignment05
         private System.Windows.Forms.TextBox txtNumbersOfDaysLate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLateFee;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
         private Label label5;
         private TextBox txtNumberOfMovies;
         private Label label7;

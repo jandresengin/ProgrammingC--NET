@@ -14,7 +14,7 @@ namespace Assignment05
         //In order to be able to add the movies entered by the user or the unitary movie entry system, an internal variable is handled.
         public static int numberMoviesEnteredSummary = 0;
         //The minimum number of days of delay is 0, it would be presented if the user enters a invalid numbers of days
-        Int32 minDays = 0;
+  
         // The total value to be paid by the customer without applying a discount is saved in the following variable. Initially it is left at 0.
         Double totalWithoutDiscount = 0;
         //the calculation of the number of days of late movie delivery is saved in this variable. It takes the value of the current day of the system where the program is executed and the number selected in the data picker (options were configured so that the maximum day is the current day of the system.)
@@ -34,7 +34,7 @@ namespace Assignment05
             // The number of movies to return is 0 and it is printed in the textbox
             txtNumberOfMovies.Text = numberMoviesEntered.ToString("d");
             //The focus after load the form is over the dataTimepicker.
-            dateTimePickerDueDate.Focus();
+            //dateTimePickerDueDate.Focus();
  
         }
         //function that returns the value numberMoviesEnteredSummary 
@@ -47,6 +47,7 @@ namespace Assignment05
         {//function that checks if the user entered movies in another form, if it is greater than or equal to 1, it will proceed to operate as if the user entered them manually.
             int numberOfLateMoviesForm = Decimal.ToInt32(frmLateFilms.numberMoviesByType["ReleaseMovie"]);
             numberOfDays = (double)frmLateFilms.numberDaysMoviesByType["ReleaseMovie"];
+            txtNumbersOfDaysLate.Text = numberOfDays.ToString();
 
             //If the user entered movies manually from another form, the program is configured to work in this way.
             if (numberOfLateMoviesForm > 0)
@@ -84,7 +85,7 @@ namespace Assignment05
             isCleared = true;
             numberMoviesEntered = 0;
             numberMoviesEnteredSummary = 0;
-            minDays = 0;
+            //minDays = 0;
             totalWithoutDiscount = 0;
             subtotalWithoutDiscount.Text = "";
             txtTotalWithDiscount.Text = "";
@@ -132,9 +133,9 @@ namespace Assignment05
             {   //This function is created tied to an event, which will clean the textbox and evaluate if the data entered is a valid number.
                 if (IsValidData()) //The IsValidData function is called to know if the entered value (number of movies) meets the program conditions.
                 {
-                    txtNumbersOfDaysLate.Text = "";
+                    //txtNumbersOfDaysLate.Text = "";
                     txtLateFee.Text = "";
-                    numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text);
+                    //numberMoviesEntered = Convert.ToInt32(txtNumberOfMovies.Text);
                     isCleared = true;
                 }
             }
@@ -266,16 +267,7 @@ namespace Assignment05
 
         }
 
-        private Double GetNumberDays()
-        {
-            DateTime dCurrent = DateTime.Now; // The current date is stored in the variable dCurrent.
-            DateTime dDue = dateTimePickerDueDate.Value; //According to the value entered in the dateTimePicker, the day is obtained and saved in dDue
-            TimeSpan totalNumberDays = (dCurrent.Date - dDue.Date); //The number of days late in returning the movie is calculated according to the value entered by the user.
-            numberOfDays = totalNumberDays.TotalDays; //Only the data of number of days is extracted from the variable type DateTime
-            txtNumbersOfDaysLate.Text = numberOfDays.ToString(); //The resulting number of days is shown in the textbox.
-            return numberOfDays;
-
-        }
+       
         private void CalculateLateFee(String selectedTypeCustomer, double lateFeeBill, decimal discountPercent, double numberOfDays)
         {
             //Because the only data that the user enters is the number of days, it will be evaluated that the data is valid, the failure will be caught and the user will be indicated the requirements for this data.
@@ -295,8 +287,8 @@ namespace Assignment05
                         //If the user does not enter the number of movies manually, the isCleared flag will be equal to false, executing the sum of movies program in a unitary way.
                         if (isCleared == false)
                         {
-                            numberMoviesEntered += 1; //The number of movies is increased by 1.
-                            numberMoviesEnteredSummary += 1; //Movie number accumulator increases by 1.
+                            //numberMoviesEntered += 1; //The number of movies is increased by 1.
+                            //numberMoviesEnteredSummary += 1; //Movie number accumulator increases by 1.
                             lateFeeBill = CalculateLateFeeUnity(numberOfDaysLate); //The fee is calculated for a single movie entry, with the function CalculateLateFeeUnity
 
 
@@ -306,9 +298,9 @@ namespace Assignment05
                         {
                             //// The rate is calculated for the number of movies entered by the user, with the CalculateLateFee function
                             lateFeeBill = CalculateLateFee(numberOfDaysLate, numberMoviesEntered);
-                            numberMoviesEnteredSummary += numberMoviesEntered;//Movie number accumulator increases by the number of movies entered by the user.
+                            numberMoviesEnteredSummary = numberMoviesEntered;//Movie number accumulator increases by the number of movies entered by the user.
                         }
-                        totalWithoutDiscount += lateFeeBill; //The previous value is added to the accumulator of the total of movies to be returned, with this the user can calculate different movies of this type and of different days.
+                        totalWithoutDiscount = lateFeeBill; //The previous value is added to the accumulator of the total of movies to be returned, with this the user can calculate different movies of this type and of different days.
 
                     }
 

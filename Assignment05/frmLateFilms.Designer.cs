@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+using System.Windows.Forms;
 namespace Assignment05
 {
     partial class frmLateFilms
@@ -35,7 +36,6 @@ namespace Assignment05
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerDueDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.lstRentalItemsSelected = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewRelease = new System.Windows.Forms.Button();
@@ -45,20 +45,20 @@ namespace Assignment05
             // 
             // btnDueDate
             // 
-            this.btnDueDate.Location = new System.Drawing.Point(632, 112);
+            this.btnDueDate.Location = new System.Drawing.Point(632, 46);
             this.btnDueDate.Name = "btnDueDate";
-            this.btnDueDate.Size = new System.Drawing.Size(100, 36);
+            this.btnDueDate.Size = new System.Drawing.Size(279, 36);
             this.btnDueDate.TabIndex = 3;
-            this.btnDueDate.Text = "&Due Date";
+            this.btnDueDate.Text = "Select &Due Date";
             this.btnDueDate.UseVisualStyleBackColor = true;
             this.btnDueDate.Click += new System.EventHandler(this.btnDueDate_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(632, 176);
+            this.btnCancel.Location = new System.Drawing.Point(632, 110);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 36);
+            this.btnCancel.Size = new System.Drawing.Size(279, 36);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -87,11 +87,15 @@ namespace Assignment05
             this.dateTimePickerDueDate.CustomFormat = "MM-dd-yyyy";
             this.dateTimePickerDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDueDate.Location = new System.Drawing.Point(747, 304);
-            this.dateTimePickerDueDate.MaxDate = new System.DateTime(2021, 12, 11, 0, 0, 0, 0);
+            DateTime todaysDate = DateTime.Today;
+            int year = todaysDate.Year;
+            int month = todaysDate.Month;
+            int day = todaysDate.Day;
+            this.dateTimePickerDueDate.MaxDate = new System.DateTime(year, month, day, 0, 0, 0, 0);
             this.dateTimePickerDueDate.Name = "dateTimePickerDueDate";
             this.dateTimePickerDueDate.Size = new System.Drawing.Size(123, 22);
             this.dateTimePickerDueDate.TabIndex = 8;
-            this.dateTimePickerDueDate.Value = new System.DateTime(2021, 12, 11, 0, 0, 0, 0);
+            this.dateTimePickerDueDate.Value = new System.DateTime(year, month, day, 0, 0, 0, 0);
             // 
             // label3
             // 
@@ -102,16 +106,6 @@ namespace Assignment05
             this.label3.TabIndex = 7;
             this.label3.Text = "Due Date";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(632, 45);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(100, 36);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "&Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lstRentalItemsSelected
             // 
@@ -179,7 +173,6 @@ namespace Assignment05
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDueDate);
-            this.Controls.Add(this.btnAdd);
             this.Name = "frmLateFilms";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Late Films";
@@ -196,7 +189,6 @@ namespace Assignment05
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePickerDueDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ListBox lstRentalItemsSelected;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnNewRelease;
