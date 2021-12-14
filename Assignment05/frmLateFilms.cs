@@ -201,9 +201,7 @@ namespace Assignment05
 
         private void btnLibraryMovie_Click(object sender, EventArgs e)
         {
-            frmLibraryMovies libraryMovies = new frmLibraryMovies(); //The frmLibraryMovies form object is instantiated.
-
-            DialogResult numberMoviesEnteredSummary = libraryMovies.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+            
             numberMoviesByType.Clear();
             numberDaysMoviesByType.Clear();
 
@@ -218,17 +216,16 @@ namespace Assignment05
             MessageBox.Show("Number of Library movies selected: " + numberMoviesByType["LibraryMovie"].ToString());
             MessageBox.Show("Number of total days selected: " + numberDaysMoviesByType["LibraryMovie"].ToString());
 
-            frmLibraryMovies newRelease = new frmLibraryMovies(); //The frmNewRelease form object is instantiated.
+            frmLibraryMovies newLibrary = new frmLibraryMovies(); //The frmNewRelease form object is instantiated.
 
-           
+            DialogResult numberMoviesEnteredSummary = newLibrary.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+
 
         }
 
         private void btnKidsMovie_Click(object sender, EventArgs e)
         {
-            frmKidsMovies libraryMovies = new frmKidsMovies(); //The frmLibraryMovies form object is instantiated.
-
-            DialogResult numberMoviesEnteredSummary = libraryMovies.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
+            
             numberMoviesByType.Clear();
             numberDaysMoviesByType.Clear();
 
@@ -243,9 +240,9 @@ namespace Assignment05
             MessageBox.Show("Number of Kids movies selected: " + numberMoviesByType["KidsMovie"].ToString());
             MessageBox.Show("Number of total days selected: " + numberDaysMoviesByType["KidsMovie"].ToString());
 
-            frmLibraryMovies newRelease = new frmLibraryMovies(); //The frmNewRelease form object is instantiated.
+            frmKidsMovies kidsMovies = new frmKidsMovies(); //The frmLibraryMovies form object is instantiated.
 
-
+            DialogResult numberMoviesEnteredSummary = kidsMovies.ShowDialog(); //DialogResult, will return the action and save it in an object instantiated to the form, it is called the opening of the form.
         }
     }
 }
