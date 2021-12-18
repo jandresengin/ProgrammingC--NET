@@ -8,16 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/***********************************************************************************************************************
+ *          CSD2354 Programming C# NET          Fall 2021       Test 03
+ *          Jairo Andres Supelano               c0812859
+ ************************************************************************************************************************/
+
 namespace InvoiceTotal
 {
-    public partial class Form1 : Form
+    public partial class frmInvoiceTotal : Form
     {
-        public Form1()
+        public frmInvoiceTotal()
         {
             InitializeComponent();
+            labelTax.Text = "Tax (4.25%):";
         }
+        /// #################################################################################
+        /// /       tax rate of Michigan 4.25 %   (Too Low)
+        /// #################################################################################
+        private decimal SalesTaxPct = 4.25m;
 
-        const decimal SalesTaxPct = 7.75m;
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -99,5 +108,21 @@ namespace InvoiceTotal
         {
             this.Close();
         }
+
+        private void btnChangePercent_Click(object sender, EventArgs e)
+        {
+            
+            frmSalesTax salesTax = new frmSalesTax();
+            DialogResult salesTaxPercent = salesTax.ShowDialog();
+
+            
+            if (salesTaxPercent == DialogResult.OK)
+            {
+                labelTax.Text = "Tax (" + (String) salesTax.Tag + "%):";
+                SalesTaxPct = Convert.ToDecimal((String)salesTax.Tag);
+            }
+
+        }
+
     }
 }
