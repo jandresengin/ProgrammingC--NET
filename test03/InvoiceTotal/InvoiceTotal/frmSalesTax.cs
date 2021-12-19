@@ -58,7 +58,7 @@ namespace InvoiceTotal
             string errorMessage = "";
             errorMessage += IsPresent(txtSalesTaxPct.Text, "Sales tax percentage");
             errorMessage += IsDecimal(txtSalesTaxPct.Text, "Sales tax percentage");
-            errorMessage += IsWithinRange(txtSalesTaxPct.Text, "Sales tax percentage", (decimal)0.0000000000000001, (decimal)9.99999999999999);
+            errorMessage += IsWithinRange(txtSalesTaxPct.Text, "Sales tax percentage", (decimal)0, (decimal)9.99999999999999);
 
             if (errorMessage != "")
             {
