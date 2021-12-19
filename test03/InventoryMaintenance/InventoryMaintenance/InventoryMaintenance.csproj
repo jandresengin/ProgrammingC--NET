@@ -61,8 +61,10 @@
       <DependentUpon>frmNewItem.cs</DependentUpon>
     </Compile>
     <Compile Include="InvItemList.cs" />
+    <Compile Include="Plant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Supply.cs" />
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="frmNewItem.resx">
       <DependentUpon>frmNewItem.cs</DependentUpon>
