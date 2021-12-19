@@ -18,6 +18,8 @@ namespace InventoryMaintenance
         }
 
         private InvItem invItem = null;
+        private Plant plant = null;
+        private Supply supply = null;
 
         public InvItem GetNewItem()
         {
@@ -51,8 +53,22 @@ namespace InventoryMaintenance
         {
             if (IsValidData())
             {
-                invItem = new InvItem(Convert.ToInt32(txtItemNo.Text),
-                    txtDescription.Text, Convert.ToDecimal(txtPrice.Text));
+                var itemComboBox = this.cboSizeOrManufacturer.GetItemText(this.cboSizeOrManufacturer.SelectedItem);
+                if (rdoPlant.Checked)
+                {
+                    
+                    MessageBox.Show("size check");
+
+                    plant = new Plant(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);
+                }
+                else
+                {
+                    MessageBox.Show("NO size check");
+                    supply = new Supply(Convert.ToInt32(txtItemNo.Text),
+                    txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);
+                }
+
+                //invItem = new InvItem(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text));
                 this.Close();
             }
         }

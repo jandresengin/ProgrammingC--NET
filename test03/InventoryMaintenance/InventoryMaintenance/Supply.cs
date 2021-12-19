@@ -30,7 +30,7 @@ namespace InventoryMaintenance
         }
 
 
-        public override string GetDisplayText() => base.GetDisplayText() + " (" + this.manufacturer + ")";
+        public override string GetDisplayText() => base.ItemNo + "    " + this.manufacturer + " " + base.Description + " (" + base.Price.ToString("c") + ")";
 
 
 

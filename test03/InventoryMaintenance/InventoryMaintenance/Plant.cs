@@ -30,9 +30,8 @@ namespace InventoryMaintenance
                 this.size = value;
             }
         }
-
-        public override string GetDisplayText() => base.GetDisplayText() + " (" + this.size + ")";
-
+        public override string GetDisplayText() => base.ItemNo + "    " + this.size + " " + base.Description + " (" + base.Price.ToString("c") + ")";
+         
 
     }
 }
