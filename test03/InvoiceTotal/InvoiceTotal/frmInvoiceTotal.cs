@@ -32,27 +32,7 @@ namespace InvoiceTotal
         {
             if (IsValidData())
             {
-                decimal productTotal = Convert.ToDecimal(txtProductTotal.Text);
-                decimal discountPercent = .0m;
-
-                if (productTotal < 100)
-                    discountPercent = .0m;
-                else if (productTotal >= 100 && productTotal < 250)
-                    discountPercent = .1m;
-                else if (productTotal >= 250)
-                    discountPercent = .25m;
-
-                decimal discountAmount = productTotal * discountPercent;
-                decimal subtotal = productTotal - discountAmount;
-                decimal tax = subtotal * SalesTaxPct / 100;
-                decimal total = subtotal + tax;
-
-                txtDiscountAmount.Text = discountAmount.ToString("c");
-                txtSubtotal.Text = subtotal.ToString("c");
-                txtTax.Text = tax.ToString("c");
-                txtTotal.Text = total.ToString("c");
-
-                txtProductTotal.Focus();
+                calculateFinalValue();
             }
         }
 
@@ -62,6 +42,31 @@ namespace InvoiceTotal
                 IsPresent(txtProductTotal, "Subtotal") &&
                 IsDecimal(txtProductTotal, "Subtotal") &&
                 IsWithinRange(txtProductTotal, "Subtotal", 0, 1000000);
+        }
+
+        public void calculateFinalValue()
+        {
+            decimal productTotal = Convert.ToDecimal(txtProductTotal.Text);
+            decimal discountPercent = .0m;
+
+            if (productTotal < 100)
+                discountPercent = .0m;
+            else if (productTotal >= 100 && productTotal < 250)
+                discountPercent = .1m;
+            else if (productTotal >= 250)
+                discountPercent = .25m;
+
+            decimal discountAmount = productTotal * discountPercent;
+            decimal subtotal = productTotal - discountAmount;
+            decimal tax = subtotal * SalesTaxPct / 100;
+            decimal total = subtotal + tax;
+
+            txtDiscountAmount.Text = discountAmount.ToString("c");
+            txtSubtotal.Text = subtotal.ToString("c");
+            txtTax.Text = tax.ToString("c");
+            txtTotal.Text = total.ToString("c");
+
+            txtProductTotal.Focus();
         }
 
         public bool IsPresent(TextBox textBox, string name)
@@ -120,6 +125,7 @@ namespace InvoiceTotal
             {
                 labelTax.Text = "Tax (" + (String) salesTax.Tag + "%):";
                 SalesTaxPct = Convert.ToDecimal((String)salesTax.Tag);
+                calculateFinalValue();
             }
 
         }
