@@ -39,11 +39,14 @@ namespace InventoryMaintenance
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
+
 			frmNewItem newItemForm = new frmNewItem();
 			InvItem invItem = newItemForm.GetNewItem();
 			if (invItem != null)
 			{
-                invItems += invItem;
+				invItems.Add(invItem);
+				//invItems += invItem;
+				
 			}
 		}
 

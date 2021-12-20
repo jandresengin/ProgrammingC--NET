@@ -21,6 +21,7 @@ namespace InventoryMaintenance
         private Plant plant = null;
         private Supply supply = null;
 
+
         public InvItem GetNewItem()
         {
             LoadComboBox();
@@ -57,15 +58,18 @@ namespace InventoryMaintenance
                 if (rdoPlant.Checked)
                 {
                     
-                    MessageBox.Show("size check");
+                    
 
                     plant = new Plant(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);
+
+                    MessageBox.Show(plant.GetDisplayText());
                 }
                 else
                 {
-                    MessageBox.Show("NO size check");
+
                     supply = new Supply(Convert.ToInt32(txtItemNo.Text),
                     txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);
+                    MessageBox.Show(supply.GetDisplayText());
                 }
 
                 //invItem = new InvItem(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text));
