@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/**************************************************************************************************************
+ * 
+ *      CSD2354 Programming C# NET          Instructor: Noah Petrides
+ *      Jairo Andres Supelano Rativa        c0812859
+ *      3rd Exam
+ * 
+ **************************************************************************************************************/
+
+
 
 namespace InventoryMaintenance
 {
@@ -58,7 +67,7 @@ namespace InventoryMaintenance
                 price = value;
             }
         }
-
+        /* overridable "virtual"*/
         public virtual string GetDisplayText() => itemNo + "    " + description + " (" + price.ToString("c") + ")";
     }
 }

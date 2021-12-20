@@ -9,6 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+/**************************************************************************************************************
+ * 
+ *      CSD2354 Programming C# NET          Instructor: Noah Petrides
+ *      Jairo Andres Supelano Rativa        c0812859
+ *      3rd Exam
+ * 
+ **************************************************************************************************************/
+
+
+
 namespace InventoryMaintenance
 {
     public partial class frmNewItem : Form
