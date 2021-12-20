@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace InventoryMaintenance
 {
@@ -18,9 +19,6 @@ namespace InventoryMaintenance
         }
 
         private InvItem invItem = null;
-        private Plant plant = null;
-        private Supply supply = null;
-
 
         public InvItem GetNewItem()
         {
@@ -55,24 +53,19 @@ namespace InventoryMaintenance
             if (IsValidData())
             {
                 var itemComboBox = this.cboSizeOrManufacturer.GetItemText(this.cboSizeOrManufacturer.SelectedItem);
+
+
+                Debug.WriteLine("value combobox: " + itemComboBox);
                 if (rdoPlant.Checked)
                 {
-                    
-                    
-
-                    plant = new Plant(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);
-
-                    MessageBox.Show(plant.GetDisplayText());
+                    invItem = new Plant(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);
                 }
                 else
                 {
-
-                    supply = new Supply(Convert.ToInt32(txtItemNo.Text),
+                    invItem = new Supply(Convert.ToInt32(txtItemNo.Text),
                     txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);
-                    MessageBox.Show(supply.GetDisplayText());
                 }
 
-                //invItem = new InvItem(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text));
                 this.Close();
             }
         }

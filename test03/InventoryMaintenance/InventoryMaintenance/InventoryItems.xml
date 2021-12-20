@@ -28,4 +28,11 @@
         <Price>89.95</Price>
         <Size>15 gallon</Size>
     </Item>
+    <Item>
+        <Type>Plant</Type>
+        <ItemNo>812859</ItemNo>
+        <Description>Programming C#.NET</Description>
+        <Price>999</Price>
+        <Size>36-inch box</Size>
+    </Item>
 </Items>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Diagnostics;
 
 namespace InventoryMaintenance
 {
@@ -39,6 +40,9 @@ namespace InventoryMaintenance
                         ReadBase(xmlIn, p);
                         p.Size = xmlIn.ReadElementContentAsString();
                         item = p;
+                        Debug.WriteLine("The products list has changed!");
+                        Debug.WriteLine(p);
+                        Debug.WriteLine(p.ToString());
                     }
                     else
                     {

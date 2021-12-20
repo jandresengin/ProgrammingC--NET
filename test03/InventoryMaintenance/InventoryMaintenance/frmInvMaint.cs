@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace InventoryMaintenance
 {
@@ -44,10 +45,11 @@ namespace InventoryMaintenance
 			InvItem invItem = newItemForm.GetNewItem();
 			if (invItem != null)
 			{
-				invItems.Add(invItem);
-				//invItems += invItem;
-				
+
+				invItems += invItem;
+
 			}
+
 		}
 
 		private void btnDelete_Click(object sender, EventArgs e)
