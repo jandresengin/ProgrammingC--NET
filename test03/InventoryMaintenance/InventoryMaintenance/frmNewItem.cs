@@ -65,7 +65,7 @@ namespace InventoryMaintenance
                 var itemComboBox = this.cboSizeOrManufacturer.GetItemText(this.cboSizeOrManufacturer.SelectedItem);
 
 
-                Debug.WriteLine("value combobox: " + itemComboBox);
+
                 if (rdoPlant.Checked)
                 {
                     invItem = new Plant(Convert.ToInt32(txtItemNo.Text), txtDescription.Text, Convert.ToDecimal(txtPrice.Text), itemComboBox);

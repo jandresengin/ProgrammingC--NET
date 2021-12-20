@@ -35,4 +35,25 @@
         <Price>999</Price>
         <Size>36-inch box</Size>
     </Item>
+    <Item>
+        <Type>Plant</Type>
+        <ItemNo>213123</ItemNo>
+        <Description>eqwe</Description>
+        <Price>12</Price>
+        <Size>15 gallon</Size>
+    </Item>
+    <Item>
+        <Type>Plant</Type>
+        <ItemNo>11111</ItemNo>
+        <Description>e11</Description>
+        <Price>11</Price>
+        <Size>1 gallon</Size>
+    </Item>
+    <Item>
+        <Type>Supply</Type>
+        <ItemNo>22222</ItemNo>
+        <Description>2www</Description>
+        <Price>22</Price>
+        <Manufacturer>Bayer</Manufacturer>
+    </Item>
 </Items>
