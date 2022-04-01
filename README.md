@@ -1,2 +1,2 @@
 # ProgrammingC#-NET
-[Programming C# NET repository for all assignment in 2 term fall 2021. Lambton College. Instructor Noah Petrides](https://www.lambtoncollege.ca/)
+[DevOps: Tools and Practices. Repository for the final project term winter 2022. Lambton College. Instructor Jenelle Chen](https://www.lambtoncollege.ca/)
